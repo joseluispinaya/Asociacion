@@ -1,0 +1,116 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Data;
+using System.Data.SqlClient;
+using CapaEntidad;
+
+namespace CapaDatos
+{
+    public class DUsuario
+    {
+        #region "PATRON SINGLETON"
+        public static DUsuario _instancia = null;
+
+        private DUsuario()
+        {
+
+        }
+
+        public static DUsuario getInstance()
+        {
+            if (_instancia == null)
+            {
+                _instancia = new DUsuario();
+            }
+            return _instancia;
+        }
+        #endregion
+
+        public bool RegistrarUsuario(EUsuario oUsuario)
+        {
+            bool respuesta = false;
+
+            try
+            {
+                using (SqlConnection con = ConexionBD.getInstance().ConexionDB())
+                {
+                    using (SqlCommand cmd = new SqlCommand("usp_RegistrarUsuario", con))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+
+                        cmd.Parameters.AddWithValue("@NroCI", oUsuario.NroCI);
+                        cmd.Parameters.AddWithValue("@Nombres", oUsuario.Nombres);
+                        cmd.Parameters.AddWithValue("@Apellidos", oUsuario.Apellidos);
+                        cmd.Parameters.AddWithValue("@Correo", oUsuario.Correo);
+                        cmd.Parameters.AddWithValue("@Clave", oUsuario.Clave);
+                        cmd.Parameters.AddWithValue("@Foto", oUsuario.Foto);
+                        cmd.Parameters.AddWithValue("@IdRol", oUsuario.IdRol);
+
+                        SqlParameter outputParam = new SqlParameter("@Resultado", SqlDbType.Bit)
+                        {
+                            Direction = ParameterDirection.Output
+                        };
+                        cmd.Parameters.Add(outputParam);
+
+                        con.Open();
+                        cmd.ExecuteNonQuery();
+                        respuesta = Convert.ToBoolean(outputParam.Value);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al registrar. Intente más tarde.", ex);
+            }
+
+            return respuesta;
+        }
+
+        public List<EUsuario> ObtenerUsuariosZ()
+        {
+            List<EUsuario> rptListaUsuario = new List<EUsuario>();
+
+            try
+            {
+                using (SqlConnection con = ConexionBD.getInstance().ConexionDB())
+                {
+                    using (SqlCommand comando = new SqlCommand("usp_ObtenerUsuario", con))
+                    {
+                        comando.CommandType = CommandType.StoredProcedure;
+                        con.Open();
+
+                        using (SqlDataReader dr = comando.ExecuteReader())
+                        {
+                            while (dr.Read())
+                            {
+                                rptListaUsuario.Add(new EUsuario()
+                                {
+                                    IdUsuario = Convert.ToInt32(dr["IdUsuario"]),
+                                    NroCI = dr["NroCI"].ToString(),
+                                    Nombres = dr["Nombres"].ToString(),
+                                    Apellidos = dr["Apellidos"].ToString(),
+                                    Correo = dr["Correo"].ToString(),
+                                    Clave = dr["Clave"].ToString(),
+                                    Foto = dr["Foto"].ToString(),
+                                    IdRol = Convert.ToInt32(dr["IdRol"]),
+                                    oRol = new ERol() { NomRol = dr["DescripcionRol"].ToString() },
+                                    Estado = Convert.ToBoolean(dr["Activo"])
+                                });
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                //throw ex;
+                throw new Exception("Error al obtener los roles", ex);
+            }
+
+            return rptListaUsuario;
+        }
+    }
+}
