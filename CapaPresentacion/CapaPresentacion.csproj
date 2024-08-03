@@ -69,6 +69,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AsociacionA.aspx" />
     <Content Include="assets\css\default\app-rtl.min.css" />
     <Content Include="assets\css\default\app.min.css" />
     <Content Include="assets\css\default\images\bg-login-dark-mode.png" />
@@ -754,13 +755,24 @@
     <Content Include="assets\plugins\timepicker\bootstrap-timepicker.min.css" />
     <Content Include="assets\plugins\toastr\toastr.min.css" />
     <Content Include="assets\plugins\toastr\toastr.min.js" />
+    <Content Include="ImagenesPr\sinimagen.png" />
     <Content Include="Imagenes\sinimagen.png" />
     <Content Include="Inicio.aspx" />
+    <Content Include="js\AsociacionA.js" />
+    <Content Include="js\PresidenteA.js" />
     <Content Include="js\UsuariosA.js" />
+    <Content Include="PresidenteA.aspx" />
     <Content Include="UsuariosA.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AsociacionA.aspx.cs">
+      <DependentUpon>AsociacionA.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AsociacionA.aspx.designer.cs">
+      <DependentUpon>AsociacionA.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Inicio.aspx.cs">
       <DependentUpon>Inicio.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -774,6 +786,13 @@
     </Compile>
     <Compile Include="Pagina.Master.designer.cs">
       <DependentUpon>Pagina.Master</DependentUpon>
+    </Compile>
+    <Compile Include="PresidenteA.aspx.cs">
+      <DependentUpon>PresidenteA.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PresidenteA.aspx.designer.cs">
+      <DependentUpon>PresidenteA.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UsuariosA.aspx.cs">

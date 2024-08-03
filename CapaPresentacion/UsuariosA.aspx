@@ -1,11 +1,14 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Pagina.Master" AutoEventWireup="true" CodeBehind="UsuariosA.aspx.cs" Inherits="CapaPresentacion.UsuariosA" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <link href="assets/plugins/toastr/toastr.min.css" rel="stylesheet" />
+    <%--<link href="assets/plugins/toastr/toastr.min.css" rel="stylesheet" />--%>
     <style>
         .buttons-excel {
             color: #fff !important;
             background-color: #28a745 !important;
             border-color: #28a745 !important;
+        }
+        .dt-buttons {
+            float: left;
         }
     </style>
 </asp:Content>
@@ -89,11 +92,17 @@
         <div class="panel-heading">
             <h4 class="panel-title">Panel Title here</h4>
             <div class="panel-heading-btn">
-                <a href="#" id="btnNuevo" class="btn btn-success btn-xs">Nuevo</a>
+                
                 <a href="javascript:;" class="btn btn-xs btn-icon btn-warning" data-toggle="panel-collapse"><i class="fa fa-minus"></i></a>
             </div>
         </div>
         <div class="panel-body">
+            <div class="row row-cols-lg-auto g-3 mb-3">
+                <div class="col-12">
+                    <a href="#" id="btnNuevo" class="btn btn-lime"><i class="fas fa-pencil me-2"></i>Nuevo</a>
+                    <%--<button id="btnNuevoReg" type="button" class="btn btn-lime"><i class="fas fa-pencil me-2"></i> Nuevo Registro</button>--%>
+                </div>
+            </div>
             <table id="tbUsuario" width="100%" class="table table-striped table-bordered align-middle text-nowrap">
                 <thead>
                     <tr>
@@ -201,9 +210,9 @@
     </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="footer" runat="server">
-    <script src="assets/plugins/toastr/toastr.min.js"></script>
+    <%--<script src="assets/plugins/toastr/toastr.min.js"></script>--%>
     <script src="assets/plugins/sweetalert/sweetalert.min.js"></script>
-    <script src="assets/plugins/loadingoverlay/loadingoverlay.js"></script>
+    <%--<script src="assets/plugins/loadingoverlay/loadingoverlay.js"></script>--%>
 
     <script src="js/UsuariosA.js" type="text/javascript"></script>
 </asp:Content>

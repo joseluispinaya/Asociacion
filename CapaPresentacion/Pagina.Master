@@ -24,6 +24,8 @@
     <link href="assets/plugins/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
     <link href="assets/plugins/datatables/scroller.bootstrap.min.css" rel="stylesheet" type="text/css" />
 
+	<link href="assets/plugins/toastr/toastr.min.css" rel="stylesheet" />
+
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
@@ -202,13 +204,44 @@
                     
 					<div class="menu-item ">
 						<a href="UsuariosA.aspx" class="menu-link">
-							<div class="menu-icon-img">
-								<img src="assets/img/logo/logo-bs5.png" alt="" />
+							<div class="menu-icon">
+								<i class="fas fa-user-gear"></i>
 							</div>
-							<div class="menu-text">Usuarios <span class="menu-label">NEW</span></div> 
+							<div class="menu-text">Usuarios <span class="menu-label">NUEVO</span></div> 
 						</a>
 					</div>
                     
+					<%--<div class="menu-item">
+						<a href="AsociacionA.aspx" class="menu-link">
+							<div class="menu-icon">
+								<i class="fas fa-house"></i>
+							</div>
+							<div class="menu-text">Asociacion</div>
+						</a>
+					</div>--%>
+
+					<div class="menu-item has-sub">
+						<a href="javascript:;" class="menu-link">
+							<div class="menu-icon">
+								<i class="fas fa-house"></i>
+							</div>
+							<div class="menu-text">Asociaciones</div>
+							<div class="menu-caret"></div>
+						</a>
+						<div class="menu-submenu">
+							<div class="menu-item">
+								<a href="AsociacionA.aspx" class="menu-link">
+									<div class="menu-text">Asociacion</div>
+								</a>
+							</div>
+							<div class="menu-item">
+								<a href="PresidenteA.aspx" class="menu-link">
+									<div class="menu-text">Responsable</div>
+								</a>
+							</div>
+						</div>
+					</div>
+
 					<div class="menu-item">
 						<a href="calendar.html" class="menu-link">
 							<div class="menu-icon">
@@ -218,27 +251,7 @@
 						</a>
 					</div>
 
-					<div class="menu-item has-sub">
-						<a href="javascript:;" class="menu-link">
-							<div class="menu-icon">
-								<i class="fa fa-map"></i>
-							</div>
-							<div class="menu-text">Map</div>
-							<div class="menu-caret"></div>
-						</a>
-						<div class="menu-submenu">
-							<div class="menu-item">
-								<a href="map_vector.html" class="menu-link">
-									<div class="menu-text">Vector Map</div>
-								</a>
-							</div>
-							<div class="menu-item">
-								<a href="map_google.html" class="menu-link">
-									<div class="menu-text">Google Map</div>
-								</a>
-							</div>
-						</div>
-					</div>
+					
                     
 					
 					<!-- BEGIN minify-button -->
@@ -320,31 +333,35 @@
 	</div>
 	<!-- END #app -->
 	
-	<!-- ================== BEGIN core-js ================== -->
-	<script src="assets/js/vendor.min.js"></script>
-	<script src="assets/js/app.min.js"></script>
-	<!-- ================== END core-js ================== -->
-	<script src="assets/plugins/gritter/js/jquery.gritter.js"></script>
+    <!-- ================== BEGIN core-js ================== -->
+    <script src="assets/js/vendor.min.js"></script>
+    <script src="assets/js/app.min.js"></script>
+    <!-- ================== END core-js ================== -->
+    <script src="assets/plugins/gritter/js/jquery.gritter.js"></script>
 
-	<!-- Required datatable js-->
-        <script src="assets/plugins/datatables/jquery.dataTables.min.js"></script>
-        <script src="assets/plugins/datatables/dataTables.bootstrap4.min.js"></script>
-        <!-- Buttons examples -->
-        <script src="assets/plugins/datatables/dataTables.buttons.min.js"></script>
-        <script src="assets/plugins/datatables/buttons.bootstrap4.min.js"></script>
+    <!-- Required datatable js-->
+    <script src="assets/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="assets/plugins/datatables/dataTables.bootstrap4.min.js"></script>
+    <!-- Buttons examples -->
+    <script src="assets/plugins/datatables/dataTables.buttons.min.js"></script>
+    <script src="assets/plugins/datatables/buttons.bootstrap4.min.js"></script>
 
-        <script src="assets/plugins/datatables/jszip.min.js"></script>
-        <script src="assets/plugins/datatables/pdfmake.min.js"></script>
-        <script src="assets/plugins/datatables/vfs_fonts.js"></script>
-        <script src="assets/plugins/datatables/buttons.html5.min.js"></script>
-        <script src="assets/plugins/datatables/buttons.print.min.js"></script>
-        <script src="assets/plugins/datatables/dataTables.fixedHeader.min.js"></script>
-        <script src="assets/plugins/datatables/dataTables.keyTable.min.js"></script>
-        <script src="assets/plugins/datatables/dataTables.scroller.min.js"></script>
+    <script src="assets/plugins/datatables/jszip.min.js"></script>
+    <script src="assets/plugins/datatables/pdfmake.min.js"></script>
+    <script src="assets/plugins/datatables/vfs_fonts.js"></script>
+    <script src="assets/plugins/datatables/buttons.html5.min.js"></script>
+    <script src="assets/plugins/datatables/buttons.print.min.js"></script>
+    <script src="assets/plugins/datatables/dataTables.fixedHeader.min.js"></script>
+    <script src="assets/plugins/datatables/dataTables.keyTable.min.js"></script>
+    <script src="assets/plugins/datatables/dataTables.scroller.min.js"></script>
 
-        <!-- Responsive examples -->
-        <script src="assets/plugins/datatables/dataTables.responsive.min.js"></script>
-        <script src="assets/plugins/datatables/responsive.bootstrap4.min.js"></script>
+    <!-- Responsive examples -->
+    <script src="assets/plugins/datatables/dataTables.responsive.min.js"></script>
+    <script src="assets/plugins/datatables/responsive.bootstrap4.min.js"></script>
+
+    <script src="assets/plugins/toastr/toastr.min.js"></script>
+    <script src="assets/plugins/loadingoverlay/loadingoverlay.js"></script>
+
     <asp:ContentPlaceHolder ID="footer" runat="server"></asp:ContentPlaceHolder>
 </body>
 </html>
