@@ -69,6 +69,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AfiliadoA.aspx" />
     <Content Include="AsociacionA.aspx" />
     <Content Include="assets\css\default\app-rtl.min.css" />
     <Content Include="assets\css\default\app.min.css" />
@@ -758,6 +759,7 @@
     <Content Include="ImagenesPr\sinimagen.png" />
     <Content Include="Imagenes\sinimagen.png" />
     <Content Include="Inicio.aspx" />
+    <Content Include="js\AfiliadoA.js" />
     <Content Include="js\AsociacionA.js" />
     <Content Include="js\PresidenteA.js" />
     <Content Include="js\UsuariosA.js" />
@@ -766,6 +768,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AfiliadoA.aspx.cs">
+      <DependentUpon>AfiliadoA.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AfiliadoA.aspx.designer.cs">
+      <DependentUpon>AfiliadoA.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AsociacionA.aspx.cs">
       <DependentUpon>AsociacionA.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

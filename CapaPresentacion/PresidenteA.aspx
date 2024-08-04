@@ -111,7 +111,7 @@
                             </div>
 
                             <div class="mb-3">
-                                <input class="form-control" type="file" id="txtFotoP" />
+                                <input class="form-control" type="file" accept="image/*" id="txtFotoP" />
                             </div>
 
                             <div class="mb-3 text-center">

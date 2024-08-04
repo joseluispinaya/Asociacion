@@ -27,6 +27,11 @@ namespace CapaNegocio
         {
             return DPresidente.getInstance().RegistrarPresi(oUsuario);
         }
+
+        public bool ActualizarPresi(EPresidente oUsuario)
+        {
+            return DPresidente.getInstance().ActualizarPresi(oUsuario);
+        }
         public List<EPresidente> ObtenerPresidenteZ()
         {
             return DPresidente.getInstance().ObtenerPresidenteZ();

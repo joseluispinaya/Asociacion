@@ -9,27 +9,27 @@ using CapaEntidad;
 
 namespace CapaDatos
 {
-    public class DPresidente
+    public class DAfiliado
     {
         #region "PATRON SINGLETON"
-        public static DPresidente _instancia = null;
+        public static DAfiliado _instancia = null;
 
-        private DPresidente()
+        private DAfiliado()
         {
 
         }
 
-        public static DPresidente getInstance()
+        public static DAfiliado getInstance()
         {
             if (_instancia == null)
             {
-                _instancia = new DPresidente();
+                _instancia = new DAfiliado();
             }
             return _instancia;
         }
         #endregion
 
-        public bool RegistrarPresi(EPresidente oUsuario)
+        public bool RegistrarAfiliado(EAfiliado oUsuario)
         {
             bool respuesta = false;
 
@@ -37,7 +37,7 @@ namespace CapaDatos
             {
                 using (SqlConnection con = ConexionBD.getInstance().ConexionDB())
                 {
-                    using (SqlCommand cmd = new SqlCommand("usp_RegistrarPresidente", con))
+                    using (SqlCommand cmd = new SqlCommand("usp_RegistrarAfiliado", con))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
 
@@ -45,7 +45,7 @@ namespace CapaDatos
                         cmd.Parameters.AddWithValue("@NroCI", oUsuario.NroCI);
                         cmd.Parameters.AddWithValue("@Nombres", oUsuario.Nombres);
                         cmd.Parameters.AddWithValue("@Apellidos", oUsuario.Apellidos);
-                        cmd.Parameters.AddWithValue("@Foto", oUsuario.Foto);
+                        cmd.Parameters.AddWithValue("@Direccion", oUsuario.Direccion);
                         cmd.Parameters.AddWithValue("@Celular", oUsuario.Celular);
 
                         SqlParameter outputParam = new SqlParameter("@Resultado", SqlDbType.Bit)
@@ -68,7 +68,7 @@ namespace CapaDatos
             return respuesta;
         }
 
-        public bool ActualizarPresi(EPresidente oUsuario)
+        public bool ActualizarAfiliado(EAfiliado oUsuario)
         {
             bool respuesta = false;
 
@@ -76,16 +76,16 @@ namespace CapaDatos
             {
                 using (SqlConnection con = ConexionBD.getInstance().ConexionDB())
                 {
-                    using (SqlCommand cmd = new SqlCommand("usp_ModificarPresidente", con))
+                    using (SqlCommand cmd = new SqlCommand("usp_ModificarAfiliado", con))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
 
-                        cmd.Parameters.AddWithValue("@IdPresident", oUsuario.IdPresident);
+                        cmd.Parameters.AddWithValue("@IdAfiliado", oUsuario.IdAfiliado);
                         cmd.Parameters.AddWithValue("@Idasoci", oUsuario.Idasoci);
                         cmd.Parameters.AddWithValue("@NroCI", oUsuario.NroCI);
                         cmd.Parameters.AddWithValue("@Nombres", oUsuario.Nombres);
                         cmd.Parameters.AddWithValue("@Apellidos", oUsuario.Apellidos);
-                        cmd.Parameters.AddWithValue("@Foto", oUsuario.Foto);
+                        cmd.Parameters.AddWithValue("@Direccion", oUsuario.Direccion);
                         cmd.Parameters.AddWithValue("@Celular", oUsuario.Celular);
                         cmd.Parameters.AddWithValue("@Activo", oUsuario.Activo);
 
@@ -108,15 +108,16 @@ namespace CapaDatos
 
             return respuesta;
         }
-        public List<EPresidente> ObtenerPresidenteZ()
+
+        public List<EAfiliado> ObtenerAfiliadosZ()
         {
-            List<EPresidente> rptListaUsuario = new List<EPresidente>();
+            List<EAfiliado> rptListaUsuario = new List<EAfiliado>();
 
             try
             {
                 using (SqlConnection con = ConexionBD.getInstance().ConexionDB())
                 {
-                    using (SqlCommand comando = new SqlCommand("usp_ObtenerPresidentes", con))
+                    using (SqlCommand comando = new SqlCommand("usp_ObtenerAfiliados", con))
                     {
                         comando.CommandType = CommandType.StoredProcedure;
                         con.Open();
@@ -125,14 +126,14 @@ namespace CapaDatos
                         {
                             while (dr.Read())
                             {
-                                rptListaUsuario.Add(new EPresidente()
+                                rptListaUsuario.Add(new EAfiliado()
                                 {
-                                    IdPresident = Convert.ToInt32(dr["IdPresident"]),
+                                    IdAfiliado = Convert.ToInt32(dr["IdAfiliado"]),
                                     Idasoci = Convert.ToInt32(dr["Idasoci"]),
                                     NroCI = dr["NroCI"].ToString(),
                                     Nombres = dr["Nombres"].ToString(),
                                     Apellidos = dr["Apellidos"].ToString(),
-                                    Foto = dr["Foto"].ToString(),
+                                    Direccion = dr["Direccion"].ToString(),
                                     Celular = dr["Celular"].ToString(),
                                     oAsociacion = new EAsociacion() { Nombre = dr["NombreA"].ToString() },
                                     Activo = Convert.ToBoolean(dr["Activo"])
@@ -145,7 +146,7 @@ namespace CapaDatos
             catch (Exception ex)
             {
                 //throw ex;
-                throw new Exception("Error al obtener los presidentes", ex);
+                throw new Exception("Error al obtener los afiliados", ex);
             }
 
             return rptListaUsuario;

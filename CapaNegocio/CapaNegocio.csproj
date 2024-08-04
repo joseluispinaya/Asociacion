@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="NAfiliado.cs" />
     <Compile Include="NAsociacion.cs" />
     <Compile Include="NPresidente.cs" />
     <Compile Include="NTipos.cs" />

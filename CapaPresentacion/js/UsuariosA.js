@@ -205,6 +205,7 @@ $("#tbUsuario tbody").on("click", ".btn-editar", function (e) {
     mostrarModal(model, false);
 })
 
+//etiqueta <a> no es boton
 $('#btnNuevo').on('click', function (e) {
     e.preventDefault(); // Evita que el enlace siga el href
     mostrarModal(null, true);
@@ -219,7 +220,10 @@ function sendDataToServer(request) {
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         beforeSend: function () {
-            $(".modal-body").LoadingOverlay("show");
+            $(".modal-body").LoadingOverlay("show", {
+                image: "",
+                fontawesome: "fas fa-cog fa-spin"
+            });
         },
         success: function (response) {
             $(".modal-body").LoadingOverlay("hide");
@@ -288,7 +292,24 @@ function registerDataAjax() {
 
 
 $('#btnGuardarCambios').on('click', function () {
-    //$("#modal-dialog").modal("show");
+
+    toastr.options = {
+        "closeButton": true,
+        "debug": false,
+        "newestOnTop": false,
+        "progressBar": true,
+        "positionClass": "toast-top-right",
+        "preventDuplicates": false,
+        "onclick": null,
+        "showDuration": "300",
+        "hideDuration": "1000",
+        "timeOut": "3000",
+        "extendedTimeOut": "1000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut"
+    };
 
     const inputs = $("input.model").serializeArray();
     const inputs_sin_valor = inputs.filter((item) => item.value.trim() == "")
@@ -300,7 +321,8 @@ $('#btnGuardarCambios').on('click', function () {
         //    text: mensaje
         //});
 
-        toastr.warning("", mensaje)
+        toastr.error(mensaje, "Advertencia");
+        //toastr.warning("", mensaje)
         $(`input[name="${inputs_sin_valor[0].name}"]`).focus()
         return;
     }
@@ -312,5 +334,4 @@ $('#btnGuardarCambios').on('click', function () {
         swal("Mensaje", "Falta para Actualizar personal.", "warning")
     }
 
-    //swal("Error", "La imagen seleccionada es demasiado grande max 1.5 Mb.", "success");
 })

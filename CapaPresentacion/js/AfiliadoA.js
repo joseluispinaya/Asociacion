@@ -2,36 +2,35 @@
 var table;
 
 const MODELO_BASE = {
-    IdPresident: 0,
+    IdAfiliado: 0,
     Idasoci: 0,
     NroCI: "",
     Nombres: "",
     Apellidos: "",
+    Direccion: "",
     Celular: "",
-    Activo: true,
-    ImageFull: ""
+    Activo: true
 }
 
 
 $(document).ready(function () {
-    dtPresiden();
+    dtAfiliados();
     cargarAsocia();
 })
 
-
-function dtPresiden() {
+function dtAfiliados() {
     // Verificar si el DataTable ya está inicializado
-    if ($.fn.DataTable.isDataTable("#tbPresidente")) {
+    if ($.fn.DataTable.isDataTable("#tbAfiliado")) {
         // Destruir el DataTable existente
-        $("#tbPresidente").DataTable().destroy();
+        $("#tbAfiliado").DataTable().destroy();
         // Limpiar el contenedor del DataTable
-        $('#tbPresidente tbody').empty();
+        $('#tbAfiliado tbody').empty();
     }
 
-    table = $("#tbPresidente").DataTable({
+    table = $("#tbAfiliado").DataTable({
         responsive: true,
         "ajax": {
-            "url": 'PresidenteA.aspx/ObtenerPresi',
+            "url": 'AfiliadoA.aspx/ObtenerAfiliados',
             "type": "POST", // Cambiado a POST
             "contentType": "application/json; charset=utf-8",
             "dataType": "json",
@@ -48,12 +47,7 @@ function dtPresiden() {
             }
         },
         "columns": [
-            { "data": "IdPresident", "visible": false, "searchable": false },
-            {
-                "data": "ImageFull", render: function (data) {
-                    return `<img style="height:40px" src=${data} class="rounded mx-auto d-block"/>`
-                }
-            },
+            { "data": "IdAfiliado", "visible": false, "searchable": false },
             { "data": "Nombres" },
             { "data": "Apellidos" },
             { "data": "Celular" },
@@ -81,9 +75,9 @@ function dtPresiden() {
                 text: 'Exportar Excel',
                 extend: 'excelHtml5',
                 title: '',
-                filename: 'Informe Presidentes',
+                filename: 'Informe Afiliados',
                 exportOptions: {
-                    columns: [2, 3, 4, 5, 6] // Ajusta según las columnas que desees exportar
+                    columns: [1, 2, 3, 4, 5] // Ajusta según las columnas que desees exportar
                 }
             }
         ],
@@ -92,6 +86,8 @@ function dtPresiden() {
         }
     });
 }
+
+
 function cargarAsocia() {
     $("#cboAsoci").html("");
 
@@ -148,55 +144,34 @@ $("#txtCelular").inputFilter(function (value) {
 });
 
 
-function mostrarImagenSeleccionada(input) {
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
-
-        reader.onload = function (e) {
-            $('#imgUsuarioP').attr('src', e.target.result);
-        }
-
-        reader.readAsDataURL(input.files[0]);
-    } else {
-        $('#imgUsuarioP').attr('src', "Imagenes/sinimagen.png");
-    }
-}
-
-$('#txtFotoP').change(function () {
-    mostrarImagenSeleccionada(this);
-});
-
 
 function mostrarModal(modelo, cboEstadoDeshabilitado = true) {
     // Verificar si modelo es null
     modelo = modelo ?? MODELO_BASE;
 
-    $("#txtIdPresident").val(modelo.IdPresident);
+    $("#txtIdAfiliado").val(modelo.IdAfiliado);
     $("#txtNombre").val(modelo.Nombres);
     $("#txtNroci").val(modelo.NroCI);
     $("#txtApellidos").val(modelo.Apellidos);
     $("#txtCelular").val(modelo.Celular);
+    $("#txtDireccion").val(modelo.Direccion);
     $("#cboAsoci").val(modelo.Idasoci == 0 ? $("#cboAsoci option:first").val() : modelo.Idasoci);
     $("#cboEstado").val(modelo.Activo == true ? 1 : 0);
-    $("#imgUsuarioP").attr("src", modelo.ImageFull == "" ? "Imagenes/sinimagen.png" : modelo.ImageFull);
 
-    // Configurar el estado de cboEstado según cboEstadoDeshabilitado jquery v 1.11.1
+    // Configurar el estado de cboEstado según cboEstadoDeshabilitado
     $("#cboEstado").prop("disabled", cboEstadoDeshabilitado);
 
     // Actualizar el título del modal
     if (cboEstadoDeshabilitado) {
-        $("#modalLabelA").text("Nuevo Presidente");
+        $("#modalLabelA").text("Nuevo Afiliado");
     } else {
-        $("#modalLabelA").text("Editar Presidente");
+        $("#modalLabelA").text("Editar Afiliado");
     }
 
-    //$("#txtCorreo").prop("disabled", !cboEstadoDeshabilitado);
-    $("#txtFotoP").val("");
-
-    $("#modalPres").modal("show");
+    $("#modalAfil").modal("show");
 }
 
-$("#tbPresidente tbody").on("click", ".btn-editar", function (e) {
+$("#tbAfiliado tbody").on("click", ".btn-editar", function (e) {
     e.preventDefault();
     let filaSeleccionada;
 
@@ -211,97 +186,33 @@ $("#tbPresidente tbody").on("click", ".btn-editar", function (e) {
 })
 
 $('#btnNuevoReg').on('click', function () {
-
+    //$("#modalAfil").modal("show");
     mostrarModal(null, true);
 })
 
-function sendDataToServer(request) {
-    $.ajax({
-        type: "POST",
-        url: "PresidenteA.aspx/Guardar",
-        data: JSON.stringify(request),
-        contentType: "application/json; charset=utf-8",
-        dataType: "json",
-        beforeSend: function () {
-            $(".modal-body").LoadingOverlay("show", {
-                image: "",
-                fontawesome: "fas fa-cog fa-spin"
-            });
-        },
-        success: function (response) {
-            $(".modal-body").LoadingOverlay("hide");
-            if (response.d.estado) {
-                dtPresiden();
-                $('#modalPres').modal('hide');
-                swal("Mensaje", "Registro Exitoso", "success");
-            } else {
-                swal("Mensaje", "Error verifique Nro Ci y Asociacion no se repitan en BD", "warning");
-            }
-        },
-        error: function (xhr, ajaxOptions, thrownError) {
-            $(".modal-body").LoadingOverlay("hide");
-            console.log(xhr.status + " \n" + xhr.responseText, "\n" + thrownError);
-        }
-    });
-}
 
-
-function registerDataAjax() {
-    var fileInput = document.getElementById('txtFotoP');
-    var file = fileInput.files[0];
-
+function dataRegistrar() {
     const modelo = structuredClone(MODELO_BASE);
-    modelo["IdPresident"] = parseInt($("#txtIdPresident").val());
+    modelo["IdAfiliado"] = parseInt($("#txtIdAfiliado").val());
     modelo["Idasoci"] = $("#cboAsoci").val();
     modelo["NroCI"] = $("#txtNroci").val();
     modelo["Nombres"] = $("#txtNombre").val();
     modelo["Apellidos"] = $("#txtApellidos").val();
+    modelo["Direccion"] = $("#txtDireccion").val();
     modelo["Celular"] = $("#txtCelular").val();
 
-    if (file) {
+    var request = {
+        oAfiliado: modelo
+    };
 
-        var maxSize = 2 * 1024 * 1024; // 2 MB en bytes
-        if (file.size > maxSize) {
-            swal("Error", "La imagen seleccionada es demasiado grande max 1.5 Mb.", "error");
-            return;
-        }
-
-        var reader = new FileReader();
-
-        reader.onload = function (e) {
-            var arrayBuffer = e.target.result;
-            var bytes = new Uint8Array(arrayBuffer);
-
-            var request = {
-                oPresidente: modelo,
-                imageBytes: Array.from(bytes)
-            };
-
-            sendDataToServer(request);
-        };
-
-        reader.readAsArrayBuffer(file);
-    } else {
-        // Si no se selecciona ningún archivo, envía un valor nulo o vacío para imageBytes
-        var request = {
-            oPresidente: modelo,
-            imageBytes: null // o cualquier otro valor que indique que no se envió ningún archivo
-        };
-
-        sendDataToServer(request);
-    }
-}
-
-//actualizar
-
-function sendDataToServerActua(request) {
     $.ajax({
         type: "POST",
-        url: "PresidenteA.aspx/Actualizar",
+        url: "AfiliadoA.aspx/Guardar",
         data: JSON.stringify(request),
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         beforeSend: function () {
+            // Mostrar overlay de carga antes de enviar la solicitud modal-content
             $(".modal-body").LoadingOverlay("show", {
                 image: "",
                 fontawesome: "fas fa-cog fa-spin"
@@ -310,11 +221,11 @@ function sendDataToServerActua(request) {
         success: function (response) {
             $(".modal-body").LoadingOverlay("hide");
             if (response.d.estado) {
-                dtPresiden();
-                $('#modalPres').modal('hide');
-                swal("Mensaje", "Actualizado Correctamente", "success");
+                dtAfiliados();
+                $('#modalAfil').modal('hide');
+                swal("Mensaje", "Registro Exitoso", "success");
             } else {
-                swal("Mensaje", "Error verifique Nro Ci y Asociacion no se repitan en BD", "warning");
+                swal("Mensaje", "Error al registrar verifique nro CI", "warning");
             }
         },
         error: function (xhr, ajaxOptions, thrownError) {
@@ -326,50 +237,49 @@ function sendDataToServerActua(request) {
 
 
 function dataActualizar() {
-    var fileInput = document.getElementById('txtFotoP');
-    var file = fileInput.files[0];
-
     const modelo = structuredClone(MODELO_BASE);
-    modelo["IdPresident"] = parseInt($("#txtIdPresident").val());
+    modelo["IdAfiliado"] = parseInt($("#txtIdAfiliado").val());
     modelo["Idasoci"] = $("#cboAsoci").val();
     modelo["NroCI"] = $("#txtNroci").val();
     modelo["Nombres"] = $("#txtNombre").val();
     modelo["Apellidos"] = $("#txtApellidos").val();
+    modelo["Direccion"] = $("#txtDireccion").val();
     modelo["Celular"] = $("#txtCelular").val();
     modelo["Activo"] = ($("#cboEstado").val() == "1" ? true : false);
 
-    if (file) {
+    var request = {
+        oAfiliado: modelo
+    };
 
-        var maxSize = 2 * 1024 * 1024; // 2 MB en bytes
-        if (file.size > maxSize) {
-            swal("Error", "La imagen seleccionada es demasiado grande max 1.5 Mb.", "error");
-            return;
+    $.ajax({
+        type: "POST",
+        url: "AfiliadoA.aspx/Actualizar",
+        data: JSON.stringify(request),
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        beforeSend: function () {
+            // Mostrar overlay de carga antes de enviar la solicitud modal-content
+            $(".modal-body").LoadingOverlay("show", {
+                image: "",
+                fontawesome: "fas fa-cog fa-spin"
+            });
+        },
+        success: function (response) {
+            $(".modal-body").LoadingOverlay("hide");
+            if (response.d.estado) {
+                dtAfiliados();
+                $('#modalAfil').modal('hide');
+                swal("Mensaje", "Actualizado Correctamente", "success");
+            } else {
+                swal("Mensaje", "Error verifique nro CI o intente mas tarde", "warning");
+                //swal("Mensaje", "Error al registrar verifique nro CI", "warning");
+            }
+        },
+        error: function (xhr, ajaxOptions, thrownError) {
+            $(".modal-body").LoadingOverlay("hide");
+            console.log(xhr.status + " \n" + xhr.responseText, "\n" + thrownError);
         }
-
-        var reader = new FileReader();
-
-        reader.onload = function (e) {
-            var arrayBuffer = e.target.result;
-            var bytes = new Uint8Array(arrayBuffer);
-
-            var request = {
-                oPresidente: modelo,
-                imageBytes: Array.from(bytes)
-            };
-
-            sendDataToServerActua(request);
-        };
-
-        reader.readAsArrayBuffer(file);
-    } else {
-        // Si no se selecciona ningún archivo, envía un valor nulo o vacío para imageBytes
-        var request = {
-            oPresidente: modelo,
-            imageBytes: null // o cualquier otro valor que indique que no se envió ningún archivo
-        };
-
-        sendDataToServerActua(request);
-    }
+    });
 }
 
 $('#btnGuardarCambios').on('click', function () {
@@ -403,8 +313,8 @@ $('#btnGuardarCambios').on('click', function () {
         return;
     }
 
-    if (parseInt($("#txtIdPresident").val()) == 0) {
-        registerDataAjax();
+    if (parseInt($("#txtIdAfiliado").val()) == 0) {
+        dataRegistrar();
     } else {
         //swal("Mensaje", "Falta para Actualizar.", "warning")
         dataActualizar();

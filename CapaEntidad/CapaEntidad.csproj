@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EAfiliado.cs" />
     <Compile Include="EAsociacion.cs" />
     <Compile Include="EPresidente.cs" />
     <Compile Include="ERol.cs" />
