@@ -44,8 +44,10 @@
     <Compile Include="ConexionBD.cs" />
     <Compile Include="DAfiliado.cs" />
     <Compile Include="DAsociacion.cs" />
+    <Compile Include="DInventario.cs" />
     <Compile Include="DPresidente.cs" />
     <Compile Include="DTipos.cs" />
+    <Compile Include="DTransaccion.cs" />
     <Compile Include="DUsuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

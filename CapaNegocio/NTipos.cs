@@ -27,5 +27,10 @@ namespace CapaNegocio
         {
             return DTipos.getInstance().ObtenerRol();
         }
+
+        public List<ETipoTransaccion> ObtenerTipoTransaccion()
+        {
+            return DTipos.getInstance().ObtenerTipoTransaccion();
+        }
     }
 }

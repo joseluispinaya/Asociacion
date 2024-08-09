@@ -62,5 +62,42 @@ namespace CapaDatos
 
             return rptListaRol;
         }
+
+        public List<ETipoTransaccion> ObtenerTipoTransaccion()
+        {
+            List<ETipoTransaccion> rptListaRol = new List<ETipoTransaccion>();
+
+            try
+            {
+                using (SqlConnection con = ConexionBD.getInstance().ConexionDB())
+                {
+                    using (SqlCommand comando = new SqlCommand("usp_ObtenerTipoTransaccion", con))
+                    {
+                        comando.CommandType = CommandType.StoredProcedure;
+                        con.Open();
+
+                        using (SqlDataReader dr = comando.ExecuteReader())
+                        {
+                            while (dr.Read())
+                            {
+                                rptListaRol.Add(new ETipoTransaccion()
+                                {
+                                    Itipotra = Convert.ToInt32(dr["Itipotra"]),
+                                    Tipo = dr["Tipo"].ToString(),
+                                    Activo = Convert.ToBoolean(dr["Activo"])
+                                });
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                //throw ex;
+                throw new Exception("Error al obtener los roles", ex);
+            }
+
+            return rptListaRol;
+        }
     }
 }

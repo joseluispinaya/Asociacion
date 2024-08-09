@@ -198,7 +198,7 @@
 							<div class="menu-icon">
 								<i class="fab fa-simplybuilt"></i>
 							</div>
-							<div class="menu-text">Inicio <span class="menu-label">NEW</span></div>
+							<div class="menu-text">Inicio <span class="menu-label">VER</span></div>
 						</a>
 					</div>
                     
@@ -247,12 +247,21 @@
 						</div>
 					</div>
 
+					<div class="menu-item ">
+						<a href="TransaccionA.aspx" class="menu-link">
+							<div class="menu-icon">
+								<i class="fas fa-money-check-dollar"></i>
+							</div>
+							<div class="menu-text">Transacciones</div> 
+						</a>
+					</div>
+
 					<div class="menu-item">
-						<a href="calendar.html" class="menu-link">
+						<a href="InventarioA.aspx" class="menu-link">
 							<div class="menu-icon">
 								<i class="fa fa-calendar"></i> 
 							</div>
-							<div class="menu-text">Calendar</div>
+							<div class="menu-text">Inventario</div>
 						</a>
 					</div>
 

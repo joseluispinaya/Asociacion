@@ -43,8 +43,10 @@
   <ItemGroup>
     <Compile Include="NAfiliado.cs" />
     <Compile Include="NAsociacion.cs" />
+    <Compile Include="NInventario.cs" />
     <Compile Include="NPresidente.cs" />
     <Compile Include="NTipos.cs" />
+    <Compile Include="NTransaccion.cs" />
     <Compile Include="NUsuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
