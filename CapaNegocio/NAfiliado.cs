@@ -35,5 +35,15 @@ namespace CapaNegocio
         {
             return DAfiliado.getInstance().ObtenerAfiliadosZ();
         }
+
+        public bool VerificarCI(string nrCI)
+        {
+            return DAfiliado.getInstance().VerificarCI(nrCI);
+        }
+
+        public List<EAfiliado> ObtenerAfiliadosIdAsoc(int idAso)
+        {
+            return DAfiliado.getInstance().ObtenerAfiliadosIdAsoc(idAso);
+        }
     }
 }

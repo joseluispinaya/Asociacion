@@ -189,5 +189,49 @@ namespace CapaDatos
 
             return respuesta;
         }
+
+        public List<EAfiliado> ObtenerAfiliadosIdAsoc(int idAso)
+        {
+            List<EAfiliado> rptListaUsuario = new List<EAfiliado>();
+
+            try
+            {
+                using (SqlConnection con = ConexionBD.getInstance().ConexionDB())
+                {
+                    using (SqlCommand comando = new SqlCommand("usp_ObtenerAfiliadosPorAsoc", con))
+                    {
+                        comando.Parameters.AddWithValue("@Idasoci", idAso);
+                        comando.CommandType = CommandType.StoredProcedure;
+                        con.Open();
+
+                        using (SqlDataReader dr = comando.ExecuteReader())
+                        {
+                            while (dr.Read())
+                            {
+                                rptListaUsuario.Add(new EAfiliado()
+                                {
+                                    IdAfiliado = Convert.ToInt32(dr["IdAfiliado"]),
+                                    Idasoci = Convert.ToInt32(dr["Idasoci"]),
+                                    NroCI = dr["NroCI"].ToString(),
+                                    Nombres = dr["Nombres"].ToString(),
+                                    Apellidos = dr["Apellidos"].ToString(),
+                                    Direccion = dr["Direccion"].ToString(),
+                                    Celular = dr["Celular"].ToString(),
+                                    oAsociacion = new EAsociacion() { Nombre = dr["NombreA"].ToString() },
+                                    Activo = Convert.ToBoolean(dr["Activo"])
+                                });
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                //throw ex;
+                throw new Exception("Error al obtener los afiliados", ex);
+            }
+
+            return rptListaUsuario;
+        }
     }
 }

@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AfiliadoRequest.cs" />
     <Compile Include="EAfiliado.cs" />
     <Compile Include="EAsociacion.cs" />
     <Compile Include="EInventario.cs" />
@@ -49,6 +50,7 @@
     <Compile Include="ETipoTransaccion.cs" />
     <Compile Include="ETransaccion.cs" />
     <Compile Include="EUsuario.cs" />
+    <Compile Include="LoginDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResponseUsuario.cs" />
     <Compile Include="Respuesta.cs" />
