@@ -112,5 +112,99 @@ namespace CapaDatos
 
             return rptListaUsuario;
         }
+
+        public ResponseUsuario LoginUsuarioApp(string Usuario, string Clave)
+        {
+            ResponseUsuario obj = null;
+            try
+            {
+                using (SqlConnection con = ConexionBD.getInstance().ConexionDB())
+                {
+                    using (SqlCommand Comando = new SqlCommand("sp_LogeoUsua", con))
+                    {
+                        Comando.CommandType = CommandType.StoredProcedure;
+                        Comando.Parameters.AddWithValue("@Correo", Usuario);
+                        Comando.Parameters.AddWithValue("@Clave", Clave);
+
+                        con.Open();
+                        using (SqlDataReader dr = Comando.ExecuteReader())
+                        {
+                            if (dr.Read())
+                            {
+                                obj = new ResponseUsuario
+                                {
+                                    IdUsuario = Convert.ToInt32(dr["IdUsuario"]),
+                                    NroCI = dr["NroCI"].ToString(),
+                                    Nombres = dr["Nombres"].ToString(),
+                                    Apellidos = dr["Apellidos"].ToString(),
+                                    Correo = dr["Correo"].ToString(),
+                                    Clave = dr["Clave"].ToString(),
+                                    Foto = dr["Foto"].ToString(),
+                                    IdRol = Convert.ToInt32(dr["IdRol"]),
+                                    Activo = Convert.ToBoolean(dr["Activo"]),
+                                    Descripcionrol = dr["Descripcion"].ToString(),
+                                };
+                            }
+                        }
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception("Error en la base de datos", ex);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error general", ex);
+            }
+            return obj;
+        }
+
+        public EUsuario LoginUsuarioWeb(string Usuario, string Clave)
+        {
+            EUsuario obj = null;
+            try
+            {
+                using (SqlConnection con = ConexionBD.getInstance().ConexionDB())
+                {
+                    using (SqlCommand Comando = new SqlCommand("sp_LogeoUsua", con))
+                    {
+                        Comando.CommandType = CommandType.StoredProcedure;
+                        Comando.Parameters.AddWithValue("@Correo", Usuario);
+                        Comando.Parameters.AddWithValue("@Clave", Clave);
+
+                        con.Open();
+                        using (SqlDataReader dr = Comando.ExecuteReader())
+                        {
+                            if (dr.Read())
+                            {
+                                obj = new EUsuario
+                                {
+                                    IdUsuario = Convert.ToInt32(dr["IdUsuario"]),
+                                    NroCI = dr["NroCI"].ToString(),
+                                    Nombres = dr["Nombres"].ToString(),
+                                    Apellidos = dr["Apellidos"].ToString(),
+                                    Correo = dr["Correo"].ToString(),
+                                    Clave = dr["Clave"].ToString(),
+                                    Foto = dr["Foto"].ToString(),
+                                    IdRol = Convert.ToInt32(dr["IdRol"]),
+                                    Estado = Convert.ToBoolean(dr["Activo"]),
+                                    oRol = new ERol { NomRol = dr["Descripcion"].ToString() }
+                                };
+                            }
+                        }
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception("Error en la base de datos", ex);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error general", ex);
+            }
+            return obj;
+        }
     }
 }

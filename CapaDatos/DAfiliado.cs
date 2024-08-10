@@ -151,5 +151,43 @@ namespace CapaDatos
 
             return rptListaUsuario;
         }
+
+        public bool VerificarCI(string nrCI)
+        {
+            bool respuesta = false;
+
+            try
+            {
+                using (SqlConnection con = ConexionBD.getInstance().ConexionDB())
+                {
+                    using (SqlCommand cmd = new SqlCommand("usp_VerificarCI", con))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@NroCI", nrCI);
+
+                        SqlParameter outputParam = new SqlParameter("@Resultado", SqlDbType.Bit)
+                        {
+                            Direction = ParameterDirection.Output
+                        };
+                        cmd.Parameters.Add(outputParam);
+
+                        con.Open();
+                        cmd.ExecuteNonQuery();
+                        respuesta = Convert.ToBoolean(outputParam.Value);
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                // Manejar errores específicos de SQL
+                throw new Exception("Error en la base de datos al verificar. Intente más tarde.", ex);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al verificar. Intente más tarde.", ex);
+            }
+
+            return respuesta;
+        }
     }
 }

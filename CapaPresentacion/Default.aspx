@@ -24,7 +24,7 @@
 			<a href="#" class="navbar-brand">
 				<span class="brand-logo"></span>
 				<span class="brand-text">
-					COLOR ADMIN
+					Asociacion
 				</span>
 			</a>
 			<!-- end navbar-brand -->
@@ -38,23 +38,23 @@
 			<!-- begin navbar-collapse -->
 			<div class="collapse navbar-collapse" id="header-navbar">
 				<ul class="nav navbar-nav navbar-right">
-					<li class="dropdown">
-						<a href="#" data-bs-toggle="dropdown">HOME <b class="caret"></b></a>
+					<%--<li class="dropdown">
+						<a href="#" data-bs-toggle="dropdown">Inicio <b class="caret"></b></a>
 						<div class="dropdown-menu">
 							<a class="dropdown-item" href="#">Page with Transparent Header</a>
 							<a class="dropdown-item" href="#">Page with Inverse Header</a>
 							<a class="dropdown-item" href="#">Default Header</a>
 						</div>
-					</li>
-					<li class="dropdown">
+					</li>--%>
+					<%--<li class="dropdown">
 						<a href="#" data-bs-toggle="dropdown">POSTS <b class="caret"></b></a>
 						<div class="dropdown-menu">
 							<a class="dropdown-item" href="#">Page with Grid View Blog Post</a>
 							<a class="dropdown-item" href="#">Page without Sidebar</a>
 						</div>
-					</li>
-					<li><a href="#">ABOUT ME</a></li>
-					<li><a href="#">CONTACT US</a></li>
+					</li>--%>
+					<li><a href="#">Inicio</a></li>
+					<li><a href="#">Informacion</a></li>
 					<li><a href="Login.aspx">Login</a></li>
 				</ul>
 			</div>
@@ -66,8 +66,8 @@
 	<div id="page-title" class="page-title has-bg">
 		<div class="bg-cover" data-paroller="true" data-paroller-factor="0.5" data-paroller-factor-xs="0.2" style="background: url(assetsbs/img/cover/cover-4.jpg) center 0px / cover no-repeat"></div>
 		<div class="container">
-			<h1>Official Color Admin Blog</h1>
-			<p>Blog Concept Front End Page</p>
+			<h1>Direccion de desarrollo</h1>
+			<p>Agropecuario y Artesania</p>
 		</div>
 	</div>
 
