@@ -4,6 +4,10 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Web.Services;
+using CapaEntidad;
+using CapaNegocio;
+
 
 namespace CapaPresentacion
 {
@@ -11,6 +15,35 @@ namespace CapaPresentacion
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+
+        }
+
+        [WebMethod]
+        public static Respuesta<EUsuario> ObtenerDatos()
+        {
+            try
+            {
+                if (Configuracion.oUsuario == null)
+                {
+                    return new Respuesta<EUsuario>() { estado = false };
+                }
+
+                var usuario = Configuracion.oUsuario;
+                return new Respuesta<EUsuario>() { estado = true, objeto = usuario };
+            }
+            catch (Exception ex)
+            {
+                return new Respuesta<EUsuario> { estado = false, valor = "Ocurrió un error: " + ex.Message };
+                //throw;
+            }
+        }
+
+        [WebMethod]
+        public static Respuesta<bool> CerrarSesion()
+        {
+            Configuracion.oUsuario = null;
+
+            return new Respuesta<bool>() { estado = true };
 
         }
     }

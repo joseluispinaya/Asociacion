@@ -42,7 +42,7 @@
 		<div id="header" class="app-header">
 			<!-- BEGIN navbar-header -->
 			<div class="navbar-header">
-				<a href="index.html" class="navbar-brand"><span class="navbar-logo"></span> <b class="me-3px">COEM</b> Panel</a>
+				<a href="#" class="navbar-brand"><span class="navbar-logo"></span> <b class="me-3px">COEM</b> Panel</a>
 				<button type="button" class="navbar-mobile-toggler" data-toggle="app-sidebar-mobile">
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
@@ -55,7 +55,7 @@
 				<div class="navbar-item navbar-form">
 					<div>
 						<div class="form-group">
-							<input type="text" class="form-control" placeholder="Enter keyword" />
+							<input type="text" class="form-control" placeholder="Buscar" />
 							<button type="button" class="btn btn-search"><i class="fa fa-search"></i></button>
 						</div>
 					</div>
@@ -103,22 +103,22 @@
 				
 				<div class="navbar-item navbar-user dropdown">
 					<a href="#" class="navbar-link dropdown-toggle d-flex align-items-center" data-bs-toggle="dropdown">
-						<img src="assets/img/user/user-13.jpg" alt="" /> 
+						<img src="assets/img/user/user-13.jpg" alt="" id="imgUsuarioMe" /> 
 						<span>
-							<span class="d-none d-md-inline">Adam Schwartz</span>
+							<span id="nombreusuariome" class="d-none d-md-inline">Usuario</span>
 							<b class="caret"></b>
 						</span>
 					</a>
 					<div class="dropdown-menu dropdown-menu-end me-1">
-						<a href="extra_profile.html" class="dropdown-item">Edit Profile</a>
-						<a href="email_inbox.html" class="dropdown-item d-flex align-items-center">
+						<a href="#" class="dropdown-item">Edit Profile</a>
+						<a href="#" class="dropdown-item d-flex align-items-center">
 							Inbox
 							<span class="badge bg-danger rounded-pill ms-auto pb-4px">2</span> 
 						</a>
-						<a href="calendar.html" class="dropdown-item">Calendar</a>
-						<a href="extra_settings_page.html" class="dropdown-item">Settings</a>
+						<a href="#" class="dropdown-item">Calendar</a>
+						<a href="#" class="dropdown-item">Ajustes</a>
 						<div class="dropdown-divider"></div>
-						<a href="login.html" class="dropdown-item">Log Out</a>
+						<a href="#" id="salirs" class="dropdown-item">Salir</a>
 					</div>
 				</div>
 			</div>
@@ -136,16 +136,16 @@
 						<a href="javascript:;" class="menu-profile-link" data-toggle="app-sidebar-profile" data-target="#appSidebarProfileMenu">
 							<div class="menu-profile-cover with-shadow"></div>
 							<div class="menu-profile-image">
-								<img src="assets/img/user/user-13.jpg" alt="" />
+								<img src="assets/img/user/user-13.jpg" alt="" id="imageUserMe" />
 							</div>
 							<div class="menu-profile-info">
 								<div class="d-flex align-items-center">
 									<div class="flex-grow-1">
-										Sean Ngu
+										S
 									</div>
 									<div class="menu-caret ms-auto"></div>
 								</div>
-								<small>Frontend developer</small>
+								<small id="rolnomme">Frontend developer</small>
 							</div>
 						</a>
 					</div>
@@ -173,26 +173,20 @@
 
 					<div class="menu-header">Navigation</div>
 
-					<div class="menu-item has-sub">
-						<a href="javascript:;" class="menu-link">
+					<div>
+						<div class="menu-item">
+						<a href="Inicio.aspx" class="menu-link">
 							<div class="menu-icon">
-								<i class="fa fa-sitemap"></i>							</div>
-							<div class="menu-text">Dashboard</div>
-							<div class="menu-caret"></div>
+								<i class="fab fa-simplybuilt"></i>
+							</div>
+							<div class="menu-text">Inicio al<span class="menu-label">VER</span></div>
 						</a>
-						<div class="menu-submenu">
-							<div class="menu-item">
-								<a href="index.html" class="menu-link"><div class="menu-text">Dashboard v1</div></a>
-							</div>
-							<div class="menu-item">
-								<a href="index_v2.html" class="menu-link"><div class="menu-text">Dashboard v2</div></a>
-							</div>
-							<div class="menu-item">
-								<a href="index_v3.html" class="menu-link"><div class="menu-text">Dashboard v3</div></a>
-							</div>
-						</div>
+					</div>
+
 					</div>
                     
+
+
 					<div class="menu-item">
 						<a href="Inicio.aspx" class="menu-link">
 							<div class="menu-icon">
@@ -211,14 +205,6 @@
 						</a>
 					</div>
                     
-					<%--<div class="menu-item">
-						<a href="AsociacionA.aspx" class="menu-link">
-							<div class="menu-icon">
-								<i class="fas fa-house"></i>
-							</div>
-							<div class="menu-text">Asociacion</div>
-						</a>
-					</div>--%>
 
 					<div class="menu-item has-sub">
 						<a href="javascript:;" class="menu-link">
@@ -375,7 +361,7 @@
 
     <script src="assets/plugins/toastr/toastr.min.js"></script>
     <script src="assets/plugins/loadingoverlay/loadingoverlay.js"></script>
-
+	<script src="js/Mastepage.js" type="text/javascript"></script>
     <asp:ContentPlaceHolder ID="footer" runat="server"></asp:ContentPlaceHolder>
 </body>
 </html>

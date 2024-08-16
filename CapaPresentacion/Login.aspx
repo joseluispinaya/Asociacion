@@ -51,16 +51,16 @@
                     <form id="form1" runat="server">
                         <div class="form-floating mb-20px">
                             <input type="text" class="form-control fs-13px h-45px border-0" placeholder="Email Address" id="emailAddress" />
-                            <label for="emailAddress" class="d-flex align-items-center text-gray-600 fs-13px">Ingrese Usuario</label>
+                            <label for="emailAddress" class="d-flex align-items-center text-gray-600 fs-13px">Ingrese Correo</label>
                         </div>
                         <div class="form-floating mb-20px">
-                            <input type="password" class="form-control fs-13px h-45px border-0" placeholder="Password" />
+                            <input type="password" class="form-control fs-13px h-45px border-0" placeholder="Password" id="password" />
                             <label for="emailAddress" class="d-flex align-items-center text-gray-600 fs-13px">Contraseña</label>
                         </div>
                         <div class="form-check mb-20px">
                             <input class="form-check-input border-0" type="checkbox" value="1" id="rememberMe" />
                             <label class="form-check-label fs-13px text-gray-500" for="rememberMe">
-                                Recordad
+                                Recordar
                             </label>
                         </div>
                         <div class="mb-20px">
@@ -92,7 +92,7 @@
         <div class="theme-panel">
             <a href="javascript:;" data-toggle="theme-panel-expand" class="theme-collapse-btn"><i class="fa fa-cog"></i></a>
             <div class="theme-panel-content" data-scrollbar="true" data-height="100%">
-                <h5>App Settings</h5>
+                <h5>Ajustes</h5>
 
                 <!-- BEGIN theme-list -->
                 <div class="theme-list">
@@ -115,9 +115,9 @@
 
                 <div class="row mt-10px">
                     <div class="col-8 control-label text-body fw-bold">
-                        <div>Dark Mode <span class="badge bg-primary ms-1 py-2px position-relative" style="top: -1px;">NEW</span></div>
+                        <div>Modo Oscuro <span class="badge bg-primary ms-1 py-2px position-relative" style="top: -1px;">Ver</span></div>
                         <div class="lh-14">
-                            <small class="text-body opacity-50">Adjust the appearance to reduce glare and give your eyes a break.
+                            <small class="text-body opacity-50">Los ajuste se mantiene hasta cambiar otra opcion
                             </small>
                         </div>
                     </div>
@@ -131,8 +131,8 @@
 
                 <div class="theme-panel-divider"></div>
 
-                <a href="https://seantheme.com/color-admin/documentation/" class="btn btn-dark d-block w-100 rounded-pill mb-10px" target="_blank"><b>Documentation</b></a>
-                <a href="javascript:;" class="btn btn-default d-block w-100 rounded-pill" data-toggle="reset-local-storage"><b>Reset Local Storage</b></a>
+                <a href="#" class="btn btn-dark d-block w-100 rounded-pill mb-10px" target="_blank"><b>Informacion</b></a>
+                <a href="javascript:;" class="btn btn-default d-block w-100 rounded-pill" data-toggle="reset-local-storage"><b>Refrescar pagina</b></a>
             </div>
         </div>
         <!-- END theme-panel -->
@@ -146,7 +146,8 @@
     <script src="assets/js/vendor.min.js"></script>
     <script src="assets/js/app.min.js"></script>
     <!-- ================== END core-js ================== -->
-
-	<%--<script src="assets/js/demo/login-v2.demo.js"></script>--%>
+    <script src="assets/plugins/loadingoverlay/loadingoverlay.js"></script>
+    <script src="assets/plugins/sweetalert/sweetalert.min.js"></script>
+	<script src="js/Login.js" type="text/javascript"></script>
 </body>
 </html>

@@ -190,9 +190,9 @@ namespace CapaDatos
             return respuesta;
         }
 
-        public List<EAfiliado> ObtenerAfiliadosIdAsoc(int idAso)
+        public List<AfiliadoResponse> ObtenerAfiliadosIdAsoc(int idAso)
         {
-            List<EAfiliado> rptListaUsuario = new List<EAfiliado>();
+            List<AfiliadoResponse> rptListaUsuario = new List<AfiliadoResponse>();
 
             try
             {
@@ -208,7 +208,7 @@ namespace CapaDatos
                         {
                             while (dr.Read())
                             {
-                                rptListaUsuario.Add(new EAfiliado()
+                                rptListaUsuario.Add(new AfiliadoResponse()
                                 {
                                     IdAfiliado = Convert.ToInt32(dr["IdAfiliado"]),
                                     Idasoci = Convert.ToInt32(dr["Idasoci"]),
@@ -217,8 +217,8 @@ namespace CapaDatos
                                     Apellidos = dr["Apellidos"].ToString(),
                                     Direccion = dr["Direccion"].ToString(),
                                     Celular = dr["Celular"].ToString(),
-                                    oAsociacion = new EAsociacion() { Nombre = dr["NombreA"].ToString() },
-                                    Activo = Convert.ToBoolean(dr["Activo"])
+                                    AsociacionNom = dr["NombreA"].ToString(),
+                                    Estado = Convert.ToBoolean(dr["Activo"])
                                 });
                             }
                         }

@@ -111,6 +111,7 @@
     <Content Include="assetsbs\img\cover\cover-2.jpg" />
     <Content Include="assetsbs\img\cover\cover-3.jpg" />
     <Content Include="assetsbs\img\cover\cover-4.jpg" />
+    <Content Include="assetsbs\img\cover\cover-411.jpg" />
     <Content Include="assetsbs\img\cover\cover-5.jpg" />
     <Content Include="assetsbs\img\cover\cover-6.jpg" />
     <Content Include="assetsbs\img\cover\cover-7.jpg" />
@@ -119,6 +120,7 @@
     <Content Include="assetsbs\img\post\post-1.jpg" />
     <Content Include="assetsbs\img\post\post-10.jpg" />
     <Content Include="assetsbs\img\post\post-2.jpg" />
+    <Content Include="assetsbs\img\post\post-21.jpg" />
     <Content Include="assetsbs\img\post\post-3.jpg" />
     <Content Include="assetsbs\img\post\post-4.jpg" />
     <Content Include="assetsbs\img\post\post-5.jpg" />
@@ -844,6 +846,8 @@
     <Content Include="js\AfiliadoA.js" />
     <Content Include="js\AsociacionA.js" />
     <Content Include="js\InventarioA.js" />
+    <Content Include="js\Login.js" />
+    <Content Include="js\Mastepage.js" />
     <Content Include="js\PresidenteA.js" />
     <Content Include="js\TransaccionA.js" />
     <Content Include="js\UsuariosA.js" />
@@ -871,6 +875,7 @@
     <Compile Include="AsociacionA.aspx.designer.cs">
       <DependentUpon>AsociacionA.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Configuracion.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1226,6 +1231,7 @@
     <Content Include="assetsbs\css\webfonts\fa-v4compatibility.woff2" />
     <None Include="packages.config" />
     <Content Include="Pagina.Master" />
+    <None Include="Properties\PublishProfiles\FTPProfile.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

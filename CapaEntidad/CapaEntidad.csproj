@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AfiliadoRequest.cs" />
+    <Compile Include="AfiliadoResponse.cs" />
     <Compile Include="EAfiliado.cs" />
     <Compile Include="EAsociacion.cs" />
     <Compile Include="EInventario.cs" />

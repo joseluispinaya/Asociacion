@@ -55,7 +55,7 @@
 					</li>--%>
 					<li><a href="#">Inicio</a></li>
 					<li><a href="#">Informacion</a></li>
-					<li><a href="Login.aspx">Login</a></li>
+					<li><a href="Login.aspx">Iniciar Sesion</a></li>
 				</ul>
 			</div>
 			<!-- end navbar-collapse -->
@@ -64,7 +64,7 @@
 	</div>
 
 	<div id="page-title" class="page-title has-bg">
-		<div class="bg-cover" data-paroller="true" data-paroller-factor="0.5" data-paroller-factor-xs="0.2" style="background: url(assetsbs/img/cover/cover-4.jpg) center 0px / cover no-repeat"></div>
+		<div class="bg-cover" data-paroller="true" data-paroller-factor="0.5" data-paroller-factor-xs="0.2" style="background: url(assetsbs/img/cover/cover-411.jpg) center 0px / cover no-repeat"></div>
 		<div class="container">
 			<h1>Direccion de desarrollo</h1>
 			<p>Agropecuario y Artesania</p>
@@ -84,12 +84,12 @@
 							<!-- begin post-left-info -->
 							<div class="post-left-info">
 								<div class="post-date">
-									<span class="day">03</span>
-									<span class="month">SEPT</span>
+									<span class="day">25</span>
+									<span class="month">JULIO</span>
 								</div>
 								<div class="post-likes">
-									<i class="fa fa-heart text-theme"></i>
-									<span class="number">520</span>
+									<%--<i class="fa fa-heart text-theme"></i>--%>
+									<%--<span class="number">520</span>--%>
 								</div>
 							</div>
 							<!-- end post-left-info -->
@@ -109,13 +109,13 @@
 										<!-- begin carousel-inner -->
 										<div class="carousel-inner">
 											<div class="carousel-item active">
-												<a href="post_detail.html"><img class="d-block w-100" src="assetsbs/img/post/post-1.jpg" alt="" /></a>
+												<a href="#"><img class="d-block w-100" src="assetsbs/img/post/post-1.jpg" alt="" /></a>
 											</div>
 											<div class="carousel-item">
-												<a href="post_detail.html"><img class="d-block w-100" src="assetsbs/img/post/post-2.jpg" alt="" /></a>
+												<a href="#"><img class="d-block w-100" src="assetsbs/img/post/post-21.jpg" alt="" /></a>
 											</div>
 											<div class="carousel-item">
-												<a href="post_detail.html"><img class="d-block w-100" src="assetsbs/img/post/post-3.jpg" alt="" /></a>
+												<a href="#"><img class="d-block w-100" src="assetsbs/img/post/post-3.jpg" alt="" /></a>
 											</div>
 										</div>
 										<!-- end carousel-inner -->
@@ -134,7 +134,7 @@
 								<!-- begin post-info -->
 								<div class="post-info">
 									<h4 class="post-title">
-										<a href="post_detail.html">Bootstrap Carousel Blog Post</a>
+										<a href="#">COSEVHA Carousel Blog Post</a>
 									</h4>
 									<div class="post-by">
 										Posted By <a href="#">admin</a> <span class="divider">|</span> <a href="#">Sports</a>, <a href="#">Mountain</a>, <a href="#">Bike</a> <span class="divider">|</span> 2 Comments
@@ -149,7 +149,7 @@
 								<!-- end post-info -->
 								<!-- begin read-btn-container -->
 								<div class="read-btn-container">
-									<a href="post_detail.html">Read More <i class="fa fa-angle-double-right"></i></a>
+									<a href="#">Read More <i class="fa fa-angle-double-right"></i></a>
 								</div>
 								<!-- end read-btn-container -->
 							</div>
@@ -172,7 +172,7 @@
 							<div class="post-content">
 								<!-- begin post-image -->
 								<div class="post-image">
-									<a href="post_detail.html">
+									<a href="#">
 										<div class="post-image-cover" style="background-image: url('assetsbs/img/post/post-4.jpg');"></div>
 									</a>
 								</div>
@@ -180,7 +180,7 @@
 								<!-- begin post-info -->
 								<div class="post-info">
 									<h4 class="post-title">
-										<a href="post_detail.html">Demonstration Blog Post</a>
+										<a href="#">Demonstration Blog Post</a>
 									</h4>
 									<div class="post-by">
 										Posted By <a href="#">admin</a> <span class="divider">|</span> <a href="#">Sports</a>, <a href="#">Parachute</a>, <a href="#">Blue Sky</a> <span class="divider">|</span> 12 Comments
@@ -226,7 +226,7 @@
 								<!-- begin post-info -->
 								<div class="post-info">
 									<h4 class="post-title">
-										<a href="post_detail.html">Blog Post Video</a>
+										<a href="#">Blog Post Video</a>
 									</h4>
 									<div class="post-by">
 										Posted By <a href="#">admin</a> <span class="divider">|</span> <a href="#">Movies</a>, <a href="#">Minions</a>, <a href="#">Trailer</a> <span class="divider">|</span> 1,292 Comments
@@ -241,7 +241,7 @@
 								<!-- end post-info -->
 								<!-- begin read-btn-container -->
 								<div class="read-btn-container">
-									<a href="post_detail.html">Read More <i class="fa fa-angle-double-right"></i></a>
+									<a href="#">Read More <i class="fa fa-angle-double-right"></i></a>
 								</div>
 								<!-- end read-btn-container -->
 							</div>
@@ -270,7 +270,7 @@
 								<!-- begin post-info -->
 								<div class="post-info">
 									<h4 class="post-title">
-										<a href="post_detail.html">Blockquote Post</a>
+										<a href="#">Blockquote Post</a>
 									</h4>
 									<div class="post-by">
 										Posted By <a href="#">admin</a> <span class="divider">|</span> <a href="#">Animals</a>, <a href="#">Mountain</a>, <a href="#">Natural</a> <span class="divider">|</span> 2 Comments
@@ -285,7 +285,7 @@
 								<!-- end post-info -->
 								<!-- begin read-btn-container -->
 								<div class="read-btn-container">
-									<a href="post_detail.html" class="read-btn">Read More <i class="fa fa-angle-double-right"></i></a>
+									<a href="#" class="read-btn">Read More <i class="fa fa-angle-double-right"></i></a>
 								</div>
 								<!-- begin read-btn-container -->
 							</div>
