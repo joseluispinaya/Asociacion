@@ -63,59 +63,36 @@
 				<div class="navbar-item dropdown">
 					<a href="#" data-bs-toggle="dropdown" class="navbar-link dropdown-toggle icon">
 						<i class="fa fa-bell"></i>
-						<span class="badge">5</span>
+						<span class="badge">1</span>
 					</a>
 					<div class="dropdown-menu media-list dropdown-menu-end">
-						<div class="dropdown-header">NOTIFICATIONS (5)</div>
+						<div class="dropdown-header">NOTIFICACION</div>
 						<a href="javascript:;" class="dropdown-item media">
 							<div class="media-left">
 								<i class="fa fa-bug media-object bg-gray-500"></i>
 							</div>
 							<div class="media-body">
-								<h6 class="media-heading">Server Error Reports <i class="fa fa-exclamation-circle text-danger"></i></h6>
-								<div class="text-muted fs-10px">3 minutes ago</div>
+								<h6 class="media-heading">Servidor iniciado <i class="fa fa-exclamation-circle text-danger"></i></h6>
+								<div class="text-muted fs-10px">3 minutos</div>
 							</div>
 						</a>
-						<a href="javascript:;" class="dropdown-item media">
-							<div class="media-left">
-								<i class="fa fa-plus media-object bg-gray-500"></i>
-							</div>
-							<div class="media-body">
-								<h6 class="media-heading"> New User Registered</h6>
-								<div class="text-muted fs-10px">1 hour ago</div>
-							</div>
-						</a>
-						<a href="javascript:;" class="dropdown-item media">
-							<div class="media-left">
-								<i class="fa fa-envelope media-object bg-gray-500"></i>
-								<i class="fab fa-google text-warning media-object-icon fs-14px"></i>
-							</div>
-							<div class="media-body">
-								<h6 class="media-heading"> New Email From John</h6>
-								<div class="text-muted fs-10px">2 hour ago</div>
-							</div>
-						</a>
-						<div class="dropdown-footer text-center">
-							<a href="javascript:;" class="text-decoration-none">View more</a>
-						</div>
 					</div>
 				</div>
 				
 				<div class="navbar-item navbar-user dropdown">
 					<a href="#" class="navbar-link dropdown-toggle d-flex align-items-center" data-bs-toggle="dropdown">
-						<img src="assets/img/user/user-13.jpg" alt="" id="imgUsuarioMe" /> 
+						<img src="assets/img/user/user-13.jpg" alt="" class="ingg" /> 
 						<span>
-							<span id="nombreusuariome" class="d-none d-md-inline">Usuario</span>
+							<span class="d-none d-md-inline rolnombree">Usuario</span>
 							<b class="caret"></b>
 						</span>
 					</a>
 					<div class="dropdown-menu dropdown-menu-end me-1">
-						<a href="#" class="dropdown-item">Edit Profile</a>
+						<a href="#" class="dropdown-item">Editar perfil</a>
 						<a href="#" class="dropdown-item d-flex align-items-center">
 							Inbox
 							<span class="badge bg-danger rounded-pill ms-auto pb-4px">2</span> 
 						</a>
-						<a href="#" class="dropdown-item">Calendar</a>
 						<a href="#" class="dropdown-item">Ajustes</a>
 						<div class="dropdown-divider"></div>
 						<a href="#" id="salirs" class="dropdown-item">Salir</a>
@@ -131,139 +108,292 @@
 			<!-- BEGIN scrollbar -->
 			<div class="app-sidebar-content" data-scrollbar="true" data-height="100%">
 				<!-- BEGIN menu -->
-				<div class="menu">
-					<div class="menu-profile">
-						<a href="javascript:;" class="menu-profile-link" data-toggle="app-sidebar-profile" data-target="#appSidebarProfileMenu">
-							<div class="menu-profile-cover with-shadow"></div>
-							<div class="menu-profile-image">
-								<img src="assets/img/user/user-13.jpg" alt="" id="imageUserMe" />
-							</div>
-							<div class="menu-profile-info">
-								<div class="d-flex align-items-center">
-									<div class="flex-grow-1">
-										S
-									</div>
-									<div class="menu-caret ms-auto"></div>
-								</div>
-								<small id="rolnomme">Frontend developer</small>
-							</div>
-						</a>
-					</div>
-					<div id="appSidebarProfileMenu" class="collapse">
-						<div class="menu-item pt-5px">
-							<a href="javascript:;" class="menu-link">
-								<div class="menu-icon"><i class="fa fa-cog"></i></div>
-								<div class="menu-text">Settings</div>
-							</a>
-						</div>
-						<div class="menu-item">
-							<a href="javascript:;" class="menu-link">
-								<div class="menu-icon"><i class="fa fa-pencil-alt"></i></div>
-								<div class="menu-text"> Send Feedback</div>
-							</a>
-						</div>
-						<div class="menu-item pb-5px">
-							<a href="javascript:;" class="menu-link">
-								<div class="menu-icon"><i class="fa fa-question-circle"></i></div>
-								<div class="menu-text"> Helps</div>
-							</a>
-						</div>
-						<div class="menu-divider m-0"></div>
-					</div>
 
-					<div class="menu-header">Navigation</div>
+                <div class="menu" id="adminis">
+                    <div class="menu-profile">
+                        <a href="javascript:;" class="menu-profile-link" data-toggle="app-sidebar-profile" data-target="#appSidebarProfileMenuA">
+                            <div class="menu-profile-cover with-shadow"></div>
+                            <div class="menu-profile-image">
+                                <img src="assets/img/user/user-13.jpg" alt="" class="ingg" />
+                            </div>
+                            <div class="menu-profile-info">
+                                <div class="d-flex align-items-center">
+                                    <div class="flex-grow-1">
+                                        S
+                                    </div>
+                                    <div class="menu-caret ms-auto"></div>
+                                </div>
+                                <small class="rolnombree">Frontend developer</small>
+                            </div>
+                        </a>
+                    </div>
+                    <div id="appSidebarProfileMenuA" class="collapse">
+                        <div class="menu-item pt-5px">
+                            <a href="javascript:;" class="menu-link">
+                                <div class="menu-icon"><i class="fa fa-cog"></i></div>
+                                <div class="menu-text">Ajustes</div>
+                            </a>
+                        </div>
+                        <div class="menu-item pb-5px">
+                            <a href="javascript:;" class="menu-link">
+                                <div class="menu-icon"><i class="fa fa-question-circle"></i></div>
+                                <div class="menu-text">Ayuda</div>
+                            </a>
+                        </div>
+                        <div class="menu-divider m-0"></div>
+                    </div>
 
-					<div>
-						<div class="menu-item">
-						<a href="Inicio.aspx" class="menu-link">
-							<div class="menu-icon">
-								<i class="fab fa-simplybuilt"></i>
-							</div>
-							<div class="menu-text">Inicio al<span class="menu-label">VER</span></div>
-						</a>
-					</div>
+                    <div class="menu-header">Navigation</div>
 
-					</div>
-                    
+                    <div class="menu-item">
+                        <a href="Inicio.aspx" class="menu-link">
+                            <div class="menu-icon">
+                                <i class="fab fa-simplybuilt"></i>
+                            </div>
+                            <div class="menu-text">Inicio <span class="menu-label">VER</span></div>
+                        </a>
+                    </div>
+
+                    <div class="menu-item ">
+                        <a href="UsuariosA.aspx" class="menu-link">
+                            <div class="menu-icon">
+                                <i class="fas fa-user-gear"></i>
+                            </div>
+                            <div class="menu-text">Usuarios <span class="menu-label">NUEVO</span></div>
+                        </a>
+                    </div>
+
+                    <div class="menu-item has-sub">
+                        <a href="javascript:;" class="menu-link">
+                            <div class="menu-icon">
+                                <i class="fas fa-house"></i>
+                            </div>
+                            <div class="menu-text">Asociaciones</div>
+                            <div class="menu-caret"></div>
+                        </a>
+                        <div class="menu-submenu">
+                            <div class="menu-item">
+                                <a href="AsociacionA.aspx" class="menu-link">
+                                    <div class="menu-text">Asociacion</div>
+                                </a>
+                            </div>
+                            <div class="menu-item">
+                                <a href="PresidenteA.aspx" class="menu-link">
+                                    <div class="menu-text">Presidente</div>
+                                </a>
+                            </div>
+                            <div class="menu-item">
+                                <a href="AfiliadoA.aspx" class="menu-link">
+                                    <div class="menu-text">Socios</div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-item ">
+                        <a href="TransaccionA.aspx" class="menu-link">
+                            <div class="menu-icon">
+                                <i class="fas fa-money-check-dollar"></i>
+                            </div>
+                            <div class="menu-text">Transacciones</div>
+                        </a>
+                    </div>
+
+                    <div class="menu-item">
+                        <a href="InventarioA.aspx" class="menu-link">
+                            <div class="menu-icon">
+                                <i class="fa fa-calendar"></i>
+                            </div>
+                            <div class="menu-text">Inventario</div>
+                        </a>
+                    </div>
+
+                    <div class="menu-item has-sub">
+                        <a href="javascript:;" class="menu-link">
+                            <div class="menu-icon">
+                                <i class="fas fa-house"></i>
+                            </div>
+                            <div class="menu-text">Reportes</div>
+                            <div class="menu-caret"></div>
+                        </a>
+                        <div class="menu-submenu">
+                            <div class="menu-item">
+                                <a href="#" class="menu-link">
+                                    <div class="menu-text">Asociaciones</div>
+                                </a>
+                            </div>
+                            <div class="menu-item">
+                                <a href="TransaccionRepo.aspx" class="menu-link">
+                                    <div class="menu-text">Transacciones</div>
+                                </a>
+                            </div>
+                            <div class="menu-item">
+                                <a href="#" class="menu-link">
+                                    <div class="menu-text">Inventario</div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- BEGIN minify-button -->
+                    <div class="menu-item d-flex">
+                        <a href="javascript:;" class="app-sidebar-minify-btn ms-auto d-flex align-items-center text-decoration-none" data-toggle="app-sidebar-minify"><i class="fa fa-angle-double-left"></i></a>
+                    </div>
+                    <!-- END minify-button -->
+                </div>
+
+				<!-- menu contador -->
+
+                <div class="menu" id="contad">
+                    <div class="menu-profile">
+                        <a href="javascript:;" class="menu-profile-link" data-toggle="app-sidebar-profile" data-target="#appSidebarProfileMenuC">
+                            <div class="menu-profile-cover with-shadow"></div>
+                            <div class="menu-profile-image">
+                                <img src="assets/img/user/user-13.jpg" alt="" class="ingg" />
+                            </div>
+                            <div class="menu-profile-info">
+                                <div class="d-flex align-items-center">
+                                    <div class="flex-grow-1">
+                                        S
+                                    </div>
+                                    <div class="menu-caret ms-auto"></div>
+                                </div>
+                                <small class="rolnombree">Frontend developer</small>
+                            </div>
+                        </a>
+                    </div>
+                    <div id="appSidebarProfileMenuC" class="collapse">
+                        <div class="menu-item pt-5px">
+                            <a href="javascript:;" class="menu-link">
+                                <div class="menu-icon"><i class="fa fa-cog"></i></div>
+                                <div class="menu-text">Ajustes</div>
+                            </a>
+                        </div>
+                        <div class="menu-item pb-5px">
+                            <a href="javascript:;" class="menu-link">
+                                <div class="menu-icon"><i class="fa fa-question-circle"></i></div>
+                                <div class="menu-text">Ayuda</div>
+                            </a>
+                        </div>
+                        <div class="menu-divider m-0"></div>
+                    </div>
+
+                    <div class="menu-header">Navigation</div>
+
+                    <div class="menu-item">
+                        <a href="Inicio.aspx" class="menu-link">
+                            <div class="menu-icon">
+                                <i class="fab fa-simplybuilt"></i>
+                            </div>
+                            <div class="menu-text">Inicio <span class="menu-label">VER</span></div>
+                        </a>
+                    </div>
+
+                    <div class="menu-item ">
+                        <a href="TransaccionA.aspx" class="menu-link">
+                            <div class="menu-icon">
+                                <i class="fas fa-money-check-dollar"></i>
+                            </div>
+                            <div class="menu-text">Transacciones</div>
+                        </a>
+                    </div>
+
+                    <div class="menu-item">
+                        <a href="InventarioA.aspx" class="menu-link">
+                            <div class="menu-icon">
+                                <i class="fa fa-calendar"></i>
+                            </div>
+                            <div class="menu-text">Inventario</div>
+                        </a>
+                    </div>
+                    <!-- BEGIN minify-button -->
+                    <div class="menu-item d-flex">
+                        <a href="javascript:;" class="app-sidebar-minify-btn ms-auto d-flex align-items-center text-decoration-none" data-toggle="app-sidebar-minify"><i class="fa fa-angle-double-left"></i></a>
+                    </div>
+                    <!-- END minify-button -->
+                </div>
 
 
-					<div class="menu-item">
-						<a href="Inicio.aspx" class="menu-link">
-							<div class="menu-icon">
-								<i class="fab fa-simplybuilt"></i>
-							</div>
-							<div class="menu-text">Inicio <span class="menu-label">VER</span></div>
-						</a>
-					</div>
-                    
-					<div class="menu-item ">
-						<a href="UsuariosA.aspx" class="menu-link">
-							<div class="menu-icon">
-								<i class="fas fa-user-gear"></i>
-							</div>
-							<div class="menu-text">Usuarios <span class="menu-label">NUEVO</span></div> 
-						</a>
-					</div>
-                    
+                <!-- menu tecnico -->
 
-					<div class="menu-item has-sub">
-						<a href="javascript:;" class="menu-link">
-							<div class="menu-icon">
-								<i class="fas fa-house"></i>
-							</div>
-							<div class="menu-text">Asociaciones</div>
-							<div class="menu-caret"></div>
-						</a>
-						<div class="menu-submenu">
-							<div class="menu-item">
-								<a href="AsociacionA.aspx" class="menu-link">
-									<div class="menu-text">Asociacion</div>
-								</a>
-							</div>
-							<div class="menu-item">
-								<a href="PresidenteA.aspx" class="menu-link">
-									<div class="menu-text">Presidente</div>
-								</a>
-							</div>
-							<div class="menu-item">
-								<a href="AfiliadoA.aspx" class="menu-link">
-									<div class="menu-text">Socios</div>
-								</a>
-							</div>
-						</div>
-					</div>
+                <div class="menu" id="tecnico">
+                    <div class="menu-profile">
+                        <a href="javascript:;" class="menu-profile-link" data-toggle="app-sidebar-profile" data-target="#appSidebarProfileMenuT">
+                            <div class="menu-profile-cover with-shadow"></div>
+                            <div class="menu-profile-image">
+                                <img src="assets/img/user/user-13.jpg" alt="" class="ingg" />
+                            </div>
+                            <div class="menu-profile-info">
+                                <div class="d-flex align-items-center">
+                                    <div class="flex-grow-1">
+                                        S
+                                    </div>
+                                    <div class="menu-caret ms-auto"></div>
+                                </div>
+                                <small class="rolnombree">Frontend developer</small>
+                            </div>
+                        </a>
+                    </div>
+                    <div id="appSidebarProfileMenuT" class="collapse">
+                        <div class="menu-item pt-5px">
+                            <a href="javascript:;" class="menu-link">
+                                <div class="menu-icon"><i class="fa fa-cog"></i></div>
+                                <div class="menu-text">Ajustes</div>
+                            </a>
+                        </div>
+                        <div class="menu-item pb-5px">
+                            <a href="javascript:;" class="menu-link">
+                                <div class="menu-icon"><i class="fa fa-question-circle"></i></div>
+                                <div class="menu-text">Ayuda</div>
+                            </a>
+                        </div>
+                        <div class="menu-divider m-0"></div>
+                    </div>
 
-					<div class="menu-item ">
-						<a href="TransaccionA.aspx" class="menu-link">
-							<div class="menu-icon">
-								<i class="fas fa-money-check-dollar"></i>
-							</div>
-							<div class="menu-text">Transacciones</div> 
-						</a>
-					</div>
+                    <div class="menu-header">Navigation</div>
+                    <div class="menu-item">
+                        <a href="Inicio.aspx" class="menu-link">
+                            <div class="menu-icon">
+                                <i class="fab fa-simplybuilt"></i>
+                            </div>
+                            <div class="menu-text">Inicio <span class="menu-label">VER</span></div>
+                        </a>
+                    </div>
 
-					<div class="menu-item">
-						<a href="InventarioA.aspx" class="menu-link">
-							<div class="menu-icon">
-								<i class="fa fa-calendar"></i> 
-							</div>
-							<div class="menu-text">Inventario</div>
-						</a>
-					</div>
+                    <div class="menu-item has-sub">
+                        <a href="javascript:;" class="menu-link">
+                            <div class="menu-icon">
+                                <i class="fas fa-house"></i>
+                            </div>
+                            <div class="menu-text">Consultas</div>
+                            <div class="menu-caret"></div>
+                        </a>
+                        <div class="menu-submenu">
+                            <div class="menu-item">
+                                <a href="#" class="menu-link">
+                                    <div class="menu-text">Asociaciones</div>
+                                </a>
+                            </div>
+                            <div class="menu-item">
+                                <a href="#" class="menu-link">
+                                    <div class="menu-text">Socios</div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
 
-					
-                    
-					
-					<!-- BEGIN minify-button -->
-					<div class="menu-item d-flex">
-						<a href="javascript:;" class="app-sidebar-minify-btn ms-auto d-flex align-items-center text-decoration-none" data-toggle="app-sidebar-minify"><i class="fa fa-angle-double-left"></i></a>
-					</div>
-					<!-- END minify-button -->
-				</div>
+                    <!-- BEGIN minify-button -->
+                    <div class="menu-item d-flex">
+                        <a href="javascript:;" class="app-sidebar-minify-btn ms-auto d-flex align-items-center text-decoration-none" data-toggle="app-sidebar-minify"><i class="fa fa-angle-double-left"></i></a>
+                    </div>
+                    <!-- END minify-button -->
+                </div>
+
+
 				<!-- END menu -->
 			</div>
 			<!-- END scrollbar -->
 		</div>
+
 		<div class="app-sidebar-bg" data-bs-theme="dark"></div>
 		<div class="app-sidebar-mobile-backdrop"><a href="#" data-dismiss="app-sidebar-mobile" class="stretched-link"></a></div>
 		<!-- END #sidebar -->

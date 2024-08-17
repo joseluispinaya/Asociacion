@@ -850,10 +850,12 @@
     <Content Include="js\Mastepage.js" />
     <Content Include="js\PresidenteA.js" />
     <Content Include="js\TransaccionA.js" />
+    <Content Include="js\TransaccionRepo.js" />
     <Content Include="js\UsuariosA.js" />
     <Content Include="Login.aspx" />
     <Content Include="PresidenteA.aspx" />
     <Content Include="TransaccionA.aspx" />
+    <Content Include="TransaccionRepo.aspx" />
     <Content Include="UsuariosA.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -928,6 +930,13 @@
     </Compile>
     <Compile Include="TransaccionA.aspx.designer.cs">
       <DependentUpon>TransaccionA.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TransaccionRepo.aspx.cs">
+      <DependentUpon>TransaccionRepo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TransaccionRepo.aspx.designer.cs">
+      <DependentUpon>TransaccionRepo.aspx</DependentUpon>
     </Compile>
     <Compile Include="UsuariosA.aspx.cs">
       <DependentUpon>UsuariosA.aspx</DependentUpon>
