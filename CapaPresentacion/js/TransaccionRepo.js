@@ -1,5 +1,6 @@
 ﻿
 var table;
+var tablegrou;
 
 $.datepicker.regional['es'] = {
     closeText: 'Cerrar',
@@ -125,13 +126,7 @@ function CargarDatos(request) {
             { "data": "FechaTransacadena" },
             { "data": "oAsociacion.Nombre" },
             { "data": "oTipoTransaccion.Tipo" },
-            { "data": "TotalCadenaUn" },
-            {
-                "defaultContent": '<button class="btn btn-primary btn-infor btn-sm me-5px"><i class="fas fa-eye"></i></button>',
-                "orderable": false,
-                "searchable": false,
-                "width": "40px"
-            }
+            { "data": "TotalCadenaUn" }
         ],
         "dom": "rt",
         "language": {
@@ -139,6 +134,102 @@ function CargarDatos(request) {
         }
     });
 }
+
+
+function CargarDatosGroup() {
+    if ($.fn.DataTable.isDataTable("#tbTotales")) {
+        $("#tbTotales").DataTable().destroy();
+        $('#tbTotales tbody').empty();
+    }
+
+
+    var request = { IdAsoci: parseInt($("#cboAsoci").val()) }
+
+    tablegrou = $("#tbTotales").DataTable({
+        responsive: true,
+        "ajax": {
+            "url": 'TransaccionRepo.aspx/ListTtansaccioId',
+            "type": "POST",
+            "contentType": "application/json; charset=utf-8",
+            "dataType": "json",
+            "data": function () {
+                return JSON.stringify(request);
+            },
+            "dataSrc": function (json) {
+                if (json.d.estado) {
+                    // Asignar el valor total a la etiqueta h4
+                    $("#lbltott").text(json.d.valor);
+                    return json.d.objeto;
+                } else {
+                    $("#lbltott").text("0 Bs");
+                    return [];
+                }
+            },
+            "error": function (xhr, status, error) {
+                console.error("Error al obtener los datos: ", error);
+                // Opcional: mostrar un mensaje de error al usuario
+            }
+        },
+        "columns": [
+            { "data": "Month" },
+            { "data": "TotalAmount" }
+        ],
+        "dom": "rt",
+        "language": {
+            "url": "https://cdn.datatables.net/plug-ins/1.11.5/i18n/es-ES.json"
+        }
+    });
+}
+
+
+function CargarDatosGroupFech() {
+    if ($.fn.DataTable.isDataTable("#tbTotales")) {
+        $("#tbTotales").DataTable().destroy();
+        $('#tbTotales tbody').empty();
+    }
+
+    var request = {
+        fechainicio: $("#txtFechaInicio").val(),
+        fechafin: $("#txtFechaFin").val()
+    };
+
+
+    tablegrou = $("#tbTotales").DataTable({
+        responsive: true,
+        "ajax": {
+            "url": 'TransaccionRepo.aspx/ListTtansaccioFech',
+            "type": "POST",
+            "contentType": "application/json; charset=utf-8",
+            "dataType": "json",
+            "data": function () {
+                return JSON.stringify(request);
+            },
+            "dataSrc": function (json) {
+                if (json.d.estado) {
+                    // Asignar el valor total a la etiqueta h4
+                    $("#lbltott").text(json.d.valor);
+                    return json.d.objeto;
+                } else {
+                    $("#lbltott").text("0 Bs");
+                    return [];
+                }
+            },
+            "error": function (xhr, status, error) {
+                console.error("Error al obtener los datos: ", error);
+                // Opcional: mostrar un mensaje de error al usuario
+            }
+        },
+        "columns": [
+            { "data": "Month" },
+            { "data": "TotalAmount" }
+        ],
+        "dom": "rt",
+        "language": {
+            "url": "https://cdn.datatables.net/plug-ins/1.11.5/i18n/es-ES.json"
+        }
+    });
+}
+
 
 $('#btnBuscar').on('click', function () {
 
@@ -192,8 +283,31 @@ $('#btnBuscar').on('click', function () {
 
     CargarDatos(request);
 
+    if ($("#txtFechaInicio").val().trim() == "" || $("#txtFechaFin").val().trim() == "") {
+
+        CargarDatosGroup();
+    } else {
+        CargarDatosGroupFech();
+        //swal("Mensaje", "Falta aun.", "warning");
+    }
 
     //$("#txtproductocantidad").val($("#txtproductocantidad").val() == "" ? "0" : $("#txtproductocantidad").val());
     //var montopago = $("#txtmontopago").val().trim() == "" ? 0 : parseFloat($("#txtmontopago").val().trim());
     //idtienda: $("#cboTienda").val() == null ? "0" : $("#cboTienda").val()
 })
+
+
+//etiqueta <a> no es boton
+$('#btnImprimiM').on('click', function (e) {
+    e.preventDefault();
+
+    //$('#header').hide();
+    //$('#navbarna').hide();
+    //$('#divblanco').hide();
+    //$('#omitirR').hide();
+    //window.print();
+    //$('#header').show();
+    //$('#navbarna').show();
+    //$('#divblanco').show();
+    //$('#omitirR').show();
+});

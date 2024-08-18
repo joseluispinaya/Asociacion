@@ -3,8 +3,7 @@
     <link href="assets/jquery-ui-1.12.1/jquery-ui.css" rel="stylesheet"/>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
-
-    <h1 class="page-header">TRANSACCIONES <small>Modulo Reporte...</small></h1>
+    
 
     <div class="panel panel-inverse">
         <div class="panel-heading">
@@ -16,7 +15,7 @@
         <div class="panel-body">
             <input id="txtIdasocia" class="model" name="IdAsocia" value="0" type="hidden" />
 
-            <div class="row mb-3">
+            <div class="row">
                 <div class="col-xl-3">
                     <div class="mb-3">
                         <label class="form-label" for="cboBuscarPor">Buscar por:</label>
@@ -53,13 +52,17 @@
                     <div class="mb-3">
                         <br />
                         <button id="btnBuscar" type="button" class="btn btn-lime"><i class="fas fa-search me-2"></i>Buscar</button>
+                        <button type="button" id="btnImprimiM" class="btn btn-primary" style="margin-left: 20px;">
+                            <i class="fa fa-print t-plus-1 fa-fw fa-lg"></i>Imprimir
+                        </button>
                     </div>
                 </div>
             </div>
 
+            <hr />
 
             <div class="row">
-                <div class="col-xl-12">
+                <div class="col-xl-8">
                     <table id="tbReporteT" class="table table-striped table-bordered align-middle text-nowrap" cellspacing="0" width="100%">
                         <thead>
                             <tr>
@@ -68,12 +71,42 @@
                                 <th>Asociacion</th>
                                 <th>Transaccion</th>
                                 <th>Monto</th>
-                                <th></th>
+                                <%--<th></th>--%>
                             </tr>
                         </thead>
                         <tbody>
                         </tbody>
                     </table>
+                </div>
+
+                <div class="col-xl-4">
+                    <p>Total Agrupados</p>
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <table id="tbTotales" class="table table-striped table-bordered align-middle text-nowrap" cellspacing="0" width="100%">
+                                <thead>
+                                    <tr>
+                                        <th>Fechas</th>
+                                        <th>Total Transaccion</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xl-4">
+                            <p>Total Agrupados</p>
+                        </div>
+                        <div class="col-xl-8">
+                            <div class="text-right">
+                                <label class="form-label" for="drttt" id="lbltott">Seleccione</label>
+                                <%--<input id="txttotg" readonly="readonly" type="text" class="form-control" value="0" />--%>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
             </div>
             
