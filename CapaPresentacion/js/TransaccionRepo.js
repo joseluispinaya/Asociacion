@@ -13,7 +13,7 @@ $.datepicker.regional['es'] = {
     dayNamesShort: ['Dom', 'Lun', 'Mar', 'Mié', 'Juv', 'Vie', 'Sáb'],
     dayNamesMin: ['Do', 'Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sá'],
     weekHeader: 'Sm',
-    dateFormat: 'dd/mm/yy',
+    dateFormat: 'mm/dd/yy',
     firstDay: 1,
     isRTL: false,
     showMonthAfterYear: false,
@@ -21,6 +21,8 @@ $.datepicker.regional['es'] = {
 };
 
 $.datepicker.setDefaults($.datepicker.regional['es']);
+
+//dateFormat: 'dd/mm/yy',
 
 const VISTA_BUSQUEDA = {
 
@@ -106,7 +108,7 @@ function CargarDatos(request) {
     table = $("#tbReporteT").DataTable({
         responsive: true,
         "ajax": {
-            "url": 'TransaccionRepo.aspx/ListTtansaccionesIa',
+            "url": 'TransaccionRepo.aspx/ListTtansaccionesIasE',
             "type": "POST",
             "contentType": "application/json; charset=utf-8",
             "dataType": "json",
@@ -262,9 +264,6 @@ $('#btnBuscar').on('click', function () {
             toastr.error("Debe seleccionar Asociacion", "Advertencia");
             return;
         }
-
-        //var sele = $("#cboAsoci").val()
-        //console.log("valor: ", sele);
     }
 
     //var seleas = $("#cboAsoci").val()
@@ -301,13 +300,11 @@ $('#btnBuscar').on('click', function () {
 $('#btnImprimiM').on('click', function (e) {
     e.preventDefault();
 
-    //$('#header').hide();
-    //$('#navbarna').hide();
-    //$('#divblanco').hide();
-    //$('#omitirR').hide();
-    //window.print();
-    //$('#header').show();
-    //$('#navbarna').show();
-    //$('#divblanco').show();
-    //$('#omitirR').show();
+    var fechaIni = $("#txtFechaInicio").val();
+    var fechaFin = $("#txtFechaFin").val();
+    var idAso = $("#cboAsoci").val();
+
+    var url = 'ReportePdfTra.aspx?fi=' + encodeURIComponent(fechaIni) + '&ff=' + encodeURIComponent(fechaFin) + '&id=' + idAso;
+    window.open(url, '', 'height=700,width=900,scrollbars=0,location=1,toolbar=0');
 });
+

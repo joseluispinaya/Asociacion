@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using CapaEntidad;
 using CapaNegocio;
 using System.Web.Services;
+using System.Globalization;
 
 namespace CapaPresentacion
 {
@@ -68,7 +69,8 @@ namespace CapaPresentacion
         {
             try
             {
-                DateTime fechatra = Convert.ToDateTime(eTransaccion.FechaTransacadena);
+                DateTime fecharetra = DateTime.ParseExact(eTransaccion.FechaTransacadena, "MM/dd/yyyy", CultureInfo.InvariantCulture);
+                //DateTime fechatra = Convert.ToDateTime(eTransaccion.FechaTransacadena);
                 ETransaccion obj = new ETransaccion
                 {
                     IdTransa = eTransaccion.IdTransa,
@@ -76,7 +78,8 @@ namespace CapaPresentacion
                     Itipotra = eTransaccion.Itipotra,
                     Descripcion = eTransaccion.Descripcion,
                     Total = eTransaccion.Total,
-                    FechaTransaccion = fechatra
+                    FechaTransaccion = fecharetra
+                    //FechaTransaccion = fechatra
                 };
 
                 bool Respuesta = NTransaccion.getInstance().RegistrarTransaccion(obj);
@@ -99,7 +102,9 @@ namespace CapaPresentacion
         {
             try
             {
-                DateTime fechatra = Convert.ToDateTime(eTransaccion.FechaTransacadena);
+                DateTime fecharetra = DateTime.ParseExact(eTransaccion.FechaTransacadena, "MM/dd/yyyy", CultureInfo.InvariantCulture);
+
+                //DateTime fechatra = Convert.ToDateTime(eTransaccion.FechaTransacadena);
                 ETransaccion obj = new ETransaccion
                 {
                     IdTransa = eTransaccion.IdTransa,
@@ -107,7 +112,8 @@ namespace CapaPresentacion
                     Itipotra = eTransaccion.Itipotra,
                     Descripcion = eTransaccion.Descripcion,
                     Total = eTransaccion.Total,
-                    FechaTransaccion = fechatra
+                    FechaTransaccion = fecharetra
+                    //FechaTransaccion = fechatra
                 };
 
                 bool Respuesta = NTransaccion.getInstance().ActualizarTransaccion(obj);

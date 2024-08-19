@@ -23,6 +23,6 @@ namespace CapaEntidad
 
         public string TotalCadena => $"Bs/ {Total:F2}";
         public string TotalCadenaUn => $"Bs/ {Total.ToString("F2", CultureInfo.InvariantCulture)}";
-        //public string FechaTransacadena => FechaTransaccion.ToString("dd/MM/yyyy");
+        public string FechaTransServ => FechaTransaccion.ToString("MM/dd/yyyy");
     }
 }

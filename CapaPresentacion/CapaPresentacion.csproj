@@ -200,6 +200,7 @@
     <Content Include="assets\css\material\images\ui-icons_777777_256x240.png" />
     <Content Include="assets\css\material\images\ui-icons_cc0000_256x240.png" />
     <Content Include="assets\css\material\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="assets\css\reporte.css" />
     <Content Include="assets\css\transparent\app-rtl.min.css" />
     <Content Include="assets\css\transparent\app.min.css" />
     <Content Include="assets\css\transparent\images\bg-login-dark-mode.png" />
@@ -840,6 +841,8 @@
     <Content Include="Global.asax" />
     <Content Include="ImagenesPr\logoa.png" />
     <Content Include="ImagenesPr\sinimagen.png" />
+    <Content Include="Imagenes\logorep.png" />
+    <Content Include="Imagenes\Reportea.png" />
     <Content Include="Imagenes\sinimagen.png" />
     <Content Include="Inicio.aspx" />
     <Content Include="InventarioA.aspx" />
@@ -849,11 +852,13 @@
     <Content Include="js\Login.js" />
     <Content Include="js\Mastepage.js" />
     <Content Include="js\PresidenteA.js" />
+    <Content Include="js\ReportePdfTra.js" />
     <Content Include="js\TransaccionA.js" />
     <Content Include="js\TransaccionRepo.js" />
     <Content Include="js\UsuariosA.js" />
     <Content Include="Login.aspx" />
     <Content Include="PresidenteA.aspx" />
+    <Content Include="ReportePdfTra.aspx" />
     <Content Include="TransaccionA.aspx" />
     <Content Include="TransaccionRepo.aspx" />
     <Content Include="UsuariosA.aspx" />
@@ -924,6 +929,13 @@
       <DependentUpon>PresidenteA.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReportePdfTra.aspx.cs">
+      <DependentUpon>ReportePdfTra.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReportePdfTra.aspx.designer.cs">
+      <DependentUpon>ReportePdfTra.aspx</DependentUpon>
+    </Compile>
     <Compile Include="TransaccionA.aspx.cs">
       <DependentUpon>TransaccionA.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

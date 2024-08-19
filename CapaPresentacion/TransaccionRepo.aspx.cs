@@ -18,6 +18,71 @@ namespace CapaPresentacion
 
         }
 
+        //PARA SERVIDOR 
+        [WebMethod]
+        public static Respuesta<List<ETransaccion>> ListTtansaccionesIasE(string fechainicio, string fechafin, int IdAsoci)
+        {
+            // Obtener la lista de transacciones
+            List<ETransaccion> listaTransacciones = NTransaccion.getInstance().ObtenerTransacciones();
+
+            // Validar si la lista de transacciones es nula o vacía
+            if (listaTransacciones == null || listaTransacciones.Count == 0)
+            {
+                return new Respuesta<List<ETransaccion>>()
+                {
+                    estado = false,
+                    objeto = null
+                };
+            }
+
+            try
+            {
+                // Si las fechas son vacías o nulas, filtrar solo por IdAsoci
+                if (string.IsNullOrEmpty(fechainicio) || string.IsNullOrEmpty(fechafin))
+                {
+                    listaTransacciones = listaTransacciones.Where(t => t.Idasoci == IdAsoci).ToList();
+                }
+                else
+                {
+                    // Convertir las fechas y filtrar por el rango de fechas
+                    //hasta = DateTime.ParseExact(fechafin, "MM/dd/yyyy", CultureInfo.InvariantCulture);
+
+                    if (DateTime.TryParseExact(fechainicio, "MM/dd/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime desde) && 
+                        DateTime.TryParseExact(fechafin, "MM/dd/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime hasta))
+                    {
+                        listaTransacciones = listaTransacciones
+                            .Where(t => t.FechaTransaccion.Date >= desde && t.FechaTransaccion.Date <= hasta)
+                            .ToList();
+                    }
+                    else
+                    {
+                        return new Respuesta<List<ETransaccion>>()
+                        {
+                            estado = false,
+                            objeto = null
+                        };
+                    }
+                }
+
+                // Retornar la lista filtrada
+                return new Respuesta<List<ETransaccion>>()
+                {
+                    estado = true,
+                    objeto = listaTransacciones
+                };
+            }
+            catch (Exception ex)
+            {
+                // Manejo de errores
+                return new Respuesta<List<ETransaccion>>()
+                {
+                    estado = false,
+                    objeto = null,
+                    valor = "Ocurrió un error: " + ex.Message
+                };
+            }
+        }
+
         [WebMethod]
         public static Respuesta<List<ETransaccion>> ListTtansaccionesIa(string fechainicio, string fechafin, int IdAsoci)
         {
@@ -122,7 +187,8 @@ namespace CapaPresentacion
                 List<ETransaccion> Lista = NTransaccion.getInstance().ObtenerTransacciones();
                 if (Lista != null && Lista.Count > 0)
                 {
-                    if (DateTime.TryParse(fechainicio, out DateTime desde) && DateTime.TryParse(fechafin, out DateTime hasta))
+                    if (DateTime.TryParseExact(fechainicio, "MM/dd/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime desde) &&
+                        DateTime.TryParseExact(fechafin, "MM/dd/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime hasta))
                     {
                         Lista = Lista
                             .Where(t => t.FechaTransaccion.Date >= desde && t.FechaTransaccion.Date <= hasta)
@@ -135,6 +201,20 @@ namespace CapaPresentacion
 
                         return new Respuesta<List<ResumenTransa>>() { estado = true, valor = totmil, objeto = oListaGrupo };
                     }
+
+                    //if (DateTime.TryParse(fechainicio, out DateTime desde) && DateTime.TryParse(fechafin, out DateTime hasta))
+                    //{
+                    //    Lista = Lista
+                    //        .Where(t => t.FechaTransaccion.Date >= desde && t.FechaTransaccion.Date <= hasta)
+                    //        .ToList();
+
+                    //    List<ResumenTransa> oListaGrupo = ObtenerGroup(desde, hasta, Lista);
+
+                    //    float totalMonto = oListaGrupo?.Sum(pago => pago.TotalAmount) ?? 0;
+                    //    string totmil = "Total:  " + totalMonto.ToString("F2") + " Bs";
+
+                    //    return new Respuesta<List<ResumenTransa>>() { estado = true, valor = totmil, objeto = oListaGrupo };
+                    //}
                     else
                     {
                         return new Respuesta<List<ResumenTransa>>() { estado = false, objeto = null };

@@ -23,7 +23,7 @@ $.datepicker.regional['es'] = {
     dayNamesShort: ['Dom', 'Lun', 'Mar', 'Mié', 'Juv', 'Vie', 'Sáb'],
     dayNamesMin: ['Do', 'Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sá'],
     weekHeader: 'Sm',
-    dateFormat: 'dd/mm/yy',
+    dateFormat: 'mm/dd/yy',
     firstDay: 1,
     isRTL: false,
     showMonthAfterYear: false,
@@ -31,6 +31,8 @@ $.datepicker.regional['es'] = {
 };
 
 $.datepicker.setDefaults($.datepicker.regional['es']);
+
+//dateFormat: 'dd/mm/yy',
 
 function ObtenerFecha() {
 
@@ -42,9 +44,19 @@ function ObtenerFecha() {
     return output;
 }
 
+function ObtenerFechaIa() {
+    var d = new Date();
+    var month = d.getMonth() + 1;
+    var day = d.getDate();
+    var output = (('' + month).length < 2 ? '0' : '') + month + '/' + (('' + day).length < 2 ? '0' : '') + day + '/' + d.getFullYear();
+
+    return output;
+}
+
 $(document).ready(function () {
     $("#txtFechap").datepicker();
-    $("#txtFechap").val(ObtenerFecha());
+    $("#txtFechap").val(ObtenerFechaIa());
+    //$("#txtFechap").val(ObtenerFecha());
     cargarTipoTransa();
     cargarAsociaciones();
 });
@@ -250,7 +262,8 @@ $("#tbTransacciones tbody").on("click", ".btn-editar", function (e) {
     $("#txtDescripcion").val(modelo.Descripcion);
     $("#txtMonto").val(modelo.Total);
 
-    $("#txtFechap").val(modelo.FechaTransacadena);
+    //FechaTransServ  $("#txtFechap").val(modelo.FechaTransacadena);
+    $("#txtFechap").val(modelo.FechaTransServ);
 
     $("#modalLabelA").text("Editar Transaccion");
 
