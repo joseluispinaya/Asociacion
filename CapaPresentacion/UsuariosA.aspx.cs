@@ -87,5 +87,67 @@ namespace CapaPresentacion
                 return new Respuesta<bool> { estado = false, valor = "Ocurrió un error: " + ex.Message };
             }
         }
+        [WebMethod]
+        public static Respuesta<bool> EditarUsuario(EUsuario oUsuario, byte[] imageBytes)
+        {
+            try
+            {
+                var imageUrl = string.Empty;
+
+                List<EUsuario> Lista = NUsuario.getInstance().ObtenerUsuarios();
+                var item = Lista.FirstOrDefault(x => x.IdUsuario == oUsuario.IdUsuario);
+                if (item == null)
+                {
+                    return new Respuesta<bool>() { estado = false, valor = "Ocurrio un inconveniente intente mas tarde" };
+                }
+                if (imageBytes != null && imageBytes.Length > 0)
+                {
+                    var stream = new MemoryStream(imageBytes);
+                    string folder = "/Imagenes/";
+                    imageUrl = Utilidadesj.getInstance().UploadPhotoA(stream, folder);
+
+                    if (!string.IsNullOrEmpty(imageUrl))
+                    {
+                        if (!string.IsNullOrEmpty(item.Foto))
+                        {
+                            File.Delete(HttpContext.Current.Server.MapPath(item.Foto));
+                        }
+                    }
+                    else
+                    {
+                        imageUrl = item.Foto;
+                    }
+                }
+                else
+                {
+                    imageUrl = item.Foto;
+                }
+
+                item.IdUsuario = oUsuario.IdUsuario;
+                item.NroCI = oUsuario.NroCI;
+                item.Nombres = oUsuario.Nombres;
+                item.Apellidos = oUsuario.Apellidos;
+                item.Correo = oUsuario.Correo;
+                item.Clave = oUsuario.Clave;
+                item.Foto = imageUrl;
+                item.IdRol = oUsuario.IdRol;
+                item.Estado = oUsuario.Estado;
+
+                
+                bool Respuesta = NUsuario.getInstance().ActualizarUsuario(item);
+
+                var respuesta = new Respuesta<bool>
+                {
+                    estado = Respuesta,
+                    valor = Respuesta ? "Actualizado correctamente" : "Error al actualizar el Correo ya Existe"
+                };
+                return respuesta;
+
+            }
+            catch (Exception ex)
+            {
+                return new Respuesta<bool> { estado = false, valor = "Ocurrió un error: " + ex.Message };
+            }
+        }
     }
 }

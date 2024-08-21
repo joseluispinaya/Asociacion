@@ -42,17 +42,15 @@
 		<div id="header" class="app-header">
 			<!-- BEGIN navbar-header -->
 			<div class="navbar-header">
-				<a href="#" class="navbar-brand"><span class="navbar-logo"></span> <b class="me-3px">COEM</b> Panel</a>
+				<a href="#" class="navbar-brand"><span class="navbar-logo"></span> <b class="me-3px">ASOCI</b>ACION</a>
 				<button type="button" class="navbar-mobile-toggler" data-toggle="app-sidebar-mobile">
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
 			</div>
-			<!-- END navbar-header -->
-			<!-- BEGIN header-nav -->
 			<div class="navbar-nav">
-				<div class="navbar-item navbar-form">
+				<%--<div class="navbar-item navbar-form">
 					<div>
 						<div class="form-group">
 							<input type="text" class="form-control" placeholder="Buscar" />
@@ -77,7 +75,7 @@
 							</div>
 						</a>
 					</div>
-				</div>
+				</div>--%>
 				
 				<div class="navbar-item navbar-user dropdown">
 					<a href="#" class="navbar-link dropdown-toggle d-flex align-items-center" data-bs-toggle="dropdown">
@@ -89,11 +87,11 @@
 					</a>
 					<div class="dropdown-menu dropdown-menu-end me-1">
 						<a href="#" class="dropdown-item">Editar perfil</a>
-						<a href="#" class="dropdown-item d-flex align-items-center">
+						<%--<a href="#" class="dropdown-item d-flex align-items-center">
 							Inbox
 							<span class="badge bg-danger rounded-pill ms-auto pb-4px">2</span> 
-						</a>
-						<a href="#" class="dropdown-item">Ajustes</a>
+						</a>--%>
+						<%--<a href="#" class="dropdown-item">Ajustes</a>--%>
 						<div class="dropdown-divider"></div>
 						<a href="#" id="salirs" class="dropdown-item">Salir</a>
 					</div>
@@ -143,7 +141,7 @@
                         <div class="menu-divider m-0"></div>
                     </div>
 
-                    <div class="menu-header">Navigation</div>
+                    <div class="menu-header">Menu de navegacion</div>
 
                     <div class="menu-item">
                         <a href="Inicio.aspx" class="menu-link">
@@ -277,7 +275,7 @@
                         <div class="menu-divider m-0"></div>
                     </div>
 
-                    <div class="menu-header">Navigation</div>
+                    <div class="menu-header">Menu de navegacion</div>
 
                     <div class="menu-item">
                         <a href="Inicio.aspx" class="menu-link">
@@ -349,7 +347,7 @@
                         <div class="menu-divider m-0"></div>
                     </div>
 
-                    <div class="menu-header">Navigation</div>
+                    <div class="menu-header">Menu de navegacion</div>
                     <div class="menu-item">
                         <a href="Inicio.aspx" class="menu-link">
                             <div class="menu-icon">
@@ -411,7 +409,7 @@
 		<div class="theme-panel">
 			<a href="javascript:;" data-toggle="theme-panel-expand" class="theme-collapse-btn"><i class="fa fa-cog"></i></a>
 			<div class="theme-panel-content" data-scrollbar="true" data-height="100%">
-				<h5>App Settings</h5>
+				<h5>Ajustes Temas</h5>
 				
 				<!-- BEGIN theme-list -->
 				<div class="theme-list">
@@ -434,10 +432,10 @@
 				
 				<div class="row mt-10px">
 					<div class="col-8 control-label text-body fw-bold">
-						<div>Dark Mode <span class="badge bg-primary ms-1 py-2px position-relative" style="top: -1px;">NEW</span></div>
+						<div>Modo Oscuro <span class="badge bg-primary ms-1 py-2px position-relative" style="top: -1px;">VER</span></div>
 						<div class="lh-14">
 							<small class="text-body opacity-50">
-								Adjust the appearance to reduce glare and give your eyes a break.
+								Ajuste de apariencia para el sistema.
 							</small>
 						</div>
 					</div>
@@ -452,8 +450,8 @@
 				<div class="theme-panel-divider"></div>
 				
 				
-				<a href="https://seantheme.com/color-admin/documentation/" class="btn btn-dark d-block w-100 rounded-pill mb-10px" target="_blank"><b>Documentation</b></a>
-				<a href="javascript:;" class="btn btn-default d-block w-100 rounded-pill" data-toggle="reset-local-storage"><b>Reset Local Storage</b></a>
+				<a href="#" class="btn btn-dark d-block w-100 rounded-pill mb-10px" target="_blank"><b>Soporte Tecnico</b></a>
+				<a href="javascript:;" class="btn btn-default d-block w-100 rounded-pill" data-toggle="reset-local-storage"><b>Recargar Sistema</b></a>
 			</div>
 		</div>
 		<!-- END theme-panel -->

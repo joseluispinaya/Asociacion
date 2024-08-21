@@ -67,11 +67,10 @@ function dtPresiden() {
                 }
             },
             {
-                "defaultContent": '<button class="btn btn-primary btn-editar btn-sm me-5px"><i class="fas fa-pencil-alt"></i></button>' +
-                    '<button class="btn btn-danger btn-eliminar btn-sm"><i class="fas fa-trash-alt"></i></button>',
+                "defaultContent": '<button class="btn btn-primary btn-editar btn-sm me-5px"><i class="fas fa-pencil-alt"></i></button>',
                 "orderable": false,
                 "searchable": false,
-                "width": "80px"
+                "width": "50px"
             }
         ],
         "order": [[0, "desc"]],

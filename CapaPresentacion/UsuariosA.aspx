@@ -97,10 +97,10 @@
             </div>
         </div>
         <div class="panel-body">
-            <div class="row row-cols-lg-auto g-3 mb-3">
-                <div class="col-12">
+            <!-- BEGIN <div class="row row-cols-lg-auto g-3 mb-3"> -->
+            <div class="row">
+                <div class="col-xl-12 text-center">
                     <a href="#" id="btnNuevo" class="btn btn-lime"><i class="fas fa-pencil me-2"></i>Nuevo</a>
-                    <%--<button id="btnNuevoReg" type="button" class="btn btn-lime"><i class="fas fa-pencil me-2"></i> Nuevo Registro</button>--%>
                 </div>
             </div>
             <table id="tbUsuario" width="100%" class="table table-striped table-bordered align-middle text-nowrap">

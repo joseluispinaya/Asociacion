@@ -54,7 +54,6 @@
 						</div>
 					</li>--%>
 					<li><a href="#">Inicio</a></li>
-					<li><a href="#">Informacion</a></li>
 					<li><a href="Login.aspx">Iniciar Sesion</a></li>
 				</ul>
 			</div>
@@ -85,7 +84,7 @@
 							<div class="post-left-info">
 								<div class="post-date">
 									<span class="day">25</span>
-									<span class="month">JULIO</span>
+									<span class="month">MAYO</span>
 								</div>
 								<div class="post-likes">
 									<%--<i class="fa fa-heart text-theme"></i>--%>
@@ -112,7 +111,7 @@
 												<a href="#"><img class="d-block w-100" src="assetsbs/img/post/post-1.jpg" alt="" /></a>
 											</div>
 											<div class="carousel-item">
-												<a href="#"><img class="d-block w-100" src="assetsbs/img/post/post-21.jpg" alt="" /></a>
+												<a href="#"><img class="d-block w-100" src="assetsbs/img/post/post-2.jpg" alt="" /></a>
 											</div>
 											<div class="carousel-item">
 												<a href="#"><img class="d-block w-100" src="assetsbs/img/post/post-3.jpg" alt="" /></a>
@@ -160,11 +159,10 @@
 							<div class="post-left-info">
 								<div class="post-date">
 									<span class="day">21</span>
-									<span class="month">OCT</span>
+									<span class="month">JUNIO</span>
 								</div>
 								<div class="post-likes">
-									<i class="fa fa-heart text-theme"></i>
-									<span class="number">1,292</span>
+									<%--<i class="fa fa-heart text-theme"></i>--%>
 								</div>
 							</div>
 							<!-- end post-left-info -->
@@ -201,183 +199,49 @@
 							</div>
 							<!-- end post-content -->
 						</li>
-						<li>
-							<!-- begin post-left-info -->
-							<div class="post-left-info">
-								<div class="post-date">
-									<span class="day">18</span>
-									<span class="month">OCT</span>
-								</div>
-								<div class="post-likes">
-									<i class="fa fa-heart text-theme"></i>
-									<span class="number">1,743</span>
-								</div>
-							</div>
-							<!-- end post-left-info -->
-							<!-- begin post-content -->
-							<div class="post-content">
-								<!-- begin post-video -->
-								<div class="post-video">
-									<div class="ratio ratio-16x9">
-										<iframe src="https://www.youtube.com/embed/_5aKcpAhTOk" allowfullscreen></iframe>
-									</div>
-								</div>
-								<!-- end post-video -->
-								<!-- begin post-info -->
-								<div class="post-info">
-									<h4 class="post-title">
-										<a href="#">Blog Post Video</a>
-									</h4>
-									<div class="post-by">
-										Posted By <a href="#">admin</a> <span class="divider">|</span> <a href="#">Movies</a>, <a href="#">Minions</a>, <a href="#">Trailer</a> <span class="divider">|</span> 1,292 Comments
-									</div>
-									<div class="post-desc">
-										Praesent maximus malesuada purus, sit amet auctor velit scelerisque nec. Suspendisse eget pellentesque dui, ut egestas orci. 
-										Proin eget massa et magna faucibus pulvinar. Quisque tortor orci, volutpat vel auctor non, varius a augue. Cras non ante arcu. 
-										Phasellus sit amet dolor non est dictum convallis vel eu lectus. 
-										Etiam consectetur non leo at auctor. Proin porttitor tellus arcu, in accumsan eros tincidunt eget[...]
-									</div>
-								</div>
-								<!-- end post-info -->
-								<!-- begin read-btn-container -->
-								<div class="read-btn-container">
-									<a href="#">Read More <i class="fa fa-angle-double-right"></i></a>
-								</div>
-								<!-- end read-btn-container -->
-							</div>
-							<!-- end post-content -->
-						</li>
-						<li>
-							<!-- begin post-left-info -->
-							<div class="post-left-info">
-								<div class="post-date">
-									<span class="day">12</span>
-									<span class="month">OCT</span>
-								</div>
-								<div class="post-likes">
-									<i class="fa fa-heart text-theme"></i>
-									<span class="number">3,673</span>
-								</div>
-							</div>
-							<!-- end post-left-info -->
-							<!-- begin post-content -->
-							<div class="post-content">
-								<!-- begin blockquote -->
-								<blockquote>
-									"What is design? It's where you stand with a foot in two worlds - the world of technology and the world of people and human purposes - and you try to bring the two together."
-								</blockquote>
-								<!-- end blockquote -->
-								<!-- begin post-info -->
-								<div class="post-info">
-									<h4 class="post-title">
-										<a href="#">Blockquote Post</a>
-									</h4>
-									<div class="post-by">
-										Posted By <a href="#">admin</a> <span class="divider">|</span> <a href="#">Animals</a>, <a href="#">Mountain</a>, <a href="#">Natural</a> <span class="divider">|</span> 2 Comments
-									</div>
-									<div class="post-desc">
-										Ut vulputate sem id egestas faucibus. Phasellus volutpat malesuada lacus, eu semper enim hendrerit a. 
-										Mauris vehicula sapien sit amet eros pharetra dignissim. Quisque sed elit hendrerit, tempor sem ut, faucibus massa. 
-										Aliquam rutrum id massa interdum dapibus. Proin augue massa, feugiat eu velit vitae, vulputate ullamcorper turpis. 
-										Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.  [...]
-									</div>
-								</div>
-								<!-- end post-info -->
-								<!-- begin read-btn-container -->
-								<div class="read-btn-container">
-									<a href="#" class="read-btn">Read More <i class="fa fa-angle-double-right"></i></a>
-								</div>
-								<!-- begin read-btn-container -->
-							</div>
-							<!-- end post-content -->
-						</li>
 					</ul>
-					<!-- end post-list -->
-					<div class="section-container">
-						<!-- begin pagination -->
-						<div class="pagination-container">
-							<ul class="pagination justify-content-center">
-								<li class="page-item disabled"><a class="page-link" href="javascript:;">Prev</a></li>
-								<li class="page-item active"><a class="page-link" href="javascript:;">1</a></li>
-								<li class="page-item"><a class="page-link" href="javascript:;">2</a></li>
-								<li class="page-item"><a class="page-link" href="javascript:;">3</a></li>
-								<li class="page-item"><span class="text">...</span></li>
-								<li class="page-item"><a class="page-link" href="javascript:;">1797</a></li>
-								<li class="page-item"><a class="page-link" href="javascript:;">Next</a></li>
-							</ul>
-						</div>
-						<!-- end pagination -->
-					</div>
 				</div>
 				<!-- end col-9 -->
 				<!-- begin col-3 -->
 				<div class="col-lg-3">
-					<!-- begin section-container -->
-					<div class="section-container">
+					<%--<div class="section-container">
 						<div class="input-group sidebar-search">
 							<input type="text" class="form-control" placeholder="Search Our Stories..." />
 							<button class="btn btn-dark" type="button"><i class="fa fa-search"></i></button>
 						</div>
-					</div>
-					<!-- end section-container -->
-					<!-- begin section-container -->
+					</div>--%>
 					<div class="section-container">
-						<h4 class="section-title"><span>Categories</span></h4>
+						<h4 class="section-title"><span>ACTIVIDADES</span></h4>
 						<ul class="sidebar-list">
-							<li><a href="#">Sports (20)</a></li>
-							<li><a href="#">Outdoor Sports (45)</a></li>
-							<li><a href="#">Indoor Sports (1,292)</a></li>
-							<li><a href="#">Video Shooting (12)</a></li>
-							<li><a href="#">Drone (229)</a></li>
-							<li><a href="#">Uncategorized (1,482)</a></li>
+							<li><a href="#">Apoyo productivo</a></li>
+							<li><a href="#">Asesoramiento</a></li>
+							<li><a href="#">Capacitacion tecnica</a></li>
+							<li><a href="#">Estrategias de Mercado</a></li>
 						</ul>
 					</div>
 					<!-- end section-container -->
 					<!-- begin section-container -->
 					<div class="section-container">
-						<h4 class="section-title"><span>Recent Post</span></h4>
+						<h4 class="section-title"><span>ARTESANIA</span></h4>
 						<ul class="sidebar-recent-post">
 							<li>
 								<div class="info">
-									<h4 class="title"><a href="#">Lorem ipsum dolor sit amet.</a></h4>
-									<div class="date">23 December 2024</div>
+									<h4 class="title"><a href="#">Ferias Municipales</a></h4>
+									<div class="date">03 Febrero 2024</div>
 								</div>
 							</li>
 							<li>
 								<div class="info">
-									<h4 class="title"><a href="#">Vestibulum a cursus arcu.</a></h4>
-									<div class="date">16 December 2024</div>
+									<h4 class="title"><a href="#">Ferias Nacionales</a></h4>
+									<div class="date">16 Agosto 2024</div>
 								</div>
 							</li>
 							<li>
 								<div class="info">
-									<h4 class="title"><a href="#">Nullam vel condimentum lectus. </a></h4>
-									<div class="date">7 December 2024</div>
+									<h4 class="title"><a href="#">Curso de Artesania.</a></h4>
+									<div class="date">20 Noviembre 2024</div>
 								</div>
 							</li>
-							<li>
-								<div class="info">
-									<h4 class="title"><a href="#">Proin in dui egestas libero posuere ullamcorper. </a></h4>
-									<div class="date">20 November 2024</div>
-								</div>
-							</li>
-							<li>
-								<div class="info">
-									<h4 class="title"><a href="#">Interdum et malesuada fames ac ante.</a></h4>
-									<div class="date">5 November 2024</div>
-								</div>
-							</li>
-						</ul>
-					</div>
-					<!-- end section-container -->
-					<!-- begin section-container -->
-					<div class="section-container">
-						<h4 class="section-title"><span>Follow Us</span></h4>
-						<ul class="sidebar-social-list">
-							<li><a href="#"><i class="fab fa-facebook"></i></a></li>
-							<li><a href="#"><i class="fab fa-twitter"></i></a></li>
-							<li><a href="#"><i class="fab fa-google-plus"></i></a></li>
-							<li><a href="#"><i class="fab fa-instagram"></i></a></li>
 						</ul>
 					</div>
 					<!-- end section-container -->
@@ -399,14 +263,11 @@
 				<div class="col-md-3 col-6">
 					<!-- begin section-container -->
 					<div class="section-container">
-						<h4 class="footer-title">Categories</h4>
+						<h4 class="footer-title">Actividades</h4>
 						<ul class="categories">
-							<li><a href="#">Sports</a></li>
-							<li><a href="#">Outdoor Sports</a></li>
-							<li><a href="#">Indoor Sports</a></li>
-							<li><a href="#">Video Shooting</a></li>
-							<li><a href="#">Drone</a></li>
-							<li><a href="#">Uncategorized</a></li>
+							<li><a href="#">Ferias</a></li>
+							<li><a href="#">Cursos Arte</a></li>
+							<li><a href="#">Capacitaciones</a></li>
 						</ul>
 					</div>
 					<!-- end section-container -->
@@ -416,15 +277,11 @@
 				<div class="col-md-3 col-6">
 					<!-- begin section-container -->
 					<div class="section-container">
-						<h4 class="footer-title">Archives</h4>
+						<h4 class="footer-title">Fechas</h4>
 						<ul class="archives">
-							<li><a href="#">June 2024</a> <span class="total">(102)</span></li>
-							<li><a href="#">May 2024</a> <span class="total">(46)</span></li>
-							<li><a href="#">April 2024</a> <span class="total">(84)</span></li>
-							<li><a href="#">March 2024</a> <span class="total">(67)</span></li>
-							<li><a href="#">February 2024</a> <span class="total">(99)</span></li>
-							<li><a href="#">January 2024</a> <span class="total">(113)</span></li>
-							<li><a href="#">December 2024</a> <span class="total">(25)</span></li>
+							<li><a href="#">Febrero 2024</a> <span class="total">(13)</span></li>
+							<li><a href="#">Agosto 2024</a> <span class="total">(16)</span></li>
+							<li><a href="#">Octubre 2024</a> <span class="total">(22)</span></li>
 						</ul>
 					</div>
 					<!-- end section-container -->
@@ -434,24 +291,18 @@
 				<div class="col-md-3 col-6">
 					<!-- begin section-container -->
 					<div class="section-container">
-						<h4 class="footer-title">Recent Posts</h4>
+						<h4 class="footer-title">Informacion</h4>
 						<ul class="recent-post">
 							<li>
 								<h4>
-									<a href="#">Nam ut urna hendrerit</a>
-									<span class="time">February 22, 2024</span>
+									<a href="#">Actividades aresanias</a>
+									<span class="time">Asociaciones</span>
 								</h4>
 							</li>
 							<li>
 								<h4>
-									<a href="#">Class aptent taciti sociosqu</a>
-									<span class="time">July 15, 2024</span>
-								</h4>
-							</li>
-							<li>
-								<h4>
-									<a href="#">Donec rhoncus arcu</a>
-									<span class="time">March 21, 2024</span>
+									<a href="#">Capacitaciones</a>
+									<span class="time">Agropecuarios</span>
 								</h4>
 							</li>
 						</ul>
@@ -462,15 +313,12 @@
 				<!-- begin col-3 -->
 				<div class="col-md-3 col-6">
 					<div class="section-container">
-						<h4 class="footer-title">About Color Admin</h4>
+						<h4 class="footer-title">CONTACTOS</h4>
 						<address>
-							<strong>Twitter, Inc.</strong><br />
-							795 Folsom Ave, Suite 600<br />
-							San Francisco, CA 94107<br />
-							P: (123) 456-7890<br />
-							<br />
-							<strong>Full Name</strong><br />
-							<a href="#">first.last@example.com</a>
+							<strong>Direccion</strong><br />
+							barrio final integracion<br />
+							Unidad Municipal<br />
+							Cel: (+591) 73999726<br />
 						</address>
 					</div>
 					<!-- end section-container -->
@@ -485,7 +333,7 @@
 	<div id="footer-copyright" class="footer-copyright">
 		<!-- begin container -->
 		<div class="container d-sm-flex">
-			<span class="copyright d-block">&copy; 2024 SeanTheme All Right Reserved</span>
+			<span class="copyright d-block">&copy; 2024 EMI Todos los derechos Reservados</span>
 			<ul class="social-media-list mt-2 mt-sm-0 flex-1">
 				<li><a href="#"><i class="fab fa-facebook"></i></a></li>
 				<li><a href="#"><i class="fab fa-google-plus"></i></a></li>

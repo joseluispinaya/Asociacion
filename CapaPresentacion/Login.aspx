@@ -66,9 +66,9 @@
                         <div class="mb-20px">
                             <button type="button" id="btnIniciarSesion" class="btn btn-theme d-block w-100 h-45px btn-lg">Iniciar</button>
                         </div>
-                        <div class="text-gray-500">
+                        <%--<div class="text-gray-500">
                             Olvido su contraseña ? <a href="#" class="text-white">Click</a> para Rescuperar.
-                        </div>
+                        </div>--%>
                     </form>
                 </div>
                 <!-- END login-content -->

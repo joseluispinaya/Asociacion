@@ -22,8 +22,8 @@
             </div>
         </div>
         <div class="panel-body">
-            <div class="row row-cols-lg-auto g-3 mb-3">
-                <div class="col-12">
+            <div class="row">
+                <div class="col-xl-12 text-center">
                     <button id="btnNuevoReg" type="button" class="btn btn-lime"><i class="fas fa-pencil me-2"></i> Nuevo Registro</button>
                 </div>
             </div>
