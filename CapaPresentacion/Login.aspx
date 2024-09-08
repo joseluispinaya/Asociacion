@@ -66,9 +66,9 @@
                         <div class="mb-20px">
                             <button type="button" id="btnIniciarSesion" class="btn btn-theme d-block w-100 h-45px btn-lg">Iniciar</button>
                         </div>
-                        <%--<div class="text-gray-500">
-                            Olvido su contraseña ? <a href="#" class="text-white">Click</a> para Rescuperar.
-                        </div>--%>
+                        <div class="text-gray-500">
+                            Olvido su contraseña ? <a href="#" id="btnRecup" class="text-white">Click para Rescuperar.</a>
+                        </div>
                     </form>
                 </div>
                 <!-- END login-content -->
@@ -76,7 +76,37 @@
             <!-- END login-container -->
         </div>
         <!-- END login -->
-
+        <div class="modal fade" id="modal-dialog" tabindex="-1" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Recuperacion de Clave</h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row row-cols-lg-auto g-3 align-items-center">
+                            <div class="col-12">
+                                <input class="form-control" type="text" id="txtCorreoR" placeholder="Ingrese Correo" name="Correo" />
+                            </div>
+                            <div class="col-12">
+                                <button type="button" id="btnEnviarCo" class="btn btn-primary w-100px me-5px">Enviar</button>
+                            </div>
+                            <div class="col-12">
+                                <button type="button" class="btn btn-danger w-100px" data-bs-dismiss="modal">Cancelar</button>
+                            </div>
+                        </div>
+                        <%--<div class="mb-3">
+                            <label class="form-label" for="txtCorreo">Correo</label>
+                            <input class="form-control" type="text" id="txtCorreo" placeholder="Correo" name="Correo" />
+                        </div>--%>
+                    </div>
+                    <%--<div class="modal-footer">
+                        <a href="javascript:;" class="btn btn-white" data-bs-dismiss="modal">Cancelar</a>
+                        <button id="btnEnviarCo" type="button" class="btn btn-success">Enviar</button>
+                    </div>--%>
+                </div>
+            </div>
+        </div>
         <!-- BEGIN login-bg -->
         <div class="login-bg-list clearfix">
             <div class="login-bg-list-item active"><a href="javascript:;" class="login-bg-list-link" data-toggle="login-change-bg" data-img="assets/img/login-bg/login-bg-17.jpg" style="background-image: url(assets/img/login-bg/login-bg-17.jpg)"></a></div>
