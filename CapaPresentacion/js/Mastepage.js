@@ -1,6 +1,7 @@
 ﻿
 
 $(document).ready(function () {
+    obtenerTokkenR();
     oDetalleUsuarioR();
 });
 
@@ -10,6 +11,56 @@ $('#salirs').on('click', function (e) {
     e.preventDefault();
     CerrarSesion();
 });
+
+async function obtenerTokkenR() {
+    await $.ajax({
+        type: "POST",
+        url: "Inicio.aspx/ConsuTok",
+        contentType: 'application/json; charset=utf-8',
+        dataType: "json",
+        success: function (response) {
+            if (response.d.estado) {
+                // Si el token almacenado en sessionStorage no coincide con el obtenido del servidor
+                if (sessionStorage.getItem('tokenSesion') !== response.d.valor) {
+                    CerrarSesion();
+                }
+            } else {
+                window.location.href = 'Default.aspx';
+            }
+        },
+        error: function (xhr, ajaxOptions, thrownError) {
+            console.log(xhr.status + " \n" + xhr.responseText, "\n" + thrownError);
+        }
+    });
+}
+
+
+function obtenerTokkenRaa() {
+
+    var tokenSesion = sessionStorage.getItem('tokenSesion');
+
+    $.ajax({
+        type: "POST",
+        url: "Inicio.aspx/ConsuTok",
+        data: {},
+        contentType: 'application/json; charset=utf-8',
+        dataType: "json",
+        error: function (xhr, ajaxOptions, thrownError) {
+            console.log(xhr.status + " \n" + xhr.responseText, "\n" + thrownError);
+        },
+        success: function (response) {
+            if (response.d.estado) {
+                //sessionStorage.setItem('tokenSesion', response.d.valor);
+                if (tokenSesion !== response.d.valor) {
+                    CerrarSesion();
+                }
+            } else {
+                //redirectToLogin();
+                window.location.href = 'Default.aspx';
+            }
+        }
+    });
+}
 
 function oDetalleUsuarioR() {
     $.ajax({
@@ -89,6 +140,8 @@ function CerrarSesion() {
         },
         success: function (response) {
             if (response.d.estado) {
+                //sessionStorage.removeItem('usuario');
+                sessionStorage.clear();
                 //window.location.href = 'Default.aspx';
                 // Limpiar el historial antes de redirigir
                 window.location.replace('Default.aspx');

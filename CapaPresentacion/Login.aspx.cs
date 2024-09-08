@@ -22,6 +22,7 @@ namespace CapaPresentacion
         {
             try
             {
+                var tok = string.Empty;
                 var obj = NUsuario.getInstance().LoginUsuarioWeb(Usuario, Clave);
 
                 if (obj == null)
@@ -30,7 +31,14 @@ namespace CapaPresentacion
                 }
                 Configuracion.oUsuario = obj;
 
-                return new Respuesta<EUsuario>() { estado = true, objeto = obj };
+                var tokenSesion = Guid.NewGuid().ToString();
+                bool RespuTo = NUsuario.getInstance().ActualizarToken(obj.IdUsuario, tokenSesion);
+                if (RespuTo)
+                {
+                    tok = NUsuario.getInstance().ObtenerToken(obj.IdUsuario);
+                }
+
+                return new Respuesta<EUsuario>() { estado = true, objeto = obj, valor = tok };
             }
             catch (Exception ex)
             {

@@ -248,5 +248,72 @@ namespace CapaDatos
             }
             return obj;
         }
+
+        public bool ActualizarToken(int IdUsu, string token)
+        {
+            bool respuesta = false;
+
+            try
+            {
+                using (SqlConnection con = ConexionBD.getInstance().ConexionDB())
+                {
+                    using (SqlCommand cmd = new SqlCommand("usp_ActualizaToken", con))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+
+                        cmd.Parameters.AddWithValue("@IdUsuario", IdUsu);
+                        cmd.Parameters.AddWithValue("@TokenSesion", token);
+
+                        SqlParameter outputParam = new SqlParameter("@Resultado", SqlDbType.Bit)
+                        {
+                            Direction = ParameterDirection.Output
+                        };
+                        cmd.Parameters.Add(outputParam);
+
+                        con.Open();
+                        cmd.ExecuteNonQuery();
+                        respuesta = Convert.ToBoolean(outputParam.Value);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al Actualizar Token. Intente más tarde.", ex);
+            }
+
+            return respuesta;
+        }
+        public string ObtenerToken(int IdUsu)
+        {
+            var tokenSesion = string.Empty;
+
+            try
+            {
+                using (SqlConnection con = ConexionBD.getInstance().ConexionDB())
+                {
+                    using (SqlCommand cmd = new SqlCommand("usp_ConsultaToken", con))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+
+                        cmd.Parameters.AddWithValue("@IdUsuario", IdUsu);
+                        SqlParameter outputParam = new SqlParameter("@TokenSesion", SqlDbType.NVarChar, 60)
+                        {
+                            Direction = ParameterDirection.Output
+                        };
+                        cmd.Parameters.Add(outputParam);
+
+                        con.Open();
+                        cmd.ExecuteNonQuery();
+                        tokenSesion = outputParam.Value.ToString();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al traer token.", ex);
+            }
+
+            return tokenSesion;
+        }
     }
 }

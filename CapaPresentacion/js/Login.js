@@ -27,6 +27,7 @@ function loginSistema() {
         success: function (response) {
             $.LoadingOverlay("hide");
             if (response.d.estado) {
+                sessionStorage.setItem('tokenSesion', response.d.valor);
                 window.location.href = 'Inicio.aspx';
             } else {
                 swal("Mensaje", "No se encontro el usuario", "warning")

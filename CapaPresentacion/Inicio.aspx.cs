@@ -19,6 +19,38 @@ namespace CapaPresentacion
         }
 
         [WebMethod]
+        public static Respuesta<string> ConsuTok()
+        {
+            try
+            {
+                if (Configuracion.oUsuario == null)
+                {
+                    return new Respuesta<string>() { estado = false };
+                }
+                int IdUsuario = Configuracion.oUsuario.IdUsuario;
+                var tokenSesion = NUsuario.getInstance().ObtenerToken(IdUsuario);
+                if (tokenSesion == "Error")
+                {
+                    // Ocurrió un error durante la ejecución
+                    return new Respuesta<string>() { estado = false };
+                }
+                //else if (tokenSesion == "Vacio")
+                //{
+                //    // El TokenSesion es NULL o está vacío
+                //}
+                else
+                {
+                    // Se obtuvo el token exitosamente
+                    return new Respuesta<string>() { estado = true, valor = tokenSesion };
+                }
+            }
+            catch (Exception)
+            {
+                return new Respuesta<string>() { estado = false };
+            }
+        }
+
+        [WebMethod]
         public static Respuesta<EUsuario> ObtenerDatos()
         {
             try

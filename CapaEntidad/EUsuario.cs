@@ -18,6 +18,8 @@ namespace CapaEntidad
         public int IdRol { get; set; }
         public bool Estado { get; set; }
         public ERol oRol { get; set; }
+        public string TokenSesion { get; set; }
+
         public string ImageFull => string.IsNullOrEmpty(Foto)
             ? $"/Imagenes/sinimagen.png"
             : Foto;

@@ -45,5 +45,13 @@ namespace CapaNegocio
         {
             return DUsuario.getInstance().LoginUsuarioWeb(Usuario, Clave);
         }
+        public bool ActualizarToken(int IdUsu, string token)
+        {
+            return DUsuario.getInstance().ActualizarToken(IdUsu, token);
+        }
+        public string ObtenerToken(int IdUsu)
+        {
+            return DUsuario.getInstance().ObtenerToken(IdUsu);
+        }
     }
 }
