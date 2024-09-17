@@ -37,6 +37,48 @@ namespace CapaDatos
             {
                 using (SqlConnection con = ConexionBD.getInstance().ConexionDB())
                 {
+                    using (SqlCommand cmd = new SqlCommand("usp_RegistrarUsuarioNue", con))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+
+                        cmd.Parameters.AddWithValue("@NroCI", oUsuario.NroCI);
+                        cmd.Parameters.AddWithValue("@Nombres", oUsuario.Nombres);
+                        cmd.Parameters.AddWithValue("@Apellidos", oUsuario.Apellidos);
+                        cmd.Parameters.AddWithValue("@Correo", oUsuario.Correo);
+                        cmd.Parameters.AddWithValue("@Clave", oUsuario.Clave);
+                        cmd.Parameters.AddWithValue("@Foto", oUsuario.Foto);
+                        cmd.Parameters.AddWithValue("@IdRol", oUsuario.IdRol);
+                        //agregado para sesion
+                        cmd.Parameters.AddWithValue("@TokenSesion", oUsuario.TokenSesion);
+
+                        SqlParameter outputParam = new SqlParameter("@Resultado", SqlDbType.Bit)
+                        {
+                            Direction = ParameterDirection.Output
+                        };
+                        cmd.Parameters.Add(outputParam);
+
+                        con.Open();
+                        cmd.ExecuteNonQuery();
+                        respuesta = Convert.ToBoolean(outputParam.Value);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al registrar. Intente más tarde.", ex);
+            }
+
+            return respuesta;
+        }
+
+        public bool RegistrarUsuarioOri(EUsuario oUsuario)
+        {
+            bool respuesta = false;
+
+            try
+            {
+                using (SqlConnection con = ConexionBD.getInstance().ConexionDB())
+                {
                     using (SqlCommand cmd = new SqlCommand("usp_RegistrarUsuario", con))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
@@ -48,6 +90,8 @@ namespace CapaDatos
                         cmd.Parameters.AddWithValue("@Clave", oUsuario.Clave);
                         cmd.Parameters.AddWithValue("@Foto", oUsuario.Foto);
                         cmd.Parameters.AddWithValue("@IdRol", oUsuario.IdRol);
+                        //agregado para sesion
+                        cmd.Parameters.AddWithValue("@TokenSesion", oUsuario.TokenSesion);
 
                         SqlParameter outputParam = new SqlParameter("@Resultado", SqlDbType.Bit)
                         {

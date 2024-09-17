@@ -62,6 +62,7 @@ namespace CapaPresentacion
                     imageUrl = Utilidadesj.getInstance().UploadPhotoA(stream, folder);
                 }
 
+                //se agrego TokenSesion
                 EUsuario obj = new EUsuario
                 {
                     NroCI = oUsuario.NroCI,
@@ -70,7 +71,8 @@ namespace CapaPresentacion
                     Correo = oUsuario.Correo,
                     Clave = oUsuario.Clave,
                     Foto = imageUrl,
-                    IdRol = oUsuario.IdRol
+                    IdRol = oUsuario.IdRol,
+                    TokenSesion = Guid.NewGuid().ToString()
                 };
                 bool Respuesta = NUsuario.getInstance().RegistrarUsuario(obj);
 

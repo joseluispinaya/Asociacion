@@ -91,7 +91,7 @@
                         <table id="tbTotales" class="table table-invoice">
                             <thead>
                                 <tr>
-                                    <th>Fechas</th>
+                                    <th>Motivo</th>
                                     <th class="text-end">Totales</th>
                                 </tr>
                             </thead>

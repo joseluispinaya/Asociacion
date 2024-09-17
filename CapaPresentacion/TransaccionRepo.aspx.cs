@@ -18,7 +18,7 @@ namespace CapaPresentacion
 
         }
 
-        //PARA SERVIDOR 
+        //PARA SERVIDOR usado
         [WebMethod]
         public static Respuesta<List<ETransaccion>> ListTtansaccionesIasE(string fechainicio, string fechafin, int IdAsoci)
         {
@@ -144,6 +144,7 @@ namespace CapaPresentacion
             }
         }
 
+        //usando
         [WebMethod]
         public static Respuesta<List<ResumenTransa>> ListTtansaccioId(int IdAsoci)
         {
@@ -177,7 +178,102 @@ namespace CapaPresentacion
             }
 
         }
+        //nuevo
+        [WebMethod]
+        public static Respuesta<List<ResumenTransa>> ListTtansaccioIdNuevo(int IdAsoci)
+        {
 
+            try
+            {
+                List<ResumenTransa> oListaGrupo = NTransaccion.getInstance().ObtenerRepoIdAso(IdAsoci);
+                if (oListaGrupo.Count > 0)
+                {
+                    List<ETransaccion> Lista = NTransaccion.getInstance().ObtenerTransaccionesId(IdAsoci);
+
+                    DateTime primerafecha = Lista.Min(transaccion => transaccion.FechaTransaccion.Date);
+                    DateTime ultimafecha = Lista.Max(transaccion => transaccion.FechaTransaccion.Date);
+
+                    string periodof = ObtenerPeriodoGroup(primerafecha, ultimafecha);
+
+                    return new Respuesta<List<ResumenTransa>>() { estado = true, valor = periodof, objeto = oListaGrupo };
+                }
+                else
+                {
+                    return new Respuesta<List<ResumenTransa>>() { estado = false, objeto = null };
+                }
+
+            }
+            catch (Exception ex)
+            {
+                return new Respuesta<List<ResumenTransa>>() { estado = false, valor = "Error al obtener la lista: " + ex.Message, objeto = null };
+                //throw;
+            }
+
+        }
+
+        [WebMethod]
+        public static Respuesta<List<ResumenTransa>> ListTtansaccioFechNue(string fechainicio, string fechafin)
+        {
+            DateTime desde, hasta;
+
+            try
+            {
+                // Intenta convertir las cadenas de fecha en objetos DateTime ret dd mm yy
+                desde = DateTime.ParseExact(fechainicio, "MM/dd/yyyy", CultureInfo.InvariantCulture);
+                hasta = DateTime.ParseExact(fechafin, "MM/dd/yyyy", CultureInfo.InvariantCulture);
+
+                // Convierte las fechas al formato deseado 'yyyy/MM/dd'
+                string periodof = ObtenerPeriodoGroup(desde, hasta);
+
+                //string totmil = "Total:  ";
+                List<ResumenTransa> oListaGrupo = NTransaccion.getInstance().ObtenerRepoFechas(desde, hasta);
+                return new Respuesta<List<ResumenTransa>>() { estado = true, valor = periodof, objeto = oListaGrupo };
+                //return new Respuesta<List<ResumenTransa>>() { Estado = true, Data = oListaGrupo };
+            }
+            catch (Exception ex)
+            {
+                // Manejar errores de conversión de fecha
+                return new Respuesta<List<ResumenTransa>>() { estado = false, valor = "Error al obtener la lista: " + ex.Message, objeto = null };
+            }
+        }
+
+        public static string ObtenerPeriodoGroup(DateTime fechainicio, DateTime fechafin)
+        {
+            int totalDays = Convert.ToInt32((fechafin - fechainicio).Days);
+
+            string resultado = string.Empty;
+
+            if (totalDays <= 7)
+            {
+                // Muestra solo el primer y el último día
+                //resultado = $"{fechainicio.ToString("dd-MMM-yyyy")} - {fechafin.ToString("dd-MMM-yyyy")}";
+                resultado = $"{fechainicio:dd-MMM-yyyy} - {fechafin:dd-MMM-yyyy}";
+            }
+            else if (totalDays <= 30)
+            {
+                // Obtener la primera y última semana
+                var semanaInicio = CultureInfo.CurrentCulture.Calendar.GetWeekOfYear(fechainicio, CalendarWeekRule.FirstDay, DayOfWeek.Monday);
+                var semanaFin = CultureInfo.CurrentCulture.Calendar.GetWeekOfYear(fechafin, CalendarWeekRule.FirstDay, DayOfWeek.Monday);
+
+                resultado = $"Semana{semanaInicio} - Semana{semanaFin}";
+            }
+            else if (totalDays <= 365)
+            {
+                // Muestra solo el primer y el último mes
+                resultado = $"{fechainicio:MMM-yyyy} - {fechafin:MMM-yyyy}";
+            }
+            else
+            {
+                // Muestra solo el primer y el último año
+                resultado = $"{fechainicio:yyyy} - {fechafin:yyyy}";
+            }
+
+            return resultado;
+        }
+        //fin nuevo
+
+
+        //usando
         [WebMethod]
         public static Respuesta<List<ResumenTransa>> ListTtansaccioFech(string fechainicio, string fechafin)
         {
@@ -202,19 +298,6 @@ namespace CapaPresentacion
                         return new Respuesta<List<ResumenTransa>>() { estado = true, valor = totmil, objeto = oListaGrupo };
                     }
 
-                    //if (DateTime.TryParse(fechainicio, out DateTime desde) && DateTime.TryParse(fechafin, out DateTime hasta))
-                    //{
-                    //    Lista = Lista
-                    //        .Where(t => t.FechaTransaccion.Date >= desde && t.FechaTransaccion.Date <= hasta)
-                    //        .ToList();
-
-                    //    List<ResumenTransa> oListaGrupo = ObtenerGroup(desde, hasta, Lista);
-
-                    //    float totalMonto = oListaGrupo?.Sum(pago => pago.TotalAmount) ?? 0;
-                    //    string totmil = "Total:  " + totalMonto.ToString("F2") + " Bs";
-
-                    //    return new Respuesta<List<ResumenTransa>>() { estado = true, valor = totmil, objeto = oListaGrupo };
-                    //}
                     else
                     {
                         return new Respuesta<List<ResumenTransa>>() { estado = false, objeto = null };
@@ -236,6 +319,8 @@ namespace CapaPresentacion
 
         }
 
+
+        //usando antes
         public static List<ResumenTransa> ObtenerGroup(DateTime fechainicio, DateTime fechafin, List<ETransaccion> list)
         {
             string feservini = fechainicio.ToString("yyyy/MM/dd");

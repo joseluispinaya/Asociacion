@@ -42,5 +42,15 @@ namespace CapaNegocio
         {
             return DTransaccion.getInstance().ObtenerTransaccionesId(idAso);
         }
+
+        public List<ResumenTransa> ObtenerRepoFechas(DateTime FechaInicio, DateTime FechaFin)
+        {
+            return DTransaccion.getInstance().ObtenerRepoFechas(FechaInicio, FechaFin);
+        }
+
+        public List<ResumenTransa> ObtenerRepoIdAso(int idAso)
+        {
+            return DTransaccion.getInstance().ObtenerRepoIdAso(idAso);
+        }
     }
 }

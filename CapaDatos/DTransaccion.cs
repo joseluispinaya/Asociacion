@@ -194,5 +194,84 @@ namespace CapaDatos
 
             return rptListaUsuario;
         }
+
+        public List<ResumenTransa> ObtenerRepoFechas(DateTime FechaInicio, DateTime FechaFin)
+        {
+            List<ResumenTransa> rptListaUsuario = new List<ResumenTransa>();
+
+            try
+            {
+                using (SqlConnection con = ConexionBD.getInstance().ConexionDB())
+                {
+                    using (SqlCommand comando = new SqlCommand("usp_TransacciRepoFechas", con))
+                    {
+                        comando.Parameters.AddWithValue("@FechaInicio", FechaInicio);
+                        comando.Parameters.AddWithValue("@FechaFin", FechaFin);
+                        comando.CommandType = CommandType.StoredProcedure;
+                        con.Open();
+
+                        using (SqlDataReader dr = comando.ExecuteReader())
+                        {
+                            while (dr.Read())
+                            {
+                                rptListaUsuario.Add(new ResumenTransa()
+                                {
+                                    //Month muestra Tipo Transaccion
+                                    Month = dr["Tipo"].ToString(),
+                                    //TotalAmount muestra la suma de Total de Transaccion
+                                    TotalAmount = float.Parse(dr["TotalSumado"].ToString())
+                                });
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                //throw ex;
+                throw new Exception("Error al obtener las reporte ventas", ex);
+            }
+
+            return rptListaUsuario;
+        }
+
+        public List<ResumenTransa> ObtenerRepoIdAso(int idAso)
+        {
+            List<ResumenTransa> rptListaUsuario = new List<ResumenTransa>();
+
+            try
+            {
+                using (SqlConnection con = ConexionBD.getInstance().ConexionDB())
+                {
+                    using (SqlCommand comando = new SqlCommand("usp_TransacciRepoFechasId", con))
+                    {
+                        comando.Parameters.AddWithValue("@Idasoci", idAso);
+                        comando.CommandType = CommandType.StoredProcedure;
+                        con.Open();
+
+                        using (SqlDataReader dr = comando.ExecuteReader())
+                        {
+                            while (dr.Read())
+                            {
+                                rptListaUsuario.Add(new ResumenTransa()
+                                {
+                                    //Month muestra Tipo Transaccion
+                                    Month = dr["Tipo"].ToString(),
+                                    //TotalAmount muestra la suma de Total de Transaccion
+                                    TotalAmount = float.Parse(dr["TotalSumado"].ToString())
+                                });
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                //throw ex;
+                throw new Exception("Error al obtener las reporte ventas", ex);
+            }
+
+            return rptListaUsuario;
+        }
     }
 }

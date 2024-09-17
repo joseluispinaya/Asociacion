@@ -61,33 +61,47 @@
 
             <hr />
 
+
+
             <div class="row">
                 <div class="col-xl-8">
-                    <table id="tbReporteT" class="table table-striped table-bordered align-middle text-nowrap" cellspacing="0" width="100%">
+                    <div class="text-center">
+                        <p>Detalle Consulta</p>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <table id="tbReporteT" class="table table-striped table-bordered align-middle text-nowrap" cellspacing="0" width="100%">
                         <thead>
                             <tr>
                                 <th>Id</th>
                                 <th>Fecha Tra</th>
                                 <th>Asociacion</th>
-                                <th>Transaccion</th>
+                                <th>Motivo</th>
+                                <th>Detalle transaccion</th>
                                 <th>Monto</th>
-                                <%--<th></th>--%>
                             </tr>
                         </thead>
                         <tbody>
                         </tbody>
                     </table>
+                        </div>
+                    </div>
+                    
                 </div>
 
                 <div class="col-xl-4">
-                    <p>Total Agrupados</p>
+                    <div class="text-center">
+                        <p id="lbltott">Periodo</p>
+                    </div>
+                    
                     <div class="row">
                         <div class="col-xl-12">
                             <table id="tbTotales" class="table table-striped table-bordered align-middle text-nowrap" cellspacing="0" width="100%">
                                 <thead>
                                     <tr>
-                                        <th>Fechas</th>
-                                        <th>Total Transaccion</th>
+                                        <th>Motivo</th>
+                                        <th>Monto Total</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -95,18 +109,17 @@
                             </table>
                         </div>
                     </div>
-                    <div class="row">
+                    <%--<div class="row">
                         <div class="col-xl-4">
                             <p>Total Agrupados</p>
                         </div>
                         <div class="col-xl-8">
                             <div class="text-right">
                                 <label class="form-label" for="drttt" id="lbltott">Seleccione</label>
-                                <%--<input id="txttotg" readonly="readonly" type="text" class="form-control" value="0" />--%>
                             </div>
                         </div>
 
-                    </div>
+                    </div>--%>
                 </div>
             </div>
             

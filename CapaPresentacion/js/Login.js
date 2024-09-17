@@ -1,11 +1,11 @@
 ﻿
 $('#btnIniciarSesion').on('click', function () {
 
-    //loginUsuario();
-    if ($("#emailAddress").val().trim() === "") {
-        swal("Mensaje", "Ingrese su Correo Electronico", "warning");
+    if ($("#emailAddress").val().trim() === "" || $("#password").val().trim() === "") {
+        swal("Mensaje", "Complete los datos para iniciar sesion", "warning");
         return;
     }
+
     loginSistema();
 })
 
@@ -28,9 +28,10 @@ function loginSistema() {
             $.LoadingOverlay("hide");
             if (response.d.estado) {
                 sessionStorage.setItem('tokenSesion', response.d.valor);
+                sessionStorage.setItem('usuarioA', JSON.stringify(response.d.objeto));
                 window.location.href = 'Inicio.aspx';
             } else {
-                swal("Mensaje", "No se encontro el usuario", "warning")
+                swal("Mensaje", "Contraseña o usuario incorrecto", "warning")
             }
         },
         error: function (xhr, ajaxOptions, thrownError) {

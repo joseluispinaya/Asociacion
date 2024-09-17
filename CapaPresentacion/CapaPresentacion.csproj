@@ -852,6 +852,7 @@
     <Content Include="js\InventarioA.js" />
     <Content Include="js\Login.js" />
     <Content Include="js\Mastepage.js" />
+    <Content Include="js\MasterOrig.js" />
     <Content Include="js\PresidenteA.js" />
     <Content Include="js\ReportePdfTra.js" />
     <Content Include="js\TransaccionA.js" />

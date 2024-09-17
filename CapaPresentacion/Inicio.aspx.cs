@@ -19,30 +19,13 @@ namespace CapaPresentacion
         }
 
         [WebMethod]
-        public static Respuesta<string> ConsuTok()
+        public static Respuesta<string> ObtenerToken(int IdUsu)
         {
             try
             {
-                if (Configuracion.oUsuario == null)
-                {
-                    return new Respuesta<string>() { estado = false };
-                }
-                int IdUsuario = Configuracion.oUsuario.IdUsuario;
-                var tokenSesion = NUsuario.getInstance().ObtenerToken(IdUsuario);
-                if (tokenSesion == "Error")
-                {
-                    // Ocurrió un error durante la ejecución
-                    return new Respuesta<string>() { estado = false };
-                }
-                //else if (tokenSesion == "Vacio")
-                //{
-                //    // El TokenSesion es NULL o está vacío
-                //}
-                else
-                {
-                    // Se obtuvo el token exitosamente
-                    return new Respuesta<string>() { estado = true, valor = tokenSesion };
-                }
+                //int IdUsuario = Configuracion.oUsuario.IdUsuario;
+                var tokenSesion = NUsuario.getInstance().ObtenerToken(IdUsu);
+                return new Respuesta<string>() { estado = true, valor = tokenSesion };
             }
             catch (Exception)
             {
@@ -50,6 +33,7 @@ namespace CapaPresentacion
             }
         }
 
+        //sin usar
         [WebMethod]
         public static Respuesta<EUsuario> ObtenerDatos()
         {
@@ -73,7 +57,7 @@ namespace CapaPresentacion
         [WebMethod]
         public static Respuesta<bool> CerrarSesion()
         {
-            Configuracion.oUsuario = null;
+            //Configuracion.oUsuario = null;
 
             return new Respuesta<bool>() { estado = true };
 

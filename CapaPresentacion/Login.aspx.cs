@@ -29,7 +29,7 @@ namespace CapaPresentacion
                 {
                     return new Respuesta<EUsuario>() { estado = false };
                 }
-                Configuracion.oUsuario = obj;
+                //Configuracion.oUsuario = obj;
 
                 var tokenSesion = Guid.NewGuid().ToString();
                 bool RespuTo = NUsuario.getInstance().ActualizarToken(obj.IdUsuario, tokenSesion);

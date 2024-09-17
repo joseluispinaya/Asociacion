@@ -128,6 +128,7 @@ function CargarDatos(request) {
             { "data": "FechaTransacadena" },
             { "data": "oAsociacion.Nombre" },
             { "data": "oTipoTransaccion.Tipo" },
+            { "data": "Descripcion" },
             { "data": "TotalCadenaUn" }
         ],
         "dom": "rt",
@@ -150,7 +151,7 @@ function CargarDatosGroup() {
     tablegrou = $("#tbTotales").DataTable({
         responsive: true,
         "ajax": {
-            "url": 'TransaccionRepo.aspx/ListTtansaccioId',
+            "url": 'TransaccionRepo.aspx/ListTtansaccioIdNuevo',
             "type": "POST",
             "contentType": "application/json; charset=utf-8",
             "dataType": "json",
@@ -160,10 +161,10 @@ function CargarDatosGroup() {
             "dataSrc": function (json) {
                 if (json.d.estado) {
                     // Asignar el valor total a la etiqueta h4
-                    $("#lbltott").text(json.d.valor);
+                    $("#lbltott").text("Fechas: " + json.d.valor);
                     return json.d.objeto;
                 } else {
-                    $("#lbltott").text("0 Bs");
+                    $("#lbltott").text("Periodo");
                     return [];
                 }
             },
@@ -199,7 +200,7 @@ function CargarDatosGroupFech() {
     tablegrou = $("#tbTotales").DataTable({
         responsive: true,
         "ajax": {
-            "url": 'TransaccionRepo.aspx/ListTtansaccioFech',
+            "url": 'TransaccionRepo.aspx/ListTtansaccioFechNue',
             "type": "POST",
             "contentType": "application/json; charset=utf-8",
             "dataType": "json",
@@ -209,10 +210,10 @@ function CargarDatosGroupFech() {
             "dataSrc": function (json) {
                 if (json.d.estado) {
                     // Asignar el valor total a la etiqueta h4
-                    $("#lbltott").text(json.d.valor);
+                    $("#lbltott").text("Fechas: " + json.d.valor);
                     return json.d.objeto;
                 } else {
-                    $("#lbltott").text("0 Bs");
+                    $("#lbltott").text("Periodo");
                     return [];
                 }
             },
@@ -266,14 +267,6 @@ $('#btnBuscar').on('click', function () {
         }
     }
 
-    //var seleas = $("#cboAsoci").val()
-    //var fechaIni = $("#txtFechaInicio").val()
-    //var fechaFin = $("#txtFechaFin").val()
-
-    //console.log("selec: ", seleas);
-    //console.log("fechaini: ", fechaIni);
-    //console.log("fechaFini: ", fechaFin);
-
     var request = {
         fechainicio: $("#txtFechaInicio").val(),
         fechafin: $("#txtFechaFin").val(),
@@ -282,7 +275,7 @@ $('#btnBuscar').on('click', function () {
 
     CargarDatos(request);
 
-    if ($("#txtFechaInicio").val().trim() == "" || $("#txtFechaFin").val().trim() == "") {
+    if ($("#txtFechaInicio").val().trim() === "" || $("#txtFechaFin").val().trim() === "") {
 
         CargarDatosGroup();
     } else {

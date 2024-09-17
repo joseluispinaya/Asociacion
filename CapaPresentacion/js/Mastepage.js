@@ -1,89 +1,62 @@
 ﻿
 
-$(document).ready(function () {
-    obtenerTokkenR();
-    oDetalleUsuarioR();
+$(document).ready(async function () {
+
+    const tokenSesion = sessionStorage.getItem('tokenSesion');
+    const usuarioL = sessionStorage.getItem('usuarioA');
+
+    if (tokenSesion && usuarioL) {
+        // Parsear el usuario almacenado
+        const usuParaenviar = JSON.parse(usuarioL);
+        const idUsu = usuParaenviar.IdUsuario; // Obtener IdUsuario
+
+        // Llamar a obtenerDetalleUsuarioR pasando el IdUsuario
+        await oDetalleUsuarioR(idUsu);
+    } else {
+        // Si no hay sesión, redirigir al login
+        window.location.href = 'Login.aspx';
+    }
 });
 
 
-//etiqueta <a> no es boton
-$('#salirs').on('click', function (e) {
+$('#salirs').on('click', async function (e) {
     e.preventDefault();
-    CerrarSesion();
+    await CerrarSesion();
 });
 
-async function obtenerTokkenR() {
-    await $.ajax({
-        type: "POST",
-        url: "Inicio.aspx/ConsuTok",
-        contentType: 'application/json; charset=utf-8',
-        dataType: "json",
-        success: function (response) {
-            if (response.d.estado) {
-                // Si el token almacenado en sessionStorage no coincide con el obtenido del servidor
-                if (sessionStorage.getItem('tokenSesion') !== response.d.valor) {
-                    CerrarSesion();
-                }
+
+async function oDetalleUsuarioR(idUsu) {
+    try {
+        const response = await $.ajax({
+            type: "POST",
+            url: "Inicio.aspx/ObtenerToken",
+            data: JSON.stringify({ IdUsu: idUsu }),
+            contentType: 'application/json; charset=utf-8',
+            dataType: "json",
+        });
+
+        if (response.d.estado) {
+            const tokenSession = sessionStorage.getItem('tokenSesion');
+            if (tokenSession !== response.d.valor) {
+                await CerrarSesion();
             } else {
-                window.location.href = 'Default.aspx';
+                const usuario = JSON.parse(sessionStorage.getItem('usuarioA'));
+                updateUserProfile(usuario);
+                updateUserRoleUI(usuario.IdRol);
             }
-        },
-        error: function (xhr, ajaxOptions, thrownError) {
-            console.log(xhr.status + " \n" + xhr.responseText, "\n" + thrownError);
+        } else {
+            redirectToLogin();
         }
-    });
+    } catch (error) {
+        console.error('Error al obtener los datos del usuario:', error);
+        window.location.href = 'Login.aspx';
+        //handleAjaxError(error);
+    }
 }
 
-
-function obtenerTokkenRaa() {
-
-    var tokenSesion = sessionStorage.getItem('tokenSesion');
-
-    $.ajax({
-        type: "POST",
-        url: "Inicio.aspx/ConsuTok",
-        data: {},
-        contentType: 'application/json; charset=utf-8',
-        dataType: "json",
-        error: function (xhr, ajaxOptions, thrownError) {
-            console.log(xhr.status + " \n" + xhr.responseText, "\n" + thrownError);
-        },
-        success: function (response) {
-            if (response.d.estado) {
-                //sessionStorage.setItem('tokenSesion', response.d.valor);
-                if (tokenSesion !== response.d.valor) {
-                    CerrarSesion();
-                }
-            } else {
-                //redirectToLogin();
-                window.location.href = 'Default.aspx';
-            }
-        }
-    });
-}
-
-function oDetalleUsuarioR() {
-    $.ajax({
-        type: "POST",
-        url: "Inicio.aspx/ObtenerDatos",
-        data: {},
-        contentType: 'application/json; charset=utf-8',
-        dataType: "json",
-        error: handleAjaxError,
-        success: function (response) {
-            if (response.d.estado) {
-                updateUserProfile(response.d.objeto);
-                updateUserRoleUI(response.d.objeto.IdRol);
-            } else {
-                redirectToLogin();
-            }
-        }
-    });
-}
-
-function handleAjaxError(xhr, ajaxOptions, thrownError) {
-    console.log(xhr.status + " \n" + xhr.responseText, "\n" + thrownError);
-    // Aquí podrías añadir más lógica de manejo de errores, como mostrar un mensaje en la UI.
+function handleAjaxError(error) {
+    console.error("Error:", error.status + " \n" + error.responseText + "\n" + error.thrownError);
+    // Puedes mostrar un mensaje en la UI si lo deseas
 }
 
 function updateUserProfile(user) {
@@ -125,71 +98,23 @@ function showTechnicianUI() {
 }
 
 function redirectToLogin() {
-    window.location.href = 'Default.aspx';
+    window.location.href = 'Login.aspx';
 }
 
-function CerrarSesion() {
+async function CerrarSesion() {
+    try {
+        const response = await $.ajax({
+            type: "POST",
+            url: "Inicio.aspx/CerrarSesion",
+            dataType: "json",
+            contentType: 'application/json; charset=utf-8',
+        });
 
-    $.ajax({
-        type: "POST",
-        url: "Inicio.aspx/CerrarSesion",
-        dataType: "json",
-        contentType: 'application/json; charset=utf-8',
-        error: function (xhr, ajaxOptions, thrownError) {
-            console.log(xhr.status + " \n" + xhr.responseText, "\n" + thrownError);
-        },
-        success: function (response) {
-            if (response.d.estado) {
-                //sessionStorage.removeItem('usuario');
-                sessionStorage.clear();
-                //window.location.href = 'Default.aspx';
-                // Limpiar el historial antes de redirigir
-                window.location.replace('Default.aspx');
-            }
+        if (response.d.estado) {
+            sessionStorage.clear();
+            window.location.replace('Login.aspx');
         }
-    });
+    } catch (error) {
+        handleAjaxError(error);
+    }
 }
-
-function oDetalleUsuarioRzz() {
-
-    $.ajax({
-        type: "POST",
-        url: "Inicio.aspx/ObtenerDatos",
-        data: {},
-        contentType: 'application/json; charset=utf-8',
-        dataType: "json",
-        error: function (xhr, ajaxOptions, thrownError) {
-            console.log(xhr.status + " \n" + xhr.responseText, "\n" + thrownError);
-        },
-        success: function (response) {
-
-            if (response.d.estado) {
-
-                $(".ingg").attr("src", response.d.objeto.ImageFull);
-                $(".flex-grow-1").text(response.d.objeto.oRol.NomRol);
-                $(".rolnombree").text(response.d.objeto.Apellidos);
-
-                if (response.d.objeto.IdRol === 1) {
-                    $('#contad').hide();
-                    $('#tecnico').hide();
-                    $('#adminis').show();
-                } else if (response.d.objeto.IdRol === 2) {
-                    $('#adminis').hide();
-                    $('#tecnico').hide();
-                    $('#contad').show();
-                } else {
-                    $('#adminis').hide();
-                    $('#contad').hide();
-                    $('#tecnico').show();
-                }
-
-            } else {
-                window.location.href = 'Default.aspx';
-            }
-
-        }
-    });
-}
-
-
-

@@ -105,7 +105,7 @@ function CargarDatosGroup($IdAsoci) {
 
     $.ajax({
         type: "POST",
-        url: "TransaccionRepo.aspx/ListTtansaccioId",
+        url: "TransaccionRepo.aspx/ListTtansaccioIdNuevo",
         data: JSON.stringify(request),
         contentType: "application/json; charset=utf-8",
         dataType: "json",
@@ -123,7 +123,8 @@ function CargarDatosGroup($IdAsoci) {
                     )
                 });
 
-                $("#totalacu").text(data.d.valor);
+                //rango fechas
+                $("#totalacu").text("De: " + data.d.valor);
 
             } else {
                 alert("Ocurrio un error.");
@@ -144,7 +145,7 @@ function CargarDatosGroupFech($fechainicio, $fechafin) {
     };
     $.ajax({
         type: "POST",
-        url: "TransaccionRepo.aspx/ListTtansaccioFech",
+        url: "TransaccionRepo.aspx/ListTtansaccioFechNue",
         data: JSON.stringify(request),
         contentType: "application/json; charset=utf-8",
         dataType: "json",
@@ -162,7 +163,8 @@ function CargarDatosGroupFech($fechainicio, $fechafin) {
                     )
                 });
 
-                $("#totalacu").text(data.d.valor);
+                //rango fechas "De: " +
+                $("#totalacu").text("De: " + data.d.valor);
 
             } else {
                 alert("Ocurrio un error.");
