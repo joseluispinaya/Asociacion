@@ -87,11 +87,6 @@
 					</a>
 					<div class="dropdown-menu dropdown-menu-end me-1">
 						<a href="#" class="dropdown-item">Editar perfil</a>
-						<%--<a href="#" class="dropdown-item d-flex align-items-center">
-							Inbox
-							<span class="badge bg-danger rounded-pill ms-auto pb-4px">2</span> 
-						</a>--%>
-						<%--<a href="#" class="dropdown-item">Ajustes</a>--%>
 						<div class="dropdown-divider"></div>
 						<a href="#" id="salirs" class="dropdown-item">Salir</a>
 					</div>
@@ -148,7 +143,7 @@
                             <div class="menu-icon">
                                 <i class="fab fa-simplybuilt"></i>
                             </div>
-                            <div class="menu-text">Inicio <span class="menu-label">VER</span></div>
+                            <div class="menu-text">Inicio </div>
                         </a>
                     </div>
 
@@ -157,7 +152,7 @@
                             <div class="menu-icon">
                                 <i class="fas fa-user-gear"></i>
                             </div>
-                            <div class="menu-text">Usuarios <span class="menu-label">NUEVO</span></div>
+                            <div class="menu-text">Usuarios </div>
                         </a>
                     </div>
 
@@ -216,18 +211,13 @@
                         </a>
                         <div class="menu-submenu">
                             <div class="menu-item">
-                                <a href="#" class="menu-link">
-                                    <div class="menu-text">Asociaciones</div>
-                                </a>
-                            </div>
-                            <div class="menu-item">
                                 <a href="TransaccionRepo.aspx" class="menu-link">
                                     <div class="menu-text">Transacciones</div>
                                 </a>
                             </div>
                             <div class="menu-item">
-                                <a href="#" class="menu-link">
-                                    <div class="menu-text">Inventario</div>
+                                <a href="ReporteAs.aspx" class="menu-link">
+                                    <div class="menu-text">Asociaciones</div>
                                 </a>
                             </div>
                         </div>
@@ -282,7 +272,7 @@
                             <div class="menu-icon">
                                 <i class="fab fa-simplybuilt"></i>
                             </div>
-                            <div class="menu-text">Inicio <span class="menu-label">VER</span></div>
+                            <div class="menu-text">Inicio </div>
                         </a>
                     </div>
 
@@ -353,7 +343,7 @@
                             <div class="menu-icon">
                                 <i class="fab fa-simplybuilt"></i>
                             </div>
-                            <div class="menu-text">Inicio <span class="menu-label">VER</span></div>
+                            <div class="menu-text">Inicio </div>
                         </a>
                     </div>
 

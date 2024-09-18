@@ -38,21 +38,6 @@
 			<!-- begin navbar-collapse -->
 			<div class="collapse navbar-collapse" id="header-navbar">
 				<ul class="nav navbar-nav navbar-right">
-					<%--<li class="dropdown">
-						<a href="#" data-bs-toggle="dropdown">Inicio <b class="caret"></b></a>
-						<div class="dropdown-menu">
-							<a class="dropdown-item" href="#">Page with Transparent Header</a>
-							<a class="dropdown-item" href="#">Page with Inverse Header</a>
-							<a class="dropdown-item" href="#">Default Header</a>
-						</div>
-					</li>--%>
-					<%--<li class="dropdown">
-						<a href="#" data-bs-toggle="dropdown">POSTS <b class="caret"></b></a>
-						<div class="dropdown-menu">
-							<a class="dropdown-item" href="#">Page with Grid View Blog Post</a>
-							<a class="dropdown-item" href="#">Page without Sidebar</a>
-						</div>
-					</li>--%>
 					<li><a href="#">Inicio</a></li>
 					<li><a href="Login.aspx">Iniciar Sesion</a></li>
 				</ul>
@@ -87,8 +72,6 @@
 									<span class="month">MAYO</span>
 								</div>
 								<div class="post-likes">
-									<%--<i class="fa fa-heart text-theme"></i>--%>
-									<%--<span class="number">520</span>--%>
 								</div>
 							</div>
 							<!-- end post-left-info -->
@@ -133,22 +116,19 @@
 								<!-- begin post-info -->
 								<div class="post-info">
 									<h4 class="post-title">
-										<a href="#">COSEVHA Carousel Blog Post</a>
+										<a href="#"></a>
 									</h4>
 									<div class="post-by">
-										Posted By <a href="#">admin</a> <span class="divider">|</span> <a href="#">Sports</a>, <a href="#">Mountain</a>, <a href="#">Bike</a> <span class="divider">|</span> 2 Comments
+										Trabajo <a href="#">en</a> <span class="divider">|</span> <a href="#">Equipo</a>, <a href="#">Mountain</a>, <a href="#">todos</a> <span class="divider">|</span> 
 									</div>
 									<div class="post-desc">
-										Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis elit dolor, elementum ut ligula ultricies, 
-										aliquet eleifend risus. Vivamus ut auctor sapien. Morbi at nibh id lorem viverra commodo augue dui, in pellentesque odio tempor.
-										Etiam lobortis vel enim vitae facilisis. Suspendisse ac faucibus diam, non malesuada nisl. Maecenas vel aliquam eros, sit amet gravida lacus. 
-										nteger dictum, nulla [...]
+										
 									</div>
 								</div>
 								<!-- end post-info -->
 								<!-- begin read-btn-container -->
 								<div class="read-btn-container">
-									<a href="#">Read More <i class="fa fa-angle-double-right"></i></a>
+									<a href="#">Ver mas <i class="fa fa-angle-double-right"></i></a>
 								</div>
 								<!-- end read-btn-container -->
 							</div>
@@ -178,22 +158,19 @@
 								<!-- begin post-info -->
 								<div class="post-info">
 									<h4 class="post-title">
-										<a href="#">Demonstration Blog Post</a>
+										<a href="#">Demostracion</a>
 									</h4>
 									<div class="post-by">
-										Posted By <a href="#">admin</a> <span class="divider">|</span> <a href="#">Sports</a>, <a href="#">Parachute</a>, <a href="#">Blue Sky</a> <span class="divider">|</span> 12 Comments
+										Trabajo <a href="#">en</a> <span class="divider">|</span> <a href="#">Equipo</a>, <a href="#">Todos</a>, <a href="#">Juntos</a> <span class="divider">|</span>
 									</div>
 									<div class="post-desc">
-										Pellentesque sit amet lectus at urna tempus tincidunt. Curabitur aliquet nisl ut magna efficitur scelerisque. 
-										Mauris molestie elementum massa eget bibendum. Sed mauris tortor, condimentum nec efficitur lobortis, tempus ac metus. 
-										Donec molestie, tortor ut rhoncus consectetur, ipsum elit maximus nulla, a vulputate augue massa ac dolor. 
-										Quisque euismod ornare cursus. Ut consequat pellentesque mattis [...]
+										
 									</div>
 								</div>
 								<!-- end post-info -->
 								<!-- begin read-btn-container -->
 								<div class="read-btn-container">
-									<a href="#" class="read-btn">Read More <i class="fa fa-angle-double-right"></i></a>
+									<a href="#" class="read-btn">Ver mas <i class="fa fa-angle-double-right"></i></a>
 								</div>
 								<!-- end read-btn-container -->
 							</div>

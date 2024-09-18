@@ -1,6 +1,7 @@
 ﻿
 var table;
 
+
 const MODELO_BASE = {
     IdAfiliado: 0,
     Idasoci: 0,
@@ -85,6 +86,8 @@ function dtAfiliados() {
         }
     });
 }
+
+
 
 
 function cargarAsocia() {

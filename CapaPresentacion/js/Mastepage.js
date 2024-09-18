@@ -2,9 +2,11 @@
 
 $(document).ready(async function () {
 
+    //obtengo las sessiones creadas en el login
     const tokenSesion = sessionStorage.getItem('tokenSesion');
     const usuarioL = sessionStorage.getItem('usuarioA');
 
+    //valido si hay session
     if (tokenSesion && usuarioL) {
         // Parsear el usuario almacenado
         const usuParaenviar = JSON.parse(usuarioL);

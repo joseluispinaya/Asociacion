@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Pagina.Master" AutoEventWireup="true" CodeBehind="AfiliadoA.aspx.cs" Inherits="CapaPresentacion.AfiliadoA" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    
     <style>
         .buttons-excel {
             color: #fff !important;
@@ -50,6 +51,8 @@
             
         </div>
     </div>
+
+
 
     <div class="modal fade" id="modalAfil" tabindex="-1" role="dialog">
         <div class="modal-dialog">
@@ -125,6 +128,7 @@
     </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="footer" runat="server">
+    
     <script src="assets/plugins/sweetalert/sweetalert.min.js"></script>
     <script src="js/AfiliadoA.js" type="text/javascript"></script>
 </asp:Content>

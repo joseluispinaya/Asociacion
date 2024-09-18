@@ -13,7 +13,7 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
-    <h1 class="page-header">Blank Page <small>header small text goes here...</small></h1>
+    <h1 class="page-header">Usuarios <small>...</small></h1>
 
     <%--<div class="row mb-3">
     <div class="col-xl-6">
@@ -90,7 +90,7 @@
 
     <div class="panel panel-inverse">
         <div class="panel-heading">
-            <h4 class="panel-title">Panel Title here</h4>
+            <h4 class="panel-title">Panel de Usuario</h4>
             <div class="panel-heading-btn">
                 
                 <a href="javascript:;" class="btn btn-xs btn-icon btn-warning" data-toggle="panel-collapse"><i class="fa fa-minus"></i></a>

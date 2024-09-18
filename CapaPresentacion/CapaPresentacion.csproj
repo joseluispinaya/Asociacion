@@ -854,12 +854,14 @@
     <Content Include="js\Mastepage.js" />
     <Content Include="js\MasterOrig.js" />
     <Content Include="js\PresidenteA.js" />
+    <Content Include="js\ReporteAs.js" />
     <Content Include="js\ReportePdfTra.js" />
     <Content Include="js\TransaccionA.js" />
     <Content Include="js\TransaccionRepo.js" />
     <Content Include="js\UsuariosA.js" />
     <Content Include="Login.aspx" />
     <Content Include="PresidenteA.aspx" />
+    <Content Include="ReporteAs.aspx" />
     <Content Include="ReportePdfTra.aspx" />
     <Content Include="TransaccionA.aspx" />
     <Content Include="TransaccionRepo.aspx" />
@@ -931,6 +933,13 @@
       <DependentUpon>PresidenteA.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReporteAs.aspx.cs">
+      <DependentUpon>ReporteAs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReporteAs.aspx.designer.cs">
+      <DependentUpon>ReporteAs.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ReportePdfTra.aspx.cs">
       <DependentUpon>ReportePdfTra.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
