@@ -51,14 +51,60 @@ namespace CapaPresentacion
                     rutaa = fullPath;
                 }
             }
-            catch (Exception ex)
+            catch (IOException)
             {
-                throw new Exception("Error al guardar la imagen", ex);
+                // Registrar el error en un logger si es necesario
+                // Logger.LogError(ioEx.Message);
+                rutaa = "";  // Asegura que devuelva una cadena vacía en caso de error de E/S
             }
-
+            catch (Exception)
+            {
+                // Registrar el error pero continuar el flujo
+                // Puedes usar un logger si es necesario
+                // Logger.LogError(ex.Message);
+                rutaa = "";  // Asegura que devuelva una cadena vacía en caso de error
+            }
             return rutaa;
         }
 
+        public string UploadPdf(MemoryStream stream, string folder)
+        {
+            string rutaa = "";
+
+            try
+            {
+                stream.Position = 0;
+
+                var guid = Guid.NewGuid().ToString();
+                var file = $"{guid}.pdf";
+
+                var fullPath = $"{folder}{file}";
+                var path = Path.Combine(HttpContext.Current.Server.MapPath(folder), file);
+
+                // Guardar la imagen en el sistema de archivos
+                File.WriteAllBytes(path, stream.ToArray());
+
+                // Verificar si el archivo fue guardado correctamente
+                if (File.Exists(path))
+                {
+                    rutaa = fullPath;
+                }
+            }
+            catch (IOException)
+            {
+                // Registrar el error en un logger si es necesario
+                // Logger.LogError(ioEx.Message);
+                rutaa = "";  // Asegura que devuelva una cadena vacía en caso de error de E/S
+            }
+            catch (Exception)
+            {
+                // Registrar el error pero continuar el flujo
+                // Puedes usar un logger si es necesario
+                // Logger.LogError(ex.Message);
+                rutaa = "";  // Asegura que devuelva una cadena vacía en caso de error
+            }
+            return rutaa;
+        }
         public bool EnviaElCorreo(string toEmail, string clave)
         {
             try

@@ -1261,6 +1261,7 @@
     <Content Include="assetsbs\css\webfonts\fa-solid-900.woff2" />
     <Content Include="assetsbs\css\webfonts\fa-v4compatibility.ttf" />
     <Content Include="assetsbs\css\webfonts\fa-v4compatibility.woff2" />
+    <Content Include="archivopdf\SinPdfAfi.pdf" />
     <None Include="packages.config" />
     <Content Include="Pagina.Master" />
     <None Include="Properties\PublishProfiles\FTPProfile.pubxml" />

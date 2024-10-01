@@ -29,6 +29,46 @@ namespace CapaDatos
         }
         #endregion
 
+        public bool RegistrarAfiliadoNuevo(EAfiliado oUsuario)
+        {
+            bool respuesta = false;
+
+            try
+            {
+                using (SqlConnection con = ConexionBD.getInstance().ConexionDB())
+                {
+                    using (SqlCommand cmd = new SqlCommand("usp_RegistrarAfiliadoNuevo", con))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+
+                        cmd.Parameters.AddWithValue("@Idasoci", oUsuario.Idasoci);
+                        cmd.Parameters.AddWithValue("@NroCI", oUsuario.NroCI);
+                        cmd.Parameters.AddWithValue("@Nombres", oUsuario.Nombres);
+                        cmd.Parameters.AddWithValue("@Apellidos", oUsuario.Apellidos);
+                        cmd.Parameters.AddWithValue("@Direccion", oUsuario.Direccion);
+                        cmd.Parameters.AddWithValue("@Celular", oUsuario.Celular);
+                        cmd.Parameters.AddWithValue("@Docpdf", oUsuario.Docpdf);
+
+                        SqlParameter outputParam = new SqlParameter("@Resultado", SqlDbType.Bit)
+                        {
+                            Direction = ParameterDirection.Output
+                        };
+                        cmd.Parameters.Add(outputParam);
+
+                        con.Open();
+                        cmd.ExecuteNonQuery();
+                        respuesta = Convert.ToBoolean(outputParam.Value);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al registrar. Intente más tarde.", ex);
+            }
+
+            return respuesta;
+        }
+
         public bool RegistrarAfiliado(EAfiliado oUsuario)
         {
             bool respuesta = false;
@@ -107,6 +147,50 @@ namespace CapaDatos
             }
 
             return respuesta;
+        }
+
+        public List<EAfiliado> ObtenerAfiliadosNuevo()
+        {
+            List<EAfiliado> rptListaUsuario = new List<EAfiliado>();
+
+            try
+            {
+                using (SqlConnection con = ConexionBD.getInstance().ConexionDB())
+                {
+                    using (SqlCommand comando = new SqlCommand("usp_ObtenerAfiliadosNuevo", con))
+                    {
+                        comando.CommandType = CommandType.StoredProcedure;
+                        con.Open();
+
+                        using (SqlDataReader dr = comando.ExecuteReader())
+                        {
+                            while (dr.Read())
+                            {
+                                rptListaUsuario.Add(new EAfiliado()
+                                {
+                                    IdAfiliado = Convert.ToInt32(dr["IdAfiliado"]),
+                                    Idasoci = Convert.ToInt32(dr["Idasoci"]),
+                                    NroCI = dr["NroCI"].ToString(),
+                                    Nombres = dr["Nombres"].ToString(),
+                                    Apellidos = dr["Apellidos"].ToString(),
+                                    Direccion = dr["Direccion"].ToString(),
+                                    Celular = dr["Celular"].ToString(),
+                                    oAsociacion = new EAsociacion() { Nombre = dr["NombreA"].ToString() },
+                                    Activo = Convert.ToBoolean(dr["Activo"]),
+                                    Docpdf = dr["Docpdf"].ToString()
+                                });
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                //throw ex;
+                throw new Exception("Error al obtener los afiliados", ex);
+            }
+
+            return rptListaUsuario;
         }
 
         public List<EAfiliado> ObtenerAfiliadosZ()
@@ -232,6 +316,41 @@ namespace CapaDatos
             }
 
             return rptListaUsuario;
+        }
+
+        public bool ActualizarPdf(int IdAfi, string pdf)
+        {
+            bool respuesta = false;
+
+            try
+            {
+                using (SqlConnection con = ConexionBD.getInstance().ConexionDB())
+                {
+                    using (SqlCommand cmd = new SqlCommand("usp_ActualizarAfiliPdf", con))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+
+                        cmd.Parameters.AddWithValue("@IdAfiliado", IdAfi);
+                        cmd.Parameters.AddWithValue("@Docpdf", pdf);
+
+                        SqlParameter outputParam = new SqlParameter("@Resultado", SqlDbType.Bit)
+                        {
+                            Direction = ParameterDirection.Output
+                        };
+                        cmd.Parameters.Add(outputParam);
+
+                        con.Open();
+                        cmd.ExecuteNonQuery();
+                        respuesta = Convert.ToBoolean(outputParam.Value);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al Actualizar pdf. Intente más tarde.", ex);
+            }
+
+            return respuesta;
         }
     }
 }

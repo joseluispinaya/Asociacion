@@ -17,5 +17,15 @@ namespace CapaEntidad
         public string Celular { get; set; }
         public bool Activo { get; set; }
         public EAsociacion oAsociacion { get; set; }
+        //nuevo campo para pdf
+        public string Docpdf { get; set; }
+        public bool OpcionPdf => !string.IsNullOrEmpty(Docpdf);
+        public string DocMostrar => string.IsNullOrEmpty(Docpdf)
+            ? $"/archivopdf/SinPdfAfi.pdf"
+            : Docpdf;
+
+        //public bool OpcionPdf => string.IsNullOrEmpty(Docpdf)
+        //    ? false
+        //    : true;
     }
 }

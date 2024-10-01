@@ -45,5 +45,19 @@ namespace CapaNegocio
         {
             return DAfiliado.getInstance().ObtenerAfiliadosIdAsoc(idAso);
         }
+
+        public bool RegistrarAfiliadoNuevo(EAfiliado oUsuario)
+        {
+            return DAfiliado.getInstance().RegistrarAfiliadoNuevo(oUsuario);
+        }
+        public List<EAfiliado> ObtenerAfiliadosNuevo()
+        {
+            return DAfiliado.getInstance().ObtenerAfiliadosNuevo();
+        }
+
+        public bool ActualizarPdf(int IdAfi, string pdf)
+        {
+            return DAfiliado.getInstance().ActualizarPdf(IdAfi, pdf);
+        }
     }
 }

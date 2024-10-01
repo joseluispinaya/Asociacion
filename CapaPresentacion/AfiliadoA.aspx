@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Pagina.Master" AutoEventWireup="true" CodeBehind="AfiliadoA.aspx.cs" Inherits="CapaPresentacion.AfiliadoA" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    
+    <link href="assets/jquery-ui-1.12.1/jquery-ui.css" rel="stylesheet"/>
     <style>
         .buttons-excel {
             color: #fff !important;
@@ -51,7 +51,6 @@
             
         </div>
     </div>
-
 
 
     <div class="modal fade" id="modalAfil" tabindex="-1" role="dialog">
@@ -126,9 +125,39 @@
             </div>
         </div>
     </div>
+
+    <div class="modal fade" id="modalpdf" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content" id="loaddddd">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="modalLaA">Detalle</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true"></button>
+                </div>
+                <div class="modal-body">
+                    <input id="txtIdAfiliadoPdf" class="model" name="IdAfi" value="0" type="hidden" />
+                    <div class="mb-2 text-center">
+                        <p class="mb-0">Debe seleccionar una Archivo PDF</p>
+                    </div>
+
+                    <div class="mb-3">
+                        <input class="form-control" type="file" id="txtpdf" accept=".pdf" />
+                    </div>
+
+                    <div class="mb-3 text-center">
+                        <iframe id="verPdf" style="width: 100%; height: 300px; border: none;"></iframe>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <a href="javascript:;" class="btn btn-white" data-bs-dismiss="modal">Cancelar</a>
+                    <button id="btnGuardarCambiosPdf" type="button" class="btn btn-success">Guardar Cambios</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="footer" runat="server">
-    
+    <script src="assets/jquery-ui-1.12.1/jquery-ui.js"></script>
     <script src="assets/plugins/sweetalert/sweetalert.min.js"></script>
     <script src="js/AfiliadoA.js" type="text/javascript"></script>
 </asp:Content>
