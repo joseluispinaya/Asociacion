@@ -2,6 +2,7 @@
 
 $(document).ready(function () {
     dtPresidente();
+    //cargarDatosReporteIA();
 });
 
 function dtPresidente() {
@@ -57,10 +58,58 @@ function dtPresidente() {
 
 // Función para manejar el evento de "Ver Afiliados"
 function verAfiliados(Idasoci) {
-    console.log("Ver afiliados de la asociación con ID: " + Idasoci);
+    //console.log("Ver afiliados de la asociación con ID: " + Idasoci);
+    var url = 'ReporteAsociaAfi.aspx?id=' + Idasoci;
+    window.open(url, '', 'height=700,width=900,scrollbars=0,location=1,toolbar=0');
+
     // Por ejemplo, redirigir a otra página:
     // window.location.href = "VerAfiliados.aspx?Idasoci=" + Idasoci;
 }
+
+//nuevo reporte pruebas
+function getBase64Image(imgUrl, callback) {
+    var img = new Image();
+    img.crossOrigin = 'Anonymous';  // Permite cargar imágenes de otras fuentes si es necesario
+    img.src = imgUrl;
+
+    img.onload = function () {
+        var canvas = document.createElement('canvas');
+        canvas.width = img.width;
+        canvas.height = img.height;
+        var ctx = canvas.getContext('2d');
+        ctx.drawImage(img, 0, 0);
+
+        var dataURL = canvas.toDataURL('image/png');  // Convierte a base64
+        callback(dataURL);
+    };
+}
+
+function cargarDatosReporteIA() {
+
+    $.ajax({
+        type: "POST",
+        url: "ReporteAs.aspx/ObtenerPresiRpt",
+        data: {},
+        dataType: "json",
+        contentType: 'application/json; charset=utf-8',
+        error: function (xhr, ajaxOptions, thrownError) {
+            console.log(xhr.status + " \n" + xhr.responseText, "\n" + thrownError);
+        },
+        success: function (data) {
+            if (data.d.estado) {
+                var asociaciones = data.d.objeto;
+                console.log("llega: ", asociaciones);
+            }
+
+        }
+    });
+}
+
+$('#btnRepoGener').on('click', function () {
+
+    var url = 'ReporteAsociaAfi.aspx';
+    window.open(url, '', 'height=700,width=900,scrollbars=0,location=1,toolbar=0');
+});
 
 //$(document).ready(function () {
 //    dtPresidente();

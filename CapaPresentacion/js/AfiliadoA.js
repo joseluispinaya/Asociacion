@@ -1,6 +1,6 @@
 ﻿
 var table;
-
+let est = false;
 
 const MODELO_BASE = {
     IdAfiliado: 0,
@@ -61,20 +61,32 @@ function dtAfiliadosNuevo() {
                 }
             },
             {
+                "data": "Docpdf", render: function (data, type, row) {
+                    if (data) {
+                        return `<a href="${data}" target="_blank" class="btn btn-green btn-sm"><i class="fas fa-file-pdf"></i> Ver PDF</a>`;
+                    } else {
+                        return '<span class="badge bg-danger">Sin PDF</span>';
+                    }
+                },
+                "orderable": false,
+                "searchable": false,
+                "width": "70px"
+            },
+            {
                 "data": "OpcionPdf", render: function (data, type, row) {
                     let tutorButton = '';
                     if (data == false) {
-                        tutorButton = '<button class="btn btn-secondary btn-agregar-pdf btn-sm mr-2"><i class="fas fa-user-plus"></i> Add Pdf</button>';
+                        tutorButton = '<button class="btn btn-secondary btn-agregar-pdf btn-sm mr-2"><i class="fas fa-file-pdf"></i> Add Pdf</button>';
                     } else {
-                        tutorButton = '<button class="btn btn-warning btn-editar-pdf btn-sm mr-2"><i class="fas fa-user-edit"></i> Edit Pdf</button>';
+                        tutorButton = '<button class="btn btn-warning btn-editar-pdf btn-sm mr-2"><i class="fas fa-file-pdf"></i> Edit Pdf</button>';
                     }
 
-                    return `<button class="btn btn-primary btn-editar btn-sm me-5px" title="Editar"><i class="fas fa-pencil-alt"></i></button>
+                    return `<button class="btn btn-primary btn-editar btn-sm me-5px" title="Editar"><i class="fas fa-pencil-alt"></i> Editar Datos</button>
                             ${tutorButton}`;
                 },
                 "orderable": false,
                 "searchable": false,
-                "width": "130px"
+                "width": "140px"
             }
         ],
         "order": [[0, "desc"]],
@@ -163,9 +175,6 @@ function dtAfiliados() {
         }
     });
 }
-
-
-
 
 function cargarAsocia() {
     $("#cboAsoci").html("");
@@ -278,8 +287,8 @@ $("#tbAfiliado tbody").on("click", ".btn-agregar-pdf", function (e) {
     }
 
     const model = table.row(filaSeleccionada).data();
-
-    $("#modalLaA").text(model.Nombres + " " + model.Apellidos);
+    est = true;
+    $("#modalLaA").text("Afiliado: " + model.Nombres + " " + model.Apellidos);
     $("#txtIdAfiliadoPdf").val(model.IdAfiliado);
     $('#txtpdf').val('');
     $('#verPdf').attr('src', "archivopdf/SinPdfAfi.pdf");
@@ -298,7 +307,8 @@ $("#tbAfiliado tbody").on("click", ".btn-editar-pdf", function (e) {
     }
 
     const model = table.row(filaSeleccionada).data();
-    $("#modalLaA").text(model.Nombres + " " + model.Apellidos);
+    est = false;
+    $("#modalLaA").text("Afiliado: " + model.Nombres + " " + model.Apellidos);
     $("#txtIdAfiliadoPdf").val(model.IdAfiliado);
 
     //$('#verPdf').attr('src', "archivopdf/SinPdfAfi.pdf");
@@ -307,32 +317,51 @@ $("#tbAfiliado tbody").on("click", ".btn-editar-pdf", function (e) {
     $("#modalpdf").modal("show");
 })
 
+//function mostrarPdfSeleccionada(input) {
+//    if (input.files && input.files[0]) {
+//        var reader = new FileReader();
+
+//        reader.onload = function (e) {
+//            $('#verPdf').attr('src', e.target.result);
+//        }
+
+//        reader.readAsDataURL(input.files[0]);
+//    } else {
+//        $('#verPdf').attr('src', "archivopdf/SinPdfAfi.pdf");
+//    }
+//}
+//$('#txtpdf').change(function () {
+//    var file = this.files[0];
+//    if (file.type === "application/pdf") {
+//        mostrarPdfSeleccionada(this);
+//    } else {
+//        swal("Mensaje", "Por favor seleccione un archivo PDF válido", "warning");
+//        $('#txtpdf').val('');
+//    }
+//});
+
 function mostrarPdfSeleccionada(input) {
     if (input.files && input.files[0]) {
-        var reader = new FileReader();
+        var file = input.files[0];
 
-        reader.onload = function (e) {
-            $('#verPdf').attr('src', e.target.result);
+        // Si el archivo es un PDF y tiene un tamaño válido
+        if (file.type === "application/pdf" && file.size <= (4 * 1024 * 1024)) { // 4 MB límite
+            var objectUrl = URL.createObjectURL(file); // Crea una URL temporal para el archivo
+            $('#verPdf').attr('src', objectUrl); // Muestra el archivo en el iframe
+        } else if (file.size > (4 * 1024 * 1024)) {
+            swal("Mensaje", "El archivo seleccionado es demasiado grande, máximo 4 MB.", "warning");
+            $('#txtpdf').val(''); // Limpia el input si el archivo es demasiado grande
+            $('#verPdf').attr('src', "archivopdf/SinPdfAfi.pdf"); // Vuelve a un estado por defecto
         }
-
-        reader.readAsDataURL(input.files[0]);
     } else {
-        $('#verPdf').attr('src', "archivopdf/SinPdfAfi.pdf");
+        $('#verPdf').attr('src', "archivopdf/SinPdfAfi.pdf"); // Si no hay archivo, carga el PDF por defecto
     }
 }
+
 $('#txtpdf').change(function () {
-    var file = this.files[0];
-    if (file.type === "application/pdf") {
-        mostrarPdfSeleccionada(this);
-    } else {
-        //alert("Por favor seleccione un archivo PDF válido.");
-        swal("Mensaje", "Por favor seleccione un archivo PDF válido", "warning");
-        $('#txtpdf').val(''); // Limpia el input si no es un PDF
-    }
+    mostrarPdfSeleccionada(this); // Llama a la función de previsualización cuando cambie el archivo
 });
-//$('#txtpdf').change(function () {
-//    mostrarPdfSeleccionada(this);
-//});
+
 
 $('#btnNuevoReg').on('click', function () {
     //$("#modalAfil").modal("show");
@@ -356,7 +385,7 @@ function dataRegistrar() {
 
     $.ajax({
         type: "POST",
-        url: "AfiliadoA.aspx/Guardar",
+        url: "AfiliadoA.aspx/GuardarNuevo",
         data: JSON.stringify(request),
         contentType: "application/json; charset=utf-8",
         dataType: "json",
@@ -478,9 +507,9 @@ function registerPdfAjaxP() {
 
     if (file) {
 
-        var maxSize = 2 * 1024 * 1024; // 2 MB en bytes
+        var maxSize = 4 * 1024 * 1024; // 4 MB en bytes
         if (file.size > maxSize) {
-            swal("Mensaje", "El archivo seleccionado es demasiado grande max 1.5 Mb.", "warning");
+            swal("Mensaje", "El archivo seleccionado es demasiado grande tamaño max 4 Mb.", "warning");
             $('#btnGuardarCambiosPdf').prop('disabled', false);
             return;
         }
@@ -542,6 +571,76 @@ function registerPdfAjaxP() {
     }
 }
 
+function editarPdfAjaxP() {
+    var fileInput = document.getElementById('txtpdf');
+    var file = fileInput.files[0];
+
+    if (file) {
+
+        var maxSize = 4 * 1024 * 1024; // 4 MB en bytes
+        if (file.size > maxSize) {
+            swal("Mensaje", "El archivo seleccionado es demasiado grande tamaño max 4 Mb.", "warning");
+            $('#btnGuardarCambiosPdf').prop('disabled', false);
+            return;
+        }
+
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            var arrayBuffer = e.target.result;
+            var bytes = new Uint8Array(arrayBuffer);
+
+            var request = {
+                IdAfi: parseInt($("#txtIdAfiliadoPdf").val()),
+                pdfBytes: Array.from(bytes)
+            };
+
+            $.ajax({
+                type: "POST",
+                url: "AfiliadoA.aspx/ActualizarPdf",
+                data: JSON.stringify(request),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                beforeSend: function () {
+                    $("#loaddddd").LoadingOverlay("show", {
+                        image: "",
+                        fontawesome: "fas fa-cog fa-spin"
+                    });
+                },
+                success: function (response) {
+                    $("#loaddddd").LoadingOverlay("hide");
+                    if (response.d.estado) {
+                        dtAfiliadosNuevo();
+                        $('#modalpdf').modal('hide');
+                        swal("Mensaje", response.d.valor, "success");
+
+                        //swal("Mensaje", "Registro Exitoso credenciales enviado al correo Registrado", "success");
+                    } else {
+                        swal("Mensaje", response.d.valor, "warning");
+                        //swal("Mensaje", "Error al registrar ingrese otro correo", "warning");
+                    }
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    $("#loaddddd").LoadingOverlay("hide");
+                    console.log(xhr.status + " \n" + xhr.responseText, "\n" + thrownError);
+                },
+                complete: function () {
+                    // Rehabilitar el botón después de que la llamada AJAX se complete (éxito o error)
+                    $('#btnGuardarCambiosPdf').prop('disabled', false);
+                }
+            });
+            //sendDataToServer(request);
+        };
+
+        reader.readAsArrayBuffer(file);
+    } else {
+        swal("Mensaje", "Debe seleccionar un archivo PDF para Actualizar datos", "warning");
+        $('#btnGuardarCambiosPdf').prop('disabled', false);
+        return;
+
+    }
+}
+
 $('#btnGuardarCambiosPdf').on('click', function () {
     $('#btnGuardarCambiosPdf').prop('disabled', true);
     //if (parseInt($("#txtIdAfiliado").val()) == 0) {
@@ -549,5 +648,10 @@ $('#btnGuardarCambiosPdf').on('click', function () {
     //} else {
     //    dataActualizar();
     //}
-    registerPdfAjaxP();
+    if (est) {
+        registerPdfAjaxP();
+    } else {
+        editarPdfAjaxP();
+    }
+    
 })

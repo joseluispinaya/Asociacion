@@ -30,5 +30,36 @@ namespace CapaPresentacion
                 return new Respuesta<List<EPresidente>>() { estado = false, objeto = null };
             }
         }
+
+        [WebMethod]
+        public static Respuesta<List<EPresidente>> ObtenerPresiRpt()
+        {
+            var Lista = NPresidente.getInstance().ObtenerPresiAsomasAfiliados();
+            if (Lista != null)
+            {
+                return new Respuesta<List<EPresidente>>() { estado = true, objeto = Lista };
+            }
+            else
+            {
+                return new Respuesta<List<EPresidente>>() { estado = false, objeto = null };
+            }
+        }
+
+        [WebMethod]
+        public static Respuesta<List<EPresidente>> ObtenerAsociacionId(int IdAso)
+        {
+            var Lista = NPresidente.getInstance().ObtenerPresiAsomasAfiliados();
+
+            if (Lista != null)
+            {
+                Lista = Lista.Where(c => c.Idasoci == IdAso).ToList();
+                return new Respuesta<List<EPresidente>>() { estado = true, objeto = Lista };
+            }
+            else
+            {
+                return new Respuesta<List<EPresidente>>() { estado = false, objeto = null };
+            }
+        }
+
     }
 }

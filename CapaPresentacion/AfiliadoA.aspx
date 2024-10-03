@@ -40,6 +40,7 @@
                                 <th>Celular</th>
                                 <th>Asociacion</th>
                                 <th>Estado</th>
+                                <th>Documento</th>
                                 <th>Acciones</th>
                             </tr>
                         </thead>

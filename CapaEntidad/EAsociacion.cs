@@ -14,5 +14,6 @@ namespace CapaEntidad
         public string Telefono { get; set; }
         public string Correo { get; set; }
         public bool Activo { get; set; }
+        public List<EAfiliado> ListaAfiliados { get; set; }
     }
 }

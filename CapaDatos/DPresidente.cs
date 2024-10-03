@@ -150,5 +150,53 @@ namespace CapaDatos
 
             return rptListaUsuario;
         }
+
+        public List<EPresidente> ObtenerPresidenteRpt()
+        {
+            List<EPresidente> rptListaUsuario = new List<EPresidente>();
+
+            try
+            {
+                using (SqlConnection con = ConexionBD.getInstance().ConexionDB())
+                {
+                    using (SqlCommand comando = new SqlCommand("usp_ObtenerPresidentesRpt", con))
+                    {
+                        comando.CommandType = CommandType.StoredProcedure;
+                        con.Open();
+
+                        using (SqlDataReader dr = comando.ExecuteReader())
+                        {
+                            while (dr.Read())
+                            {
+                                rptListaUsuario.Add(new EPresidente()
+                                {
+                                    IdPresident = Convert.ToInt32(dr["IdPresident"]),
+                                    Idasoci = Convert.ToInt32(dr["Idasoci"]),
+                                    NroCI = dr["NroCI"].ToString(),
+                                    Nombres = dr["Nombres"].ToString(),
+                                    Apellidos = dr["Apellidos"].ToString(),
+                                    Foto = dr["Foto"].ToString(),
+                                    Celular = dr["Celular"].ToString(),
+                                    oAsociacion = new EAsociacion()
+                                    {
+                                        Nombre = dr["NombreA"].ToString(),
+                                        Direccion = dr["Direccion"].ToString(),
+                                        Correo = dr["Correo"].ToString()
+                                    },
+                                    Activo = Convert.ToBoolean(dr["Activo"])
+                                });
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                //throw ex;
+                throw new Exception("Error al obtener los presidentes", ex);
+            }
+
+            return rptListaUsuario;
+        }
     }
 }

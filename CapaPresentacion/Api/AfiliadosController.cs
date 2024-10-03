@@ -139,6 +139,7 @@ namespace CapaPresentacion.Api
 
         private bool RegistrarAfiliado(AfiliadoRequest request)
         {
+            var pdfvacio = string.Empty;
             var oAfiliado = new EAfiliado
             {
                 Idasoci = request.Idasoci,
@@ -146,10 +147,12 @@ namespace CapaPresentacion.Api
                 Nombres = request.Nombres,
                 Apellidos = request.Apellidos,
                 Direccion = request.Direccion,
-                Celular = request.Celular
+                Celular = request.Celular,
+                Docpdf = pdfvacio
             };
 
-            return NAfiliado.getInstance().RegistrarAfiliado(oAfiliado);
+            //return NAfiliado.getInstance().RegistrarAfiliado(oAfiliado);
+            return NAfiliado.getInstance().RegistrarAfiliadoNuevo(oAfiliado);
         }
     }
 }

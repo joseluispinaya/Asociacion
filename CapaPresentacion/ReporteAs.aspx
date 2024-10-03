@@ -101,7 +101,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
     <div class="row">
     <div class="col-xl-12 text-center">
-        <button type="button" id="btnAdd" class="btn btn-lime"><i class="fa fa-print t-plus-1 fa-fw fa-lg"></i> Reporte General</button>
+        <button type="button" id="btnRepoGener" class="btn btn-lime"><i class="fa fa-print t-plus-1 fa-fw fa-lg"></i> Reporte General</button>
     </div>
 </div>
     <div class="row">

@@ -46,6 +46,7 @@ namespace CapaPresentacion
             }
         }
 
+        //sin usar
         [WebMethod]
         public static Respuesta<bool> Guardar(EAfiliado oAfiliado)
         {
@@ -96,6 +97,7 @@ namespace CapaPresentacion
             }
         }
 
+        
         [WebMethod]
         public static Respuesta<bool> Actualizar(EAfiliado oAfiliado)
         {
